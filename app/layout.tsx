@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     images: ['/og-image.png'],
   },
   icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/favicon.ico',
+  icon: '/favicon.png',
+  shortcut: '/favicon.png',
+  apple: '/favicon.png',
   },
 };
 
@@ -56,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="container mx-auto px-4 h-16 flex items-center justify-between">
             <Link href="/" className="flex items-center space-x-3 group">
               <img 
-                src="/favicon.ico" 
+                src="/logo.png" 
                 alt="Knoxified Logo"
                 className="w-8 h-8 object-contain opacity-90 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_10px_rgba(6,182,212,0.5)]" 
               />
@@ -89,7 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <div className="flex flex-col items-start gap-4 max-w-sm">
               <div className="flex items-center space-x-3">
                 <img 
-                  src="/favicon.ico" 
+                  src="/logo.png" 
                   alt="Knoxified Logo" 
                   className="w-8 h-8 object-contain opacity-80" 
                 />
