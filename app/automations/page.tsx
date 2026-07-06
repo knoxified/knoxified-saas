@@ -11,7 +11,7 @@ export default function AutomationsDirectory() {
   },
   {
     "title": "MailCraft ✍️",
-    "desc": "Takes an enriched lead profile from LeadReach and instantly drafts a 4-step personalized outreach email sequence — ready to send.",
+    "desc": "Takes approved contact context and drafts customer-authorized email follow-ups for team review.",
     "href": "/automations/mailcraft"
   },
   {
@@ -31,7 +31,7 @@ export default function AutomationsDirectory() {
   },
   {
     "title": "WinBackBot 🔥",
-    "desc": "Identifies dormant clients and automatically re-engages them with personalized offers.",
+    "desc": "Helps teams prepare authorized follow-ups for existing clients with relevant service updates.",
     "href": "/automations/winbackbot"
   },
   {
@@ -106,7 +106,7 @@ export default function AutomationsDirectory() {
   },
   {
     "title": "ScreenSync 🤝",
-    "desc": "Automatically reviews and ranks incoming resumes against specific job requirements.",
+    "desc": "Organizes incoming resumes against recruiter-defined criteria for human review.",
     "href": "/automations/screensync"
   },
   {
@@ -116,7 +116,7 @@ export default function AutomationsDirectory() {
   },
   {
     "title": "OmniPulse 🚀",
-    "desc": "Fires highly targeted SMS campaigns based on user behavior and purchasing events.",
+    "desc": "Sends customer-authorized SMS updates based on relevant account or purchase events.",
     "href": "/automations/omnipulse"
   },
   {
@@ -151,7 +151,7 @@ export default function AutomationsDirectory() {
   },
   {
     "title": "CartRevive 🛒",
-    "desc": "Engages with abandoned cart customers on SMS and WhatsApp, offering intelligent discounts and recovering sales.",
+    "desc": "Sends customer-authorized cart reminders on SMS and WhatsApp with approved recovery offers.",
     "href": "/automations/cartrevive"
   },
   {

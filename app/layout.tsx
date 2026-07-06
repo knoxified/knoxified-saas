@@ -8,13 +8,13 @@ const inter = Inter({ subsets: ['latin'], display: 'swap' });
 export const metadata: Metadata = {
   metadataBase: new URL('https://knoxified.org'),
   title: 'Knoxified — AI Systems & Automation for Growing Businesses',
-  description: 'Knoxified automates your inbound calls, books appointments, enriches leads, and sends personalized outreach — 24/7, without hiring. Built for businesses that want to scale.',
+  description: 'Knoxified builds AI systems and automation workflows for calls, appointments, operations, and customer communication - built for growing businesses that want to scale.',
   alternates: {
     canonical: 'https://knoxified.org',
   },
   openGraph: {
     title: 'Knoxified — AI Systems & Automation for Growing Businesses',
-    description: 'Knoxified automates your inbound calls, books appointments, enriches leads, and sends personalized outreach — 24/7, without hiring. Built for businesses that want to scale.',
+    description: 'Knoxified builds AI systems and automation workflows for calls, appointments, operations, and customer communication - built for growing businesses that want to scale.',
     type: 'website',
     url: 'https://knoxified.org',
     images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Knoxified' }],
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Knoxified — AI Systems & Automation for Growing Businesses',
-    description: 'Knoxified automates your inbound calls, books appointments, enriches leads, and sends personalized outreach — 24/7, without hiring. Built for businesses that want to scale.',
+    description: 'Knoxified builds AI systems and automation workflows for calls, appointments, operations, and customer communication - built for growing businesses that want to scale.',
     images: ['/og-image.png'],
   },
   icons: {
@@ -128,6 +128,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <h4 className="font-semibold text-white mb-2">Legal</h4>
                 <Link href="/legal/terms" className="hover:text-cyan-400 transition-colors">Terms &amp; Conditions</Link>
                 <Link href="/legal/privacy" className="hover:text-cyan-400 transition-colors">Privacy Policy</Link>
+                <Link href="/legal/acceptable-use" className="hover:text-cyan-400 transition-colors">Acceptable Use Policy</Link>
                 <Link href="/legal/refunds" className="hover:text-cyan-400 transition-colors">Refund Policy</Link>
               </div>
             </div>

@@ -31,11 +31,11 @@ export default function ScreenSyncPage() {
             Applicant Resume Parsing
           </h1>
           <p className="text-xl font-medium text-cyan-400 mb-6">
-            Automatically reviews and ranks incoming resumes against specific job requirements.
+            Organizes incoming resumes against recruiter-defined criteria for human review.
           </p>
           <div className="text-lg text-slate-400 mb-10 leading-relaxed space-y-4">
             <p>
-              A tireless HR assistant that sifts through the noise to find the best talent instantly.
+              A recruiter support assistant that structures applicant information so hiring teams can review it clearly.
             </p>
           </div>
           
@@ -63,7 +63,7 @@ export default function ScreenSyncPage() {
          <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">🚀 Key Capabilities</h2>
          
          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {["Extracts skills, experience, and education from any resume format","Scores applicants based on keyword match to the job description","Sorts candidates into 'Strong Match', 'Review', and 'Rejected' tiers","Sends courteous rejection emails automatically to poor fits","Highlights top-tier candidates for recruiter review","Integrates with Greenhouse, Workable, and standard ATS platforms"].map((feature, idx) => (
+            {["Extracts skills, experience, and education from any resume format","Compares resume details to recruiter-defined criteria for review","Groups applications into recruiter-configured review queues","Keeps recruiter notes and workflow context organized","Highlights relevant resume details for recruiter review","Integrates with Greenhouse, Workable, and standard ATS platforms"].map((feature, idx) => (
               <div key={idx} className="flex items-start gap-4 p-6 bg-slate-800/40 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-colors">
                 <CheckCircle2 className="w-6 h-6 text-cyan-500 shrink-0 mt-0.5" />
                 <p className="text-slate-300 leading-relaxed text-sm">{feature}</p>
@@ -77,10 +77,10 @@ export default function ScreenSyncPage() {
         <div className="p-8 md:p-12 rounded-3xl bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 relative overflow-hidden">
            <h3 className="text-3xl font-bold text-slate-50 mb-6 relative z-10">Role Overview</h3>
            <p className="text-slate-400 text-lg leading-relaxed mb-6 relative z-10">
-             A tireless HR assistant that sifts through the noise to find the best talent instantly.
+             A recruiter support assistant that structures applicant information so hiring teams can review it clearly.
            </p>
            <p className="text-slate-400 text-lg leading-relaxed mb-6 relative z-10">
-             By delegating this specific task to an automation, you remove human error, eliminate delays, and ensure consistent execution at scale.
+             By delegating organization and data extraction to an automation, recruiters keep oversight while reducing manual review preparation.
            </p>
         </div>
 
@@ -88,7 +88,7 @@ export default function ScreenSyncPage() {
            <h3 className="text-3xl font-bold text-slate-50 mb-6 relative z-10">📊 Why Businesses Love It</h3>
            
            <div className="space-y-6 mb-8 relative z-10">
-            {["Faster time-to-hire","Unbiased initial screening","Saved recruitment hours"].map((benefit, idx) => (
+            {["Faster review preparation","Consistent recruiter-defined intake","Saved recruitment admin hours"].map((benefit, idx) => (
               <div key={idx} className="flex items-center gap-4">
                  <div className="w-16 flex justify-center shrink-0">
                    <CheckCircle2 className="w-8 h-8 text-emerald-400" />

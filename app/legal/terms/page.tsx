@@ -87,6 +87,14 @@ export default function TermsPage() {
           <li><strong>8.3.</strong> Use of the Services is also governed by our Privacy Policy.</li>
         </ul>
 
+        <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">8A. AI Governance and Human Oversight</h2>
+        <ul className="list-none space-y-4">
+          <li><strong>8A.1.</strong> Knoxified provides AI-assisted workflow tools. AI outputs are intended to support Users, not replace User judgment, professional review, or legally required human oversight.</li>
+          <li><strong>8A.2.</strong> Users configure their own workflows, criteria, prompts, integrations, communication settings, and business rules, and remain responsible for all decisions, actions, and outcomes resulting from their use of the Services.</li>
+          <li><strong>8A.3.</strong> Knoxified is not intended to autonomously determine employment, lending, insurance, healthcare, housing, legal eligibility, or similar regulated decisions about a natural person.</li>
+          <li><strong>8A.4.</strong> Users must review AI-assisted outputs before relying on them in operational, legal, financial, medical, employment, insurance, or similarly sensitive contexts.</li>
+        </ul>
+
         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">9. Intellectual Property</h2>
         <ul className="list-none space-y-4">
           <li><strong>9.1.</strong> Knoxified retains ownership of all proprietary software, frameworks, systems, workflows, automation logic, infrastructure, branding, and platform architecture.</li>

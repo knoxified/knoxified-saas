@@ -95,7 +95,7 @@ export default function PricingPage() {
             </li>
             <li className="flex items-start gap-3 text-sm text-slate-300">
               <CheckCircle2 className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" />
-              <span>Outbound System Tools</span>
+              <span>Customer Communication Tools</span>
             </li>
             <li className="flex items-start gap-3 text-sm text-slate-300">
               <CheckCircle2 className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" />
@@ -239,16 +239,16 @@ export default function PricingPage() {
 
               {/* Category */}
               <tr>
-                <td colSpan={4} className="py-4 px-6 font-semibold text-slate-300 bg-slate-800/20">Growth & Retargeting</td>
+                <td colSpan={4} className="py-4 px-6 font-semibold text-slate-300 bg-slate-800/20">Customer Engagement & Retention</td>
               </tr>
               <tr className="border-b border-slate-800 hover:bg-slate-800/30 transition-colors">
-                <td className="py-4 px-6 text-slate-400">Lead Reactivation</td>
+                <td className="py-4 px-6 text-slate-400">Customer Follow-Up Automation</td>
                 <td className="py-4 px-6 text-center"><CheckCircle2 className="w-5 h-5 text-cyan-500 mx-auto" /></td>
                 <td className="py-4 px-6 text-center bg-slate-800/30"><CheckCircle2 className="w-5 h-5 text-cyan-500 mx-auto" /></td>
                 <td className="py-4 px-6 text-center"><CheckCircle2 className="w-5 h-5 text-slate-600 mx-auto" /></td>
               </tr>
               <tr className="border-b border-slate-800 hover:bg-slate-800/30 transition-colors">
-                <td className="py-4 px-6 text-slate-400">Multi-Channel Retargeting</td>
+                <td className="py-4 px-6 text-slate-400">Authorized Multi-Channel Messaging</td>
                 <td className="py-4 px-6 text-center text-slate-600">—</td>
                 <td className="py-4 px-6 text-center bg-slate-800/30"><CheckCircle2 className="w-5 h-5 text-cyan-500 mx-auto" /></td>
                 <td className="py-4 px-6 text-center"><CheckCircle2 className="w-5 h-5 text-slate-600 mx-auto" /></td>

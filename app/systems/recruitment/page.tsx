@@ -40,7 +40,7 @@ export default function RecruitmentSystemPage() {
           </p>
           <div className="text-lg text-slate-400 mb-10 leading-relaxed space-y-4">
             <p>
-              In recruitment, every call matters. One missed conversation can cost a placement. Our system ensures every candidate and client interaction is captured, qualified, and progressed automatically — faster, smarter, and more precise than manual workflows.
+              In recruitment, every call matters. One missed conversation can cost a placement. Our system helps capture candidate and client interactions, organize details, and prepare next steps for recruiter review.
             </p>
             <p>
               Automation doesn’t just streamline intake. It elevates every connection across your hiring pipeline, combining recruiter-level empathy with analytical rigor.
@@ -49,7 +49,7 @@ export default function RecruitmentSystemPage() {
 
                                         <AIVoiceSample 
             industry="recruitment"
-            text="Welcome to the Staffing System. We&apos;re actively reviewing candidates for the Senior Developer position, and your profile stood out. I just have three quick, strategic screening questions. If everything aligns, I can fast-track your application to the hiring manager right now."
+            text="Welcome to the Staffing System. We&apos;re helping the recruiting team collect structured details for the Senior Developer position. I have a few recruiter-approved intake questions, and the hiring team will review your responses."
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">
@@ -91,15 +91,15 @@ export default function RecruitmentSystemPage() {
                 </li>
                 <li className="flex items-start gap-3 text-slate-300">
                   <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Qualification & Scoring:</strong> Assesses skills, experience, availability, salary expectations, and intent for smarter shortlists.</span>
+                  <span><strong>Recruiter Criteria Support:</strong> Organizes skills, experience, availability, salary expectations, and intent against recruiter-defined criteria for review.</span>
                 </li>
                 <li className="flex items-start gap-3 text-slate-300">
                   <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Tone & Fit Analysis:</strong> Detects communication style, enthusiasm, and cultural fit for each profile.</span>
+                  <span><strong>Conversation Notes:</strong> Summarizes communication context and candidate preferences for recruiter review.</span>
                 </li>
                 <li className="flex items-start gap-3 text-slate-300">
                   <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Role Matching:</strong> Suggests suitable candidates or positions instantly using past placements, database insights, and job criteria.</span>
+                  <span><strong>Role Context:</strong> Surfaces relevant candidate and position details so recruiters can decide the right next step.</span>
                 </li>
               </ul>
             </div>
@@ -183,7 +183,7 @@ export default function RecruitmentSystemPage() {
                 </li>
                 <li className="flex items-start gap-3 text-slate-300">
                   <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Automated Screening:</strong> Collects post-interview feedback and preliminary assessments automatically.</span>
+                  <span><strong>Recruiter Review Support:</strong> Collects post-interview feedback and organizes preliminary notes for human review.</span>
                 </li>
               </ul>
             </div>
@@ -237,10 +237,10 @@ export default function RecruitmentSystemPage() {
              Recruitment System is the first impression that never falters.
            </p>
            <p className="text-slate-400 text-lg leading-relaxed mb-6 relative z-10">
-             It manages every candidate and client interaction, organizes data, evaluates personality fit, and aligns candidates with companies precisely.
+             It helps manage candidate and client interactions, organizes data, and prepares structured context for recruiter-led decisions.
            </p>
            <p className="text-slate-400 text-lg leading-relaxed relative z-10">
-             Every conversation feeds directly into your hiring engine — speeding placements while maintaining a polished, professional candidate experience.
+             Every conversation feeds directly into your hiring workflow, helping recruiters move faster while maintaining a polished, professional candidate experience.
            </p>
         </div>
 
@@ -287,7 +287,7 @@ export default function RecruitmentSystemPage() {
   {
     "title": "ScreenSync",
     "icon": "🤝",
-    "description": "Automatically reviews and ranks incoming resumes against specific job requirements.",
+    "description": "Organizes incoming resumes against recruiter-defined criteria for human review.",
     "href": "/automations/screensync"
   },
   {
@@ -328,7 +328,7 @@ export default function RecruitmentSystemPage() {
              Upgrade recruitment operations today.
            </p>
            <p className="text-lg text-slate-500 mb-10 max-w-2xl mx-auto">
-             Activate Recruitment System, the system that never misses a lead, never delays a follow-up, and ensures every placement opportunity is captured, qualified, and progressed automatically.
+             Activate Recruitment System, the system that helps capture every opportunity, prepare follow-ups, and keep recruiter-led placement workflows moving.
            </p>
            
            <Link href="/pricing" className="inline-flex items-center gap-2 px-10 py-5 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-full transition-all shadow-[0_0_30px_rgba(6,182,212,0.4)] hover:shadow-[0_0_50px_rgba(6,182,212,0.6)] hover:-translate-y-1 text-lg">
