@@ -18,6 +18,13 @@ export default function RefundsPage() {
           <li><strong>2.3.</strong> Users remain responsible for charges incurred before cancellation.</li>
         </ul>
 
+        <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">2A. Trial-to-Paid Conversion</h2>
+        <ul className="list-none space-y-4">
+          <li><strong>2A.1.</strong> If your free trial converts into a paid subscription and this is the first charge on your account, you may request a full refund of that charge within 7 days of the charge date by contacting <a href="mailto:support@knoxified.org" className="text-cyan-400 hover:text-cyan-300">support@knoxified.org</a>.</li>
+          <li><strong>2A.2.</strong> This one-time conversion refund does not apply to any subsequent renewal charges, which are governed by Section 2.1 above.</li>
+          <li><strong>2A.3.</strong> To avoid conversion to a paid plan, cancel before your trial period ends, as described in Section 4.6 of our Terms &amp; Conditions.</li>
+        </ul>
+
         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">3. Usage-Based Charges</h2>
         <ul className="list-none space-y-4">
           <li><strong>3.1.</strong> Usage-related charges including AI processing, telephony usage, API consumption, hosting resources, automation execution, storage, and infrastructure costs are non-refundable.</li>

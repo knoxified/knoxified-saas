@@ -71,6 +71,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/contact" className="hover:text-cyan-400 transition-colors">Contact</Link>
             </nav>
             <div className="flex items-center space-x-4">
+              <a href="https://dashboard.knoxified.org" className="px-5 py-2 text-sm font-medium bg-gradient-to-br from-cyan-500/20 to-blue-500/10 hover:from-cyan-500/30 hover:to-blue-500/20 text-cyan-300 hover:text-cyan-200 border border-cyan-500/30 hover:border-cyan-500/60 rounded-xl backdrop-blur-xl shadow-[0_8px_32px_0_rgba(6,182,212,0.1)] hover:shadow-[0_8px_32px_0_rgba(6,182,212,0.2)] transition-all duration-300 relative group overflow-hidden">
+                <span className="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/10 to-blue-400/0 group-hover:via-cyan-400/20 transition-all duration-300"></span>
+                <span className="relative flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 group-hover:bg-cyan-300 transition-colors"></span>
+                  Dashboard
+                </span>
+              </a>
               <Link href="/get-started" className="px-5 py-2 text-sm font-medium bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white rounded-md transition-all shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.5)]">
                 Get Started
               </Link>
@@ -124,6 +131,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/legal/refunds" className="hover:text-cyan-400 transition-colors">Refund Policy</Link>
               </div>
             </div>
+          </div>
+          
+          <div className="container mx-auto px-4 mt-12 pt-12 border-t border-slate-700/50 relative z-10">
+            <p className="text-sm text-slate-500 text-center">© Knoxified 2025. All rights reserved.</p>
           </div>
         </footer>
         <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>

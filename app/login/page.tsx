@@ -133,7 +133,7 @@ export default function LoginPage() {
           </div>
           
           <div className="hidden md:block text-slate-500 text-sm mt-12">
-            <p>© {new Date().getFullYear()} Knoxified. All rights reserved.</p>
+            <p>© 2025 Knoxified. All rights reserved.</p>
           </div>
         </div>
       </div>
