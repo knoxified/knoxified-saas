@@ -14,7 +14,7 @@ export default function FitnessSystemPage() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: `Gym & Fitness System`,
-    description: 'Membership inquiries, trial bookings, follow-ups, reactivation campaigns, and class scheduling automated.',
+    description: 'Membership inquiries, trial bookings, follow-ups, re-engagement automation, and class scheduling automated.',
     provider: {
       '@type': 'Organization',
       name: 'Platform'
@@ -70,7 +70,7 @@ export default function FitnessSystemPage() {
          <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">Core Competencies</h2>
          
          <div className="grid md:grid-cols-2 gap-8">
-{/* Voice Capability Add-on */}<div className="p-8 rounded-2xl bg-slate-800/60 backdrop-blur-md border border-slate-700/50 hover:border-cyan-500/30 transition-all shadow-xl"><div className="flex items-center gap-4 mb-6"><div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400"><PhoneCall className="w-6 h-6" /></div><h3 className="text-2xl font-bold text-slate-50">Inbound & Outbound Voice</h3></div><ul className="space-y-5"><li className="flex items-start gap-3 text-slate-300"><CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" /><span><strong>Inbound Handling:</strong> Instantly answers and routes incoming calls 24/7 without placing customers on hold.</span></li><li className="flex items-start gap-3 text-slate-300"><CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" /><span><strong>Outbound Proactive Calling:</strong> Initiates outbound calls for follow-ups, confirmations, and re-engaging leads automatically.</span></li></ul></div>
+{/* Voice Capability Add-on */}<div className="p-8 rounded-2xl bg-slate-800/60 backdrop-blur-md border border-slate-700/50 hover:border-cyan-500/30 transition-all shadow-xl"><div className="flex items-center gap-4 mb-6"><div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400"><PhoneCall className="w-6 h-6" /></div><h3 className="text-2xl font-bold text-slate-50">Inbound & Outbound Voice</h3></div><ul className="space-y-5"><li className="flex items-start gap-3 text-slate-300"><CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" /><span><strong>Inbound Handling:</strong> Instantly answers and routes incoming calls 24/7 without placing customers on hold.</span></li><li className="flex items-start gap-3 text-slate-300"><CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" /><span><strong>Proactive Follow-Up Calling:</strong> Places follow-up, confirmation, and re-engagement calls to your existing customers and leads, based on their prior consent.</span></li></ul></div>
             <div className="p-8 rounded-2xl bg-slate-800/60 backdrop-blur-md border border-slate-700/50 hover:border-cyan-500/30 transition-all shadow-xl">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
@@ -95,12 +95,12 @@ export default function FitnessSystemPage() {
                 <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
                   <Megaphone className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-50">Reactivation & Campaigns</h3>
+                <h3 className="text-2xl font-bold text-slate-50">Re-Engagement Automation</h3>
               </div>
               <ul className="space-y-5">
                 <li className="flex items-start gap-3 text-slate-300">
                   <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Win-back Campaigns:</strong> Intelligently reach out to dormant members who haven&apos;t visited in 90 days with customized return offers.</span>
+                  <span><strong>Win-back Follow-Ups:</strong> Automatically reach out to dormant members who haven&apos;t visited in 90 days with a personalized return offer.</span>
                 </li>
                 <li className="flex items-start gap-3 text-slate-300">
                   <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
@@ -182,7 +182,7 @@ export default function FitnessSystemPage() {
                  <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Reactivations</div>
                  <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={18} prefix="+" suffix="%" /></div>
               </div>
-              <BenchmarkWidget description="Dormant members brought back via WinBack campaigns" />
+              <BenchmarkWidget description="Dormant members brought back via win-back follow-ups" />
             </div>
          </div>
       </div>

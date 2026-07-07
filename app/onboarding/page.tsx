@@ -75,7 +75,7 @@ const AI_ROLES = [
 
 const PRIMARY_OBJECTIVES = [
   { value: 'book_appointments', label: 'Book Appointments', icon: '📅', desc: 'Schedule and confirm meetings automatically' },
-  { value: 'generate_leads', label: 'Generate Leads', icon: '🎯', desc: 'Qualify prospects and capture contact info' },
+  { value: 'generate_leads', label: 'Generate Leads', icon: '🎯', desc: 'Organize new inquiries and capture contact info' },
   { value: 'answer_questions', label: 'Answer Questions', icon: '💬', desc: 'Handle FAQs and product/service inquiries' },
   { value: 'route_callers', label: 'Route Callers', icon: '📞', desc: 'Direct callers to the right person or department' },
   { value: 'take_messages', label: 'Take Messages', icon: '📝', desc: 'Capture caller details and relay to your team' },

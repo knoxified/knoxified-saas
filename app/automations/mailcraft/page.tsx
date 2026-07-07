@@ -69,7 +69,7 @@ function generateEmails(lead: typeof enrichedLeads.SaaS) {
 
 I came across ${lead.company_name} and noticed you're the ${lead.position} — a role I know gets buried under tasks that don't move the needle.
 
-Most ${lead.position}s in ${lead.industry} tell me the same thing: too much time goes into manual follow-up, prospecting, and admin. We've built AI automations that eliminate exactly that.
+Most ${lead.position}s in ${lead.industry} tell me the same thing: too much time goes into manual follow-up and admin. We've built AI automations that eliminate exactly that.
 
 No fluff — just systems that handle the repetitive work so you can focus on growth.
 
@@ -81,7 +81,7 @@ Best,
     {
       tag: 'Email 2',
       label: 'Case Study',
-      subject: `How a ${lead.industry} business cut prospecting time by 80%`,
+      subject: `How a ${lead.industry} business cut follow-up drafting time by 80%`,
       preview: 'Industry-specific proof with real outcomes to build credibility.',
       body: `Hi ${lead.first_name},
 
@@ -91,7 +91,7 @@ A client of ours in ${lead.industry} had the same challenge: too much manual out
 
 After deploying our automation stack:
 
-• 80% reduction in daily prospecting time
+• 80% reduction in daily follow-up drafting time
 • 3× increase in qualified replies within 30 days
 • Pipeline value up $60,000 in the first quarter
 
@@ -507,7 +507,7 @@ export default function MailCraftPage() {
           <h3 className="text-3xl font-bold text-slate-50 mb-6 relative z-10">📊 Why Sales Teams Love It</h3>
           <div className="space-y-6 relative z-10">
             {[
-              'Zero time wasted writing cold emails — 4 drafts appear instantly',
+              'Zero time wasted writing follow-up emails — 4 drafts appear instantly for your review',
               'Consistent, high-quality copy for every lead regardless of which rep handles them',
               'Each email sequence is unique — no lead gets a generic template',
             ].map((benefit, idx) => (

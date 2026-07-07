@@ -107,7 +107,7 @@ export default function LoginPage() {
               Welcome back to your operations command.
             </h1>
             <p className="text-lg text-slate-400 mb-8 leading-relaxed">
-              Sign in to review your autonomous agents, configure CRM sync settings, and monitor outbound pipelines.
+              Sign in to review your automation workflows, configure CRM sync settings, and monitor your communication pipelines.
             </p>
             
             <div className="space-y-4">

@@ -141,7 +141,7 @@ export default function LeadReachPage() {
           </p>
           <div className="text-lg text-slate-400 mb-8 leading-relaxed space-y-4">
             <p>
-              Stop spending hours manually researching prospects. LeadReach automatically surfaces a complete, verified contact dossier for every lead — so your team walks into every outreach with the full picture.
+              Stop spending hours manually researching new contacts. LeadReach automatically organizes a complete contact profile for every inquiry — so your team walks into every conversation with the full picture.
             </p>
             <p>
               The output feeds directly into <strong className="text-slate-200">MailCraft</strong>, our companion automation that converts the enriched data into a 4-email personalized sequence — ready to send.
@@ -361,10 +361,10 @@ export default function LeadReachPage() {
         <div className="p-8 md:p-12 rounded-3xl bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 relative overflow-hidden">
           <h3 className="text-3xl font-bold text-slate-50 mb-6 relative z-10">Role Overview</h3>
           <p className="text-slate-400 text-lg leading-relaxed mb-6 relative z-10">
-            LeadReach is the intelligence layer of your outreach pipeline. The moment a prospect enters your funnel — via web form, CRM, social ad, or manual entry — it begins enriching their profile across 12 data dimensions automatically.
+            LeadReach is the intelligence layer of your customer communication pipeline. The moment a new contact opts in — via web form, CRM, social ad, or manual entry — it begins organizing their profile across 12 data dimensions automatically.
           </p>
           <p className="text-slate-400 text-lg leading-relaxed relative z-10">
-            This removes the single most time-consuming step in outbound sales: manual research. Your reps receive a fully briefed contact card and can move straight to action — or pass it to MailCraft.
+            This removes the single most time-consuming step in customer outreach: manual research. Your reps receive a fully briefed contact card and can move straight to action — or pass it to MailCraft.
           </p>
         </div>
 

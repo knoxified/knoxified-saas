@@ -31,7 +31,7 @@ export default function OmniPulsePage() {
             SMS Marketing Triggers
           </h1>
           <p className="text-xl font-medium text-cyan-400 mb-6">
-            Fires highly targeted SMS campaigns based on user behavior and purchasing events.
+            Sends personalized SMS updates to opted-in customers based on their account activity.
           </p>
           <div className="text-lg text-slate-400 mb-10 leading-relaxed space-y-4">
             <p>

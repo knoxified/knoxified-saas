@@ -40,7 +40,7 @@ const articles: Record<string, any> = {
         "The most advanced technology is indistinguishable from magic. Magic doesn't ask you 20 questions; it simply solves the problem."
       </blockquote>
       
-      <p>Consider the difference in assigning a task. You give an agent a mandate: <em>"Identify prospects who viewed our pricing page for more than 40 seconds yesterday but didn't book a call. Cross-reference them with our CRM to ensure they aren't existing customers. Send them a highly personalized voice drop referencing the specific plan they looked at, and offer a 48-hour discount."</em></p>
+      <p>Consider the difference in assigning a task. You give an agent a mandate: <em>"Identify existing contacts who viewed our pricing page for more than 40 seconds yesterday but didn't book a call. Cross-reference them with our CRM to confirm they've previously engaged with us. Send them a personalized check-in referencing the specific plan they looked at, and offer a limited-time incentive."</em></p>
       
       <p>The agent executes this autonomously, querying databases, synthesizing audio, triggering APIs, and logging the results. This represents a monumental shift: AI is no longer a tool you wield; it is an employee you manage.</p>
       
@@ -218,7 +218,7 @@ const articles: Record<string, any> = {
       </ol>
       
       <h2>Zero-Cost Revenue</h2>
-      <p>By deploying autonomous reactivation campaigns, you are effectively creating zero-cost revenue. These are entirely automated conversations taking place in the background, mining data you already own, and depositing booked appointments directly onto your calendar.</p>
+      <p>By deploying automated follow-up campaigns to your own existing contacts, you are effectively creating zero-cost revenue. These are automated conversations taking place in the background, using data you already own, and surfacing booked appointments directly onto your calendar.</p>
     `
   },
   '6': {

@@ -6,7 +6,7 @@ export default function WinBackBotPage() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: 'WinBackBot 🔥',
-    description: 'Smart Reactivation Campaigns',
+    description: 'Smart Re-Engagement Automation',
     provider: {
       '@type': 'Organization',
       name: 'Knoxified'
@@ -26,7 +26,7 @@ export default function WinBackBotPage() {
              <Target className="w-4 h-4" /> WinBackBot 🔥
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-50 mb-6 tracking-tight leading-tight">
-            Smart Reactivation Campaigns
+            Smart Re-Engagement Automation
           </h1>
           <p className="text-xl font-medium text-cyan-400 mb-6">
             Identifies dormant clients and automatically re-engages them with personalized offers.

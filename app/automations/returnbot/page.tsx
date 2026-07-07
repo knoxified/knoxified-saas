@@ -46,7 +46,7 @@ export default function ReturnBotPage() {
       <div className="mb-24">
          <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">🚀 Key Capabilities</h2>
          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {["Validates return eligibility based on policy", "Auto-generates return shipping labels", "Tracks packages and syncs status updates", "Facilitates instant exchanges to save sales", "Integrates with major logistics carriers", "Notifies warehouse team upon arrival"].map((feature, idx) => (
+            {["Checks return requests against your policy rules and flags exceptions for team review", "Auto-generates return shipping labels", "Tracks packages and syncs status updates", "Facilitates instant exchanges to save sales", "Integrates with major logistics carriers", "Notifies warehouse team upon arrival"].map((feature, idx) => (
               <div key={idx} className="flex items-start gap-4 p-6 bg-slate-800/40 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-colors">
                 <CheckCircle2 className="w-6 h-6 text-cyan-500 shrink-0 mt-0.5" />
                 <p className="text-slate-300 leading-relaxed text-sm">{feature}</p>

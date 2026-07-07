@@ -146,7 +146,7 @@ export default function AutomationsDirectory() {
   },
   {
     "title": "CaseSync ⚖️",
-    "desc": "Screens and qualifies new legal inquiries before they reach attorneys, gathering initial case facts.",
+    "desc": "Organizes new legal inquiries by your firm's criteria before they reach attorneys, gathering initial case facts.",
     "href": "/automations/casesync"
   },
   {

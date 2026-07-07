@@ -6,7 +6,7 @@ export default function CaseSyncPage() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: 'CaseSync ⚖️',
-    description: 'Screens and qualifies new legal inquiries before they reach attorneys.',
+    description: 'Organizes new legal inquiries by your firm's stated criteria, for attorney review.',
     provider: {
       '@type': 'Organization',
       name: 'Knoxified'
@@ -22,9 +22,9 @@ export default function CaseSyncPage() {
              <Settings className="w-4 h-4" /> CaseSync ⚖️
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-50 mb-6 tracking-tight leading-tight">Legal Intake Triage</h1>
-          <p className="text-xl font-medium text-cyan-400 mb-6">Screens and qualifies new legal inquiries before they reach attorneys.</p>
+          <p className="text-xl font-medium text-cyan-400 mb-6">Organizes new legal inquiries by your firm's stated criteria, for attorney review.</p>
           <div className="text-lg text-slate-400 mb-10 leading-relaxed space-y-4">
-            <p>Guarantees every prospective client is properly screened, saving valuable attorney time while maximizing conversion of valid cases.</p>
+            <p>Ensures every prospective client's intake information is properly organized, saving valuable attorney time while supporting review of valid cases.</p>
           </div>
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">
             Deploy CaseSync

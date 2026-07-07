@@ -43,7 +43,7 @@ export default function GetStartedPage() {
               Begin your transformation journey today.
             </h1>
             <p className="text-lg text-slate-400 mb-8 leading-relaxed">
-              Knoxified automates inbound/outbound calls, schedules appointments, and streamlines operations 24/7. Stop settling for manual bottlenecks.
+              Knoxified automates inbound calls and authorized follow-up calls, schedules appointments, and streamlines operations 24/7. Stop settling for manual bottlenecks.
             </p>
             
             <div className="space-y-4">
