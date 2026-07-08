@@ -144,7 +144,7 @@ export default function HomePage() {
         "name": "Which system do I need?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "We offer Starter, Pro, and Enterprise plans. The best system depends on your inbound/outbound minute volume requirements and complexity of automations needed."
+          "text": "We offer Starter, Pro, and Enterprise plans. The best system depends on your monthly call volume requirements and complexity of automations needed."
         }
       },
       {
@@ -605,7 +605,7 @@ export default function HomePage() {
               </li>
               <li className="flex items-start gap-3 text-sm text-slate-300">
                 <CheckCircle2 className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" />
-                <span>1,000 Mins (Inbound/Outbound)</span>
+                <span>1,000 Mins (Inbound + Follow-Up)</span>
               </li>
               <li className="flex items-start gap-3 text-sm text-slate-300">
                 <CheckCircle2 className="w-5 h-5 text-cyan-500 shrink-0 mt-0.5" />
@@ -735,7 +735,7 @@ export default function HomePage() {
                 <tr className="border-b border-slate-800 hover:bg-slate-800/30 transition-colors">
                   <td className="py-4 px-6 text-slate-400">System Capabilities</td>
                   <td className="py-4 px-6 text-center text-slate-300">Inbound Only</td>
-                  <td className="py-4 px-6 text-center bg-slate-800/30 text-white font-medium">Inbound & Outbound</td>
+                  <td className="py-4 px-6 text-center bg-slate-800/30 text-white font-medium">Inbound &amp; Follow-Up</td>
                   <td className="py-4 px-6 text-center text-slate-300">Virtual System Tools</td>
                 </tr>
 
