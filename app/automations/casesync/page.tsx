@@ -6,7 +6,7 @@ export default function CaseSyncPage() {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: 'CaseSync ⚖️',
-    description: 'Organizes new legal inquiries by your firm's stated criteria, for attorney review.',
+    description: "Organizes new legal inquiries by your firm's stated criteria, for attorney review.",
     provider: {
       '@type': 'Organization',
       name: 'Knoxified'
