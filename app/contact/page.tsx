@@ -88,7 +88,7 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-slate-50 mb-1">Location</h4>
-                  <p className="text-slate-400">Global / Remote</p>
+                  <p className="text-slate-400">Lagos, Nigeria</p>
                 </div>
               </div>
 

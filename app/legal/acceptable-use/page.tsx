@@ -23,7 +23,12 @@ export default function AcceptableUsePage() {
 
         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">2. Communications Consent</h2>
         <p>
-          Customers must obtain and maintain all legally required permissions before using Knoxified for calls, SMS, email, voice messages, recordings, or automated communications. Knoxified may suspend accounts or features that show signs of unauthorized messaging, spam, robocalling, or platform misuse.
+          Customers must obtain and maintain all legally required permissions before using Knoxified for calls, SMS, email, voice messages, recordings, or automated communications. This includes documenting the lawful basis and source of consent for each contact, honoring do-not-call and opt-out requests without delay, and maintaining accurate suppression lists. Knoxified provides tools to support these obligations; Customers remain responsible for using them correctly. Knoxified may suspend accounts or features that show signs of unauthorized messaging, spam, robocalling, or platform misuse.
+        </p>
+
+        <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">2A. AI Disclosure</h2>
+        <p>
+          Where required by applicable law, Voice Agents must clearly disclose to call recipients that they are interacting with an AI system. See our <a href="/legal/ai-calling-guide" className="text-cyan-400 hover:text-cyan-300">AI Calling Guide</a> for further guidance.
         </p>
 
         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">3. AI Assistance and Human Oversight</h2>
@@ -36,9 +41,14 @@ export default function AcceptableUsePage() {
           Knoxified may investigate suspected violations and may throttle, suspend, restrict, or terminate access to protect users, recipients, third-party platforms, and platform integrity.
         </p>
 
-        <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">5. Contact</h2>
+        <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">5. Reporting Abuse</h2>
         <p>
-          To report abuse or ask questions about this policy, contact <a href="mailto:support@knoxified.org" className="text-cyan-400 hover:text-cyan-300">support@knoxified.org</a>.
+          If you believe you have received an unlawful or unwanted call, message, or communication from a Knoxified customer, please report it to <a href="mailto:compliance@knoxified.org" className="text-cyan-400 hover:text-cyan-300">compliance@knoxified.org</a> with as much detail as possible (date, time, phone number contacted, and nature of the communication). We investigate all reports and take action where warranted, including suspension or termination of the responsible account.
+        </p>
+
+        <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">6. Contact</h2>
+        <p>
+          To report abuse or ask questions about this policy, contact <a href="mailto:support@knoxified.org" className="text-cyan-400 hover:text-cyan-300">support@knoxified.org</a> or <a href="mailto:compliance@knoxified.org" className="text-cyan-400 hover:text-cyan-300">compliance@knoxified.org</a>.
         </p>
       </div>
     </div>

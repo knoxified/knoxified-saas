@@ -16,5 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/legal/privacy`, lastModified: new Date() },
     { url: `${base}/legal/refunds`, lastModified: new Date() },
     { url: `${base}/legal/terms`, lastModified: new Date() },
+    { url: `${base}/legal/acceptable-use`, lastModified: new Date() },
+    { url: `${base}/legal/compliance`, lastModified: new Date() },
+    { url: `${base}/legal/ai-calling-guide`, lastModified: new Date() },
   ];
 }
