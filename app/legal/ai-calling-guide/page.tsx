@@ -39,7 +39,12 @@ export default function AICallingGuidePage() {
 
         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">7. Call Recording Disclosure</h2>
         <p>
-          Some jurisdictions require all parties to consent before a call is recorded (&quot;two-party consent&quot; states and countries). If your Voice Agent records calls, confirm what disclosure or consent is required in the recipient&apos;s jurisdiction, and configure your call scripts accordingly.
+          Several U.S. states and countries require all parties to consent before a call is recorded (&quot;two-party&quot; or &quot;all-party&quot; consent jurisdictions), and in some of these, recording without disclosure can carry criminal as well as civil liability. If your Voice Agent records calls, Knoxified includes a recording disclosure by default near the start of every call (for example, &quot;this call may be recorded for quality purposes&quot;), regardless of jurisdiction. We recommend leaving this enabled unless you have confirmed with legal counsel that it is unnecessary for your specific use case.
+        </p>
+
+        <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">7A. The National Do-Not-Call Registry</h2>
+        <p>
+          If your outbound calling falls within the definition of telemarketing under applicable law, you may be required to scrub your calling list against the U.S. National Do-Not-Call Registry (or the equivalent registry in your jurisdiction) in addition to maintaining your own suppression list. Access to the U.S. National DNC Registry requires businesses to register directly and obtain a Subscription Account Number (SAN) at <a href="https://telemarketing.donotcall.gov" className="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener noreferrer">telemarketing.donotcall.gov</a>. This registration and any resulting scrubbing obligation is the customer&apos;s responsibility; Knoxified does not register on a customer&apos;s behalf. Calls to existing customers or contacts with an established business relationship are generally exempt from DNC Registry requirements, but exemptions vary by jurisdiction — confirm your specific obligations with legal counsel.
         </p>
 
         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">8. What Knoxified Provides</h2>

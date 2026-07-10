@@ -316,6 +316,12 @@ export default function RecruitmentSystemPage() {
   }
 ]} />
 
+      <div className="max-w-3xl mx-auto text-center mb-16">
+        <p className="text-sm text-slate-500">
+          If used to help make hiring decisions for roles based in New York City, note that NYC Local Law 144 requires an independent bias audit before an automated employment decision tool can be used in that hiring process. Knoxified provides organizational assistance for recruiter review and is not intended to make autonomous hiring decisions — see our <Link href="/legal/acceptable-use" className="text-cyan-400 hover:text-cyan-300">Acceptable Use Policy</Link> for more.
+        </p>
+      </div>
+
       {/* CTA Box */}
       <div className="p-12 md:p-16 rounded-3xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 text-center relative overflow-hidden shadow-2xl">
          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none mix-blend-overlay"></div>

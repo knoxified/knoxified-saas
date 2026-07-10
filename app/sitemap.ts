@@ -19,5 +19,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/legal/acceptable-use`, lastModified: new Date() },
     { url: `${base}/legal/compliance`, lastModified: new Date() },
     { url: `${base}/legal/ai-calling-guide`, lastModified: new Date() },
+    { url: `${base}/legal/dpa`, lastModified: new Date() },
   ];
 }

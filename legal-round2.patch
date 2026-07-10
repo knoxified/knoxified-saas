@@ -1,0 +1,85 @@
+diff --git a/app/layout.tsx b/app/layout.tsx
+index bd7dba4..b2eb17c 100644
+--- a/app/layout.tsx
++++ b/app/layout.tsx
+@@ -131,6 +131,7 @@ export default function RootLayout({ children }: { children: React.ReactNode })
+                 <Link href="/legal/acceptable-use" className="hover:text-cyan-400 transition-colors">Acceptable Use Policy</Link>
+                 <Link href="/legal/compliance" className="hover:text-cyan-400 transition-colors">Compliance</Link>
+                 <Link href="/legal/ai-calling-guide" className="hover:text-cyan-400 transition-colors">AI Calling Guide</Link>
++                <Link href="/legal/dpa" className="hover:text-cyan-400 transition-colors">Data Processing Agreement</Link>
+                 <Link href="/legal/refunds" className="hover:text-cyan-400 transition-colors">Refund Policy</Link>
+               </div>
+             </div>
+diff --git a/app/legal/ai-calling-guide/page.tsx b/app/legal/ai-calling-guide/page.tsx
+index a2be53a..b032ee5 100644
+--- a/app/legal/ai-calling-guide/page.tsx
++++ b/app/legal/ai-calling-guide/page.tsx
+@@ -39,7 +39,12 @@ export default function AICallingGuidePage() {
+ 
+         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">7. Call Recording Disclosure</h2>
+         <p>
+-          Some jurisdictions require all parties to consent before a call is recorded (&quot;two-party consent&quot; states and countries). If your Voice Agent records calls, confirm what disclosure or consent is required in the recipient&apos;s jurisdiction, and configure your call scripts accordingly.
++          Several U.S. states and countries require all parties to consent before a call is recorded (&quot;two-party&quot; or &quot;all-party&quot; consent jurisdictions), and in some of these, recording without disclosure can carry criminal as well as civil liability. If your Voice Agent records calls, Knoxified includes a recording disclosure by default near the start of every call (for example, &quot;this call may be recorded for quality purposes&quot;), regardless of jurisdiction. We recommend leaving this enabled unless you have confirmed with legal counsel that it is unnecessary for your specific use case.
++        </p>
++
++        <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">7A. The National Do-Not-Call Registry</h2>
++        <p>
++          If your outbound calling falls within the definition of telemarketing under applicable law, you may be required to scrub your calling list against the U.S. National Do-Not-Call Registry (or the equivalent registry in your jurisdiction) in addition to maintaining your own suppression list. Access to the U.S. National DNC Registry requires businesses to register directly and obtain a Subscription Account Number (SAN) at <a href="https://telemarketing.donotcall.gov" className="text-cyan-400 hover:text-cyan-300" target="_blank" rel="noopener noreferrer">telemarketing.donotcall.gov</a>. This registration and any resulting scrubbing obligation is the customer&apos;s responsibility; Knoxified does not register on a customer&apos;s behalf. Calls to existing customers or contacts with an established business relationship are generally exempt from DNC Registry requirements, but exemptions vary by jurisdiction — confirm your specific obligations with legal counsel.
+         </p>
+ 
+         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">8. What Knoxified Provides</h2>
+diff --git a/app/legal/compliance/page.tsx b/app/legal/compliance/page.tsx
+index 04e2404..b38052a 100644
+--- a/app/legal/compliance/page.tsx
++++ b/app/legal/compliance/page.tsx
+@@ -30,7 +30,7 @@ export default function CompliancePage() {
+ 
+         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">4. Suppression Lists and Opt-Outs</h2>
+         <p>
+-          Knoxified provides tools for customers to manage suppression and do-not-call lists within their account. Numbers on a suppression list are excluded from future outbound campaigns for that account. Customers are responsible for keeping suppression lists current and for promptly processing opt-out requests received through any channel.
++          Knoxified provides tools for customers to manage suppression and do-not-call lists within their account. Numbers on a suppression list are excluded from future outbound campaigns for that account. Customers are responsible for keeping suppression lists current and for promptly processing opt-out requests received through any channel. Where applicable law requires it, customers are separately responsible for registering with and scrubbing against the National Do-Not-Call Registry or equivalent regional registries — see our <a href="/legal/ai-calling-guide" className="text-cyan-400 hover:text-cyan-300">AI Calling Guide</a> for details.
+         </p>
+ 
+         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">5. Audit Logs and Records</h2>
+diff --git a/app/legal/privacy/page.tsx b/app/legal/privacy/page.tsx
+index deb4edc..bf601e2 100644
+--- a/app/legal/privacy/page.tsx
++++ b/app/legal/privacy/page.tsx
+@@ -81,6 +81,9 @@ export default function PrivacyPage() {
+         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">10. International Data Transfers</h2>
+         <p>Knoxified operates internationally, and information may be processed or stored in countries other than your own, including where our hosting and infrastructure providers operate. Where required by applicable law, we take reasonable steps to ensure such transfers are subject to appropriate safeguards.</p>
+ 
++        <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">10A. Nigeria Data Protection Act</h2>
++        <p>Knoxified is operated from Nigeria and processes personal data in accordance with the Nigeria Data Protection Act 2023 (NDPA) and its applicable regulations. Where you are located in Nigeria, or where your personal data is processed by Knoxified from Nigeria, you have rights under the NDPA including the right to be informed, the right to access your data, the right to correction, and the right to object to certain processing. You may exercise these rights, or lodge a complaint with the Nigeria Data Protection Commission, by contacting us using the details in Section 14.</p>
++
+         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">11. Your Privacy Rights</h2>
+         <p>Depending on your jurisdiction, you may have rights regarding your personal data, which may include the right to access, correct, delete, or export your data, and to object to or restrict certain processing. To exercise any of these rights, contact us at the email below. We will respond within a reasonable time and in accordance with applicable law.</p>
+ 
+diff --git a/app/sitemap.ts b/app/sitemap.ts
+index 62d793f..ae53769 100644
+--- a/app/sitemap.ts
++++ b/app/sitemap.ts
+@@ -19,5 +19,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
+     { url: `${base}/legal/acceptable-use`, lastModified: new Date() },
+     { url: `${base}/legal/compliance`, lastModified: new Date() },
+     { url: `${base}/legal/ai-calling-guide`, lastModified: new Date() },
++    { url: `${base}/legal/dpa`, lastModified: new Date() },
+   ];
+ }
+diff --git a/app/systems/recruitment/page.tsx b/app/systems/recruitment/page.tsx
+index a2dd31f..c565d16 100644
+--- a/app/systems/recruitment/page.tsx
++++ b/app/systems/recruitment/page.tsx
+@@ -316,6 +316,12 @@ export default function RecruitmentSystemPage() {
+   }
+ ]} />
+ 
++      <div className="max-w-3xl mx-auto text-center mb-16">
++        <p className="text-sm text-slate-500">
++          If used to help make hiring decisions for roles based in New York City, note that NYC Local Law 144 requires an independent bias audit before an automated employment decision tool can be used in that hiring process. Knoxified provides organizational assistance for recruiter review and is not intended to make autonomous hiring decisions — see our <Link href="/legal/acceptable-use" className="text-cyan-400 hover:text-cyan-300">Acceptable Use Policy</Link> for more.
++        </p>
++      </div>
++
+       {/* CTA Box */}
+       <div className="p-12 md:p-16 rounded-3xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/50 text-center relative overflow-hidden shadow-2xl">
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none mix-blend-overlay"></div>

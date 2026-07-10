@@ -30,7 +30,7 @@ export default function CompliancePage() {
 
         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">4. Suppression Lists and Opt-Outs</h2>
         <p>
-          Knoxified provides tools for customers to manage suppression and do-not-call lists within their account. Numbers on a suppression list are excluded from future outbound campaigns for that account. Customers are responsible for keeping suppression lists current and for promptly processing opt-out requests received through any channel.
+          Knoxified provides tools for customers to manage suppression and do-not-call lists within their account. Numbers on a suppression list are excluded from future outbound campaigns for that account. Customers are responsible for keeping suppression lists current and for promptly processing opt-out requests received through any channel. Where applicable law requires it, customers are separately responsible for registering with and scrubbing against the National Do-Not-Call Registry or equivalent regional registries — see our <a href="/legal/ai-calling-guide" className="text-cyan-400 hover:text-cyan-300">AI Calling Guide</a> for details.
         </p>
 
         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">5. Audit Logs and Records</h2>

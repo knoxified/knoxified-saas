@@ -81,6 +81,9 @@ export default function PrivacyPage() {
         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">10. International Data Transfers</h2>
         <p>Knoxified operates internationally, and information may be processed or stored in countries other than your own, including where our hosting and infrastructure providers operate. Where required by applicable law, we take reasonable steps to ensure such transfers are subject to appropriate safeguards.</p>
 
+        <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">10A. Nigeria Data Protection Act</h2>
+        <p>Knoxified is operated from Nigeria and processes personal data in accordance with the Nigeria Data Protection Act 2023 (NDPA) and its applicable regulations. Where you are located in Nigeria, or where your personal data is processed by Knoxified from Nigeria, you have rights under the NDPA including the right to be informed, the right to access your data, the right to correction, and the right to object to certain processing. You may exercise these rights, or lodge a complaint with the Nigeria Data Protection Commission, by contacting us using the details in Section 14.</p>
+
         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">11. Your Privacy Rights</h2>
         <p>Depending on your jurisdiction, you may have rights regarding your personal data, which may include the right to access, correct, delete, or export your data, and to object to or restrict certain processing. To exercise any of these rights, contact us at the email below. We will respond within a reasonable time and in accordance with applicable law.</p>
 
