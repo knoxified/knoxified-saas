@@ -337,7 +337,7 @@ export default function CreateAccountPage() {
            </form>
 
            <div className="mt-8 text-center text-sm text-slate-500">
-             Already have an account? <Link href="/login" className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors">Sign in</Link>
+             Already have an account? <a href="https://dashboard.knoxified.org/login" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300 font-medium transition-colors">Sign in</a>
            </div>
           </motion.div>
          )}

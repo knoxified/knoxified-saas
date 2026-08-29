@@ -475,7 +475,7 @@ export default function OnboardingPage() {
       try {
         const { data: { user: authUser }, error } = await supabase.auth.getUser();
         if (error || !authUser) {
-          router.push('/login');
+          window.location.href = 'https://dashboard.knoxified.org/login';
           return;
         }
         setUser(authUser);
@@ -484,7 +484,7 @@ export default function OnboardingPage() {
         if (meta?.full_name) setForm(f => ({ ...f, full_name: meta.full_name }));
         if (meta?.name) setForm(f => ({ ...f, full_name: meta.name }));
       } catch {
-        router.push('/login');
+        window.location.href = 'https://dashboard.knoxified.org/login';
       } finally {
         setIsCheckingSession(false);
       }
