@@ -71,7 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/contact" className="hover:text-cyan-400 transition-colors">Contact</Link>
             </nav>
             <div className="flex items-center space-x-4">
-              <a href="https://dashboard.knoxified.org" className="px-5 py-2 text-sm font-medium bg-gradient-to-br from-cyan-500/20 to-blue-500/10 hover:from-cyan-500/30 hover:to-blue-500/20 text-cyan-300 hover:text-cyan-200 border border-cyan-500/30 hover:border-cyan-500/60 rounded-xl backdrop-blur-xl shadow-[0_8px_32px_0_rgba(6,182,212,0.1)] hover:shadow-[0_8px_32px_0_rgba(6,182,212,0.2)] transition-all duration-300 relative group overflow-hidden">
+              <a href="https://dashboard.knoxified.org" target="_blank" rel="noopener noreferrer" className="px-5 py-2 text-sm font-medium bg-gradient-to-br from-cyan-500/20 to-blue-500/10 hover:from-cyan-500/30 hover:to-blue-500/20 text-cyan-300 hover:text-cyan-200 border border-cyan-500/30 hover:border-cyan-500/60 rounded-xl backdrop-blur-xl shadow-[0_8px_32px_0_rgba(6,182,212,0.1)] hover:shadow-[0_8px_32px_0_rgba(6,182,212,0.2)] transition-all duration-300 relative group overflow-hidden">
                 <span className="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/10 to-blue-400/0 group-hover:via-cyan-400/20 transition-all duration-300"></span>
                 <span className="relative flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 group-hover:bg-cyan-300 transition-colors"></span>
@@ -114,7 +114,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <Link href="/systems" className="hover:text-cyan-400 transition-colors">Systems</Link>
                 <Link href="/automations" className="hover:text-cyan-400 transition-colors">Automations</Link>
                 <Link href="/pricing" className="hover:text-cyan-400 transition-colors">Pricing</Link>
-                <a href="https://dashboard.knoxified.org" className="hover:text-cyan-400 transition-colors">Dashboard</a>
+                <a href="https://dashboard.knoxified.org" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">Dashboard</a>
               </div>
               
               <div className="flex flex-col gap-3 text-sm text-slate-300">

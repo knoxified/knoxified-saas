@@ -49,6 +49,10 @@ export default function LoginPage() {
     setErrorMsg(null);
     setIsLoading(true);
 
+    // Open the tab synchronously, tied to this submit click, so it isn't
+    // blocked as a popup once we set its URL after the awaits below.
+    const dashboardTab = window.open("", "_blank", "noopener,noreferrer");
+
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
@@ -56,6 +60,7 @@ export default function LoginPage() {
       });
 
       if (error) {
+        dashboardTab?.close();
         setErrorMsg(error.message);
         setIsLoading(false);
         return;
@@ -77,10 +82,18 @@ export default function LoginPage() {
         }
 
         if (onboarded) {
-          window.location.href = 'https://dashboard.knoxified.org';
+          if (dashboardTab) {
+            dashboardTab.location.href = 'https://dashboard.knoxified.org';
+          } else {
+            window.open('https://dashboard.knoxified.org', '_blank', 'noopener,noreferrer');
+          }
+          setIsLoading(false);
         } else {
+          dashboardTab?.close();
           router.push('/onboarding');
         }
+      } else {
+        dashboardTab?.close();
       }
     } catch (err: any) {
       setErrorMsg(err.message || 'An unexpected error occurred during login.');

@@ -419,7 +419,7 @@ function SuccessScreen({ form }: { form: FormData }) {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        onClick={() => { window.location.href = 'https://dashboard.knoxified.org'; }}
+        onClick={() => { window.open('https://dashboard.knoxified.org', '_blank', 'noopener,noreferrer'); }}
         className={`w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r ${gradient} hover:opacity-90 transition-all shadow-[0_0_25px_rgba(6,182,212,0.35)] hover:shadow-[0_0_40px_rgba(6,182,212,0.5)] flex items-center justify-center gap-3 text-base`}
       >
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -428,7 +428,7 @@ function SuccessScreen({ form }: { form: FormData }) {
         Launch Command Center
       </motion.button>
 
-      <p className="text-slate-600 text-xs mt-4">You will be redirected to dashboard.knoxified.org</p>
+      <p className="text-slate-600 text-xs mt-4">dashboard.knoxified.org will open in a new tab</p>
     </motion.div>
   );
 }
