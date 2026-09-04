@@ -483,6 +483,31 @@ export default function OnboardingPage() {
         const meta = authUser.user_metadata;
         if (meta?.full_name) setForm(f => ({ ...f, full_name: meta.full_name }));
         if (meta?.name) setForm(f => ({ ...f, full_name: meta.name }));
+
+        // Duplicate-account abuse check: register this device's fingerprint
+        // + IP against this account. If it matches an existing different
+        // account, the backend flags credits_locked -- doesn't block
+        // onboarding or the account itself, just gates credit/minute-
+        // consuming actions later until they upgrade. Best-effort: never
+        // block onboarding if this fails.
+        try {
+          const { data: { session } } = await supabase.auth.getSession();
+          if (session?.access_token) {
+            const FingerprintJS = (await import('@fingerprintjs/fingerprintjs')).default;
+            const fp = await FingerprintJS.load();
+            const result = await fp.get();
+            await fetch('/api/register-device', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${session.access_token}`,
+              },
+              body: JSON.stringify({ fingerprint: result.visitorId }),
+            });
+          }
+        } catch (fpErr) {
+          console.warn('Device registration skipped:', fpErr);
+        }
       } catch {
         window.location.href = 'https://dashboard.knoxified.org/login';
       } finally {
