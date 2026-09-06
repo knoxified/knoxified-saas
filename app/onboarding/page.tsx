@@ -21,6 +21,7 @@ interface FormData {
   // Step 4 – AI Employee
   agent_nickname: string;
   agent_position: string;
+  agent_avatar: string;
   // Step 5 – Directives
   main_call_to_action: string;
   communication_style: string;
@@ -61,6 +62,20 @@ const HOURS_PRESETS = [
   { value: '24/7', label: '24/7', sub: 'Around the clock, every day' },
   { value: 'Appointment Only', label: 'By Appt.', sub: 'Appointment only hours' },
   { value: 'Custom', label: 'Custom', sub: 'Define your own schedule' },
+];
+
+// Keys must match Knoxified-dash-update/lib/avatar-options.ts exactly --
+// same identity, just rendered as emoji here to match this page's existing
+// icon style instead of Lucide (which the dashboard uses).
+const AVATAR_CHOICES = [
+  { key: 'bot', label: 'Bot', emoji: '🤖' },
+  { key: 'headset', label: 'Headset', emoji: '🎧' },
+  { key: 'sparkles', label: 'Sparkles', emoji: '✨' },
+  { key: 'user-circle', label: 'Classic', emoji: '👤' },
+  { key: 'smile', label: 'Friendly', emoji: '😊' },
+  { key: 'shield', label: 'Trusted', emoji: '🛡️' },
+  { key: 'star', label: 'Star', emoji: '⭐' },
+  { key: 'zap', label: 'Energetic', emoji: '⚡' },
 ];
 
 const AI_ROLES = [
@@ -445,6 +460,7 @@ const INITIAL_FORM: FormData = {
   business_phone: '',
   agent_nickname: '',
   agent_position: '',
+  agent_avatar: 'bot',
   main_call_to_action: '',
   communication_style: 'Professional',
   system_type: '',
@@ -600,6 +616,7 @@ export default function OnboardingPage() {
         organization_name: form.organization_name,
         agent_nickname: form.agent_nickname,
         agent_position: form.agent_position,
+        agent_avatar: form.agent_avatar,
         system_type: form.system_type || form.agent_position,
         business_hours: effectiveHours,
         main_call_to_action: form.main_call_to_action,
@@ -612,12 +629,14 @@ export default function OnboardingPage() {
         .from('agent_configs')
         .upsert(agentPayload, { onConflict: 'user_id' });
 
-      // Retry without business_phone if column doesn't exist (42703 = undefined_column)
-      if (agentError && (agentError.code === '42703' || agentError.message?.includes('business_phone'))) {
-        const { business_phone, ...withoutPhone } = agentPayload;
+      // Retry without business_phone/agent_avatar if either column doesn't
+      // exist yet (42703 = undefined_column) -- agent_avatar is a newer
+      // column and may not be migrated on every environment yet.
+      if (agentError && (agentError.code === '42703' || agentError.message?.includes('business_phone') || agentError.message?.includes('agent_avatar'))) {
+        const { business_phone, agent_avatar, ...withoutNewColumns } = agentPayload;
         const retry = await supabase
           .from('agent_configs')
-          .upsert(withoutPhone, { onConflict: 'user_id' });
+          .upsert(withoutNewColumns, { onConflict: 'user_id' });
         agentError = retry.error;
       }
 
@@ -1039,6 +1058,28 @@ export default function OnboardingPage() {
                         className="w-full px-4 py-3 rounded-xl border border-slate-700/60 bg-slate-950/60 text-slate-200 placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-all"
                         autoFocus
                       />
+                    </div>
+
+                    <div className="space-y-1.5">
+                      <label className="block text-sm font-medium text-slate-300">Agent Avatar</label>
+                      <p className="text-xs text-slate-600">Shown next to {form.agent_nickname || 'your agent'}'s name everywhere in your dashboard.</p>
+                      <div className="grid grid-cols-8 gap-2">
+                        {AVATAR_CHOICES.map(a => (
+                          <button
+                            key={a.key}
+                            type="button"
+                            onClick={() => set('agent_avatar', a.key)}
+                            className={`aspect-square rounded-xl flex items-center justify-center text-xl transition-all border ${
+                              form.agent_avatar === a.key
+                                ? 'border-cyan-500 bg-cyan-500/10 ring-1 ring-cyan-500/50'
+                                : 'border-slate-700/60 bg-slate-950/40 hover:border-slate-600'
+                            }`}
+                            aria-label={a.label}
+                          >
+                            {a.emoji}
+                          </button>
+                        ))}
+                      </div>
                     </div>
 
                     <div className="space-y-2">
