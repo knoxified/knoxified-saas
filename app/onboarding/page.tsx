@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import { supabase } from '@/src/lib/supabase';
+import { createAvatar } from '@dicebear/core';
+import { avataaars } from '@dicebear/collection';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -67,16 +69,32 @@ const HOURS_PRESETS = [
 // Keys must match Knoxified-dash-update/lib/avatar-options.ts exactly --
 // same identity, just rendered as emoji here to match this page's existing
 // icon style instead of Lucide (which the dashboard uses).
+// Keys AND look must match Knoxified-dash-update/lib/avatar-options.ts
+// exactly -- same DiceBear (avataaars) presets, so a choice made here
+// renders identically in the dashboard afterward.
 const AVATAR_CHOICES = [
-  { key: 'bot', label: 'Bot', emoji: '🤖' },
-  { key: 'headset', label: 'Headset', emoji: '🎧' },
-  { key: 'sparkles', label: 'Sparkles', emoji: '✨' },
-  { key: 'user-circle', label: 'Classic', emoji: '👤' },
-  { key: 'smile', label: 'Friendly', emoji: '😊' },
-  { key: 'shield', label: 'Trusted', emoji: '🛡️' },
-  { key: 'star', label: 'Star', emoji: '⭐' },
-  { key: 'zap', label: 'Energetic', emoji: '⚡' },
+  { key: 'avatar1', seed: 'knx-avatar-1', top: 'shortFlat', clothing: 'blazerAndShirt' },
+  { key: 'avatar2', seed: 'knx-avatar-2', top: 'bob', clothing: 'blazerAndSweater' },
+  { key: 'avatar3', seed: 'knx-avatar-3', top: 'curly', clothing: 'shirtCrewNeck' },
+  { key: 'avatar4', seed: 'knx-avatar-4', top: 'shortWaved', clothing: 'collarAndSweater', facialHair: 'beardLight' },
+  { key: 'avatar5', seed: 'knx-avatar-5', top: 'bun', clothing: 'blazerAndSweater' },
+  { key: 'avatar6', seed: 'knx-avatar-6', top: 'shortRound', clothing: 'hoodie' },
+  { key: 'avatar7', seed: 'knx-avatar-7', top: 'straight02', clothing: 'shirtScoopNeck' },
+  { key: 'avatar8', seed: 'knx-avatar-8', top: 'fro', clothing: 'blazerAndShirt' },
+  { key: 'avatar9', seed: 'knx-avatar-9', top: 'theCaesar', clothing: 'shirtVNeck', facialHair: 'moustacheFancy' },
+  { key: 'avatar10', seed: 'knx-avatar-10', top: 'dreads01', clothing: 'blazerAndSweater' },
 ];
+
+function avatarSvg(choice: typeof AVATAR_CHOICES[number], size = 56) {
+  const avatar = createAvatar(avataaars, {
+    seed: choice.seed,
+    size,
+    top: [choice.top],
+    clothing: [choice.clothing],
+    ...(choice.facialHair ? { facialHair: [choice.facialHair], facialHairProbability: 100 } : { facialHairProbability: 0 }),
+  } as any);
+  return avatar.toString();
+}
 
 const AI_ROLES = [
   { value: 'Receptionist', label: 'Receptionist', icon: '📋', desc: 'Greets callers, routes inquiries, manages first contact' },
@@ -1063,21 +1081,20 @@ export default function OnboardingPage() {
                     <div className="space-y-1.5">
                       <label className="block text-sm font-medium text-slate-300">Agent Avatar</label>
                       <p className="text-xs text-slate-600">Shown next to {form.agent_nickname || 'your agent'}'s name everywhere in your dashboard.</p>
-                      <div className="grid grid-cols-8 gap-2">
+                      <div className="grid grid-cols-5 gap-3">
                         {AVATAR_CHOICES.map(a => (
                           <button
                             key={a.key}
                             type="button"
                             onClick={() => set('agent_avatar', a.key)}
-                            className={`aspect-square rounded-xl flex items-center justify-center text-xl transition-all border ${
+                            className={`aspect-square rounded-full overflow-hidden transition-all border-2 ${
                               form.agent_avatar === a.key
-                                ? 'border-cyan-500 bg-cyan-500/10 ring-1 ring-cyan-500/50'
-                                : 'border-slate-700/60 bg-slate-950/40 hover:border-slate-600'
+                                ? 'border-cyan-500 ring-2 ring-cyan-500/40'
+                                : 'border-transparent opacity-70 hover:opacity-100'
                             }`}
-                            aria-label={a.label}
-                          >
-                            {a.emoji}
-                          </button>
+                            aria-label={a.key}
+                            dangerouslySetInnerHTML={{ __html: avatarSvg(a) }}
+                          />
                         ))}
                       </div>
                     </div>
