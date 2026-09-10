@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { Stethoscope, Building, Users, Home, Sun, Briefcase, Video, Shield, ShoppingBag, HeartPulse, Truck, Hammer, Thermometer, Droplet, Scale, ShoppingCart, Utensils, Dumbbell, Car } from 'lucide-react';
+import { Stethoscope, Building, Users, Home, Sun, Briefcase, Video, Shield, ShoppingBag, HeartPulse, Truck, Hammer, Thermometer, Droplet, Scale, ShoppingCart, Utensils, Dumbbell, Car, HeartHandshake } from 'lucide-react';
 
 const enterpriseSystems = [
   { id: 'real-estate', name: 'Real Estate Agent System', icon: Home, desc: 'Handles the entire property inquiry lifecycle, qualifying serious buyers and organizing viewings to build a stronger sales pipeline.', tier: 'Enterprise Tier', complexity: 'High' },
@@ -28,7 +28,8 @@ const proSystems = [
   { id: 'roofing', name: 'Roofing Estimator System', icon: Hammer, desc: 'Catches storm damage leads instantly and schedules your inspections.', tier: 'Pro Tier', complexity: 'Standard' },
   { id: 'restaurant', name: 'Restaurant System', icon: Utensils, desc: 'Takes reservations automatically and answers basic customer questions.', tier: 'Pro Tier', complexity: 'Standard' },
   { id: 'fitness', name: 'Gym & Fitness System', icon: Dumbbell, desc: 'Answers membership inquiries and helps book trial passes for new visitors.', tier: 'Pro Tier', complexity: 'Standard' },
-  { id: 'automotive', name: 'Automotive Dealership System', icon: Car, desc: 'Helps dealerships book test drives and log initial vehicle interest.', tier: 'Pro Tier', complexity: 'Standard' }
+  { id: 'automotive', name: 'Automotive Dealership System', icon: Car, desc: 'Helps dealerships book test drives and log initial vehicle interest.', tier: 'Pro Tier', complexity: 'Standard' },
+  { id: 'home-care', name: 'Home Care Intake System', icon: HeartHandshake, desc: 'Answers family inquiries the moment they call, schedules the first assessment, and prepares intake paperwork automatically.', tier: 'Pro Tier', complexity: 'Standard' }
 ];
 
 export default function SystemsPage() {
