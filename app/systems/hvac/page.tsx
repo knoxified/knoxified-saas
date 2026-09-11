@@ -49,7 +49,7 @@ export default function HVACSystemPage() {
 
                                         <AIVoiceSample 
             industry="hvac"
-            text="Our System HVAC here. When the AC stops blowing cold, every minute counts. I can GPS-dispatch our closest available technician to your exact location right now. What is your address so I can give you an ETA?"
+            text="Knoxified HVAC here. When the AC stops blowing cold, every minute counts. I can GPS-dispatch our closest available technician to your exact location right now. What is your address so I can give you an ETA?"
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">

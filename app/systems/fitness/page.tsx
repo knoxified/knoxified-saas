@@ -48,7 +48,7 @@ export default function FitnessSystemPage() {
 
                                         <AIVoiceSample 
             industry="fitness"
-            text="Welcome to the Fitness System. Let&apos;s not just talk about your goals, let&apos;s start hitting them. Your free trial is active—I can get you on the VIP list for tonight&apos;s 6 PM HIIT class. Shall I reserve your spot so you can jump right in?"
+            text="Welcome to Knoxified Fitness. Let&apos;s not just talk about your goals, let&apos;s start hitting them. Your free trial is active—I can get you on the VIP list for tonight&apos;s 6 PM HIIT class. Shall I reserve your spot so you can jump right in?"
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">

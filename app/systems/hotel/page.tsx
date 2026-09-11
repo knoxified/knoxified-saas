@@ -49,7 +49,7 @@ export default function HotelSystemPage() {
 
                                         <AIVoiceSample 
             industry="hotel"
-            text="Welcome to the Hospitality System. I see you&apos;re looking for a getaway this weekend. You&apos;re in luck—I have exactly one ocean-view suite left, and I can hold it under your name right now before it books up. Would you like me to secure that reservation for you?"
+            text="Welcome to Knoxified Hospitality. I see you&apos;re looking for a getaway this weekend. You&apos;re in luck—I have exactly one ocean-view suite left, and I can hold it under your name right now before it books up. Would you like me to secure that reservation for you?"
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">

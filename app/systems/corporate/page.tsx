@@ -52,7 +52,7 @@ export default function CorporateSystemPage() {
 
                                         <AIVoiceSample 
             industry="corporate"
-            text="Welcome to the Corporate System. We value your time, so let&apos;s bypass the wait. Our executive calendar has an opening tomorrow morning at 10 AM, or Thursday at 2 PM. Which of those works better for a high-priority consultation?"
+            text="Welcome to Knoxified Corporate. We value your time, so let&apos;s bypass the wait. Our executive calendar has an opening tomorrow morning at 10 AM, or Thursday at 2 PM. Which of those works better for a high-priority consultation?"
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">

@@ -51,7 +51,7 @@ export default function MedSpaSystemPage() {
 
                                         <AIVoiceSample 
             industry="med-spa"
-            text="Hello and welcome to Our System Med Spa. You deserve to look and feel your absolute best. I&apos;ve got an exclusive opening for a Botox consultation tomorrow morning at 10 AM. Would you like me to reserve that time exclusively for you?"
+            text="Hello and welcome to Knoxified Med Spa. You deserve to look and feel your absolute best. I&apos;ve got an exclusive opening for a Botox consultation tomorrow morning at 10 AM. Would you like me to reserve that time exclusively for you?"
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">

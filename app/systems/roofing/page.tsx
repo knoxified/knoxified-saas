@@ -51,7 +51,7 @@ export default function RoofingSystemPage() {
 
                                         <AIVoiceSample 
             industry="roofing"
-            text="Hello! Welcome to the Roofing System. The recent weather has definitely caused some hidden wear and tear. I can schedule a complimentary, high-resolution drone inspection of your roof—no ladders, no hassle. Can I send our drone technician out tomorrow morning?"
+            text="Hello! Welcome to Knoxified Roofing. The recent weather has definitely caused some hidden wear and tear. I can schedule a complimentary, high-resolution drone inspection of your roof—no ladders, no hassle. Can I send our drone technician out tomorrow morning?"
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">

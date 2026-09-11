@@ -49,7 +49,7 @@ export default function RealEstateSystemPage() {
 
                                         <AIVoiceSample 
             industry="real-estate"
-            text="Hi! I am the Realty assistant System. That Elm Street property is getting a lot of attention today. If you want to beat the weekend rush, I can schedule a private, no-pressure showing for you this coming Thursday evening. How does that sound?"
+            text="Hi! I&apos;m Knoxified Realty&apos;s assistant. That Elm Street property is getting a lot of attention today. If you want to beat the weekend rush, I can schedule a private, no-pressure showing for you this coming Thursday evening. How does that sound?"
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">

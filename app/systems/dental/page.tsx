@@ -49,7 +49,7 @@ export default function DentalSystemPage() {
 
                                         <AIVoiceSample 
             industry="dental"
-            text="Hi, welcome to the Dental here System. Toothaches don&apos;t wait, and neither should you. I&apos;m looking at our schedule right now and I&apos;ve flagged a 2:15 PM slot for priority emergencies. Can I lock that in for you right now so you can start feeling better today?"
+            text="Hi, welcome to Knoxified Dental. Toothaches don&apos;t wait, and neither should you. I&apos;m looking at our schedule right now and I&apos;ve flagged a 2:15 PM slot for priority emergencies. Can I lock that in for you right now so you can start feeling better today?"
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">

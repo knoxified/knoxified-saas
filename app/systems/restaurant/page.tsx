@@ -48,7 +48,7 @@ export default function RestaurantSystemPage() {
 
                                         <AIVoiceSample 
             industry="restaurant"
-            text="Hi, welcome to the Restaurant System. You&apos;ve reached us right before the dinner rush. We are fully booked, but I can pull a string and accommodate a party of 4 at our chef&apos;s table tonight at 7:30 PM. Would you like me to lock that in for you?"
+            text="Hi, welcome to Knoxified Restaurant. You&apos;ve reached us right before the dinner rush. We are fully booked, but I can pull a string and accommodate a party of 4 at our chef&apos;s table tonight at 7:30 PM. Would you like me to lock that in for you?"
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">

@@ -46,7 +46,7 @@ export default function AutomotiveSystemPage() {
 
                                         <AIVoiceSample 
             industry="automotive"
-            text="Hi, thanks for calling the Automotive System. I see you&apos;ve been eyeing the 2024 Model Y. I can pull up our inventory in real-time—would you like to swing by this Thursday afternoon for a VIP test drive? We can have it pulled around and ready for you."
+            text="Hi, thanks for calling Knoxified Automotive. I see you&apos;ve been eyeing the 2024 Model Y. I can pull up our inventory in real-time—would you like to swing by this Thursday afternoon for a VIP test drive? We can have it pulled around and ready for you."
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">

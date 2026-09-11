@@ -52,7 +52,7 @@ export default function LogisticsSystemPage() {
 
                                         <AIVoiceSample 
             industry="logistics"
-            text="Hi, welcome to the Logistics System. I have real-time tracking up for shipment 8492. It&apos;s been loaded onto the delivery vehicle and is currently just three stops away. You can expect it at your door by 5 PM today. Anything else I can help track down?"
+            text="Hi, welcome to Knoxified Logistics. I have real-time tracking up for shipment 8492. It&apos;s been loaded onto the delivery vehicle and is currently just three stops away. You can expect it at your door by 5 PM today. Anything else I can help track down?"
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">
