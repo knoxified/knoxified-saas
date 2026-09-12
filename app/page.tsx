@@ -8,7 +8,7 @@ import { PhoneOff, Bot, Clock, TrendingUp, CheckCircle2, ChevronRight, MessageSq
 
 const testimonials = [
   {
-    quote: "One missed-call workflow recovered 17 appointments in 30 days. It paid for a year of Our Platform in the first two weeks.",
+    quote: "One missed-call workflow recovered 17 appointments in 30 days. It paid for a year of Knoxified in the first two weeks.",
     name: "Ariyah M Caldwell",
     title: "Founder and Sales Manager",
     image: "/ariyah.png",
@@ -36,7 +36,7 @@ const testimonials = [
     logo: "/health-logo.png"
   },
   {
-    quote: "Our Platform completely transformed how we handle wealth management inquiries. It's like having a dedicated analyst 24/7.",
+    quote: "Knoxified completely transformed how we handle wealth management inquiries. It's like having a dedicated analyst 24/7.",
     name: "Robert Hughes",
     title: "Senior Partner",
     image: "/robert.png",
@@ -50,7 +50,7 @@ const testimonials = [
     logo: "/logistics-logo.png"
   },
   {
-    quote: "Our ad campaigns generate leads around the clock. Our Platform ensures not a single one slips through the cracks, no matter the time.",
+    quote: "Our ad campaigns generate leads around the clock. Knoxified ensures not a single one slips through the cracks, no matter the time.",
     name: "Sarah Lin",
     title: "Marketing Director",
     image: "/sarah.png",
@@ -575,6 +575,7 @@ export default function HomePage() {
             <Link href="/get-started" className="block text-center w-full py-3 px-4 rounded-lg font-medium border border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">
               Start Free Trial
             </Link>
+            <p className="text-center text-xs text-slate-500 mt-3">No credit card required &middot; 14-day trial</p>
           </div>
 
           {/* Pro */}
@@ -615,6 +616,7 @@ export default function HomePage() {
             <Link href="/get-started" className="block text-center w-full py-3 px-4 rounded-lg font-medium bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">
               Start Free Trial
             </Link>
+            <p className="text-center text-xs text-slate-400 mt-3">No credit card required &middot; 14-day trial</p>
           </div>
 
           {/* Enterprise */}
@@ -652,6 +654,7 @@ export default function HomePage() {
             <Link href="/get-started" className="block text-center w-full py-3 px-4 rounded-lg font-medium border border-slate-600 text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">
               Start Free Trial
             </Link>
+            <p className="text-center text-xs text-slate-500 mt-3">No credit card required &middot; 14-day trial</p>
           </div>
 
           {/* Custom */}
@@ -853,7 +856,7 @@ export default function HomePage() {
           
           <h2 className="text-4xl md:text-5xl font-bold text-slate-50 mb-6 relative z-10 tracking-tight">Stop losing leads. <br/>Start recovering revenue.</h2>
           <p className="text-xl text-slate-400 mb-10 max-w-2xl mx-auto relative z-10">
-            Plug your business into the Our Platform OS today.
+            Plug your business into the Knoxified OS today.
           </p>
           <div className="relative z-10 flex justify-center">
             <Link 
