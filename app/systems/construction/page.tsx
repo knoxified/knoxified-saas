@@ -51,7 +51,7 @@ export default function ConstructionSystemPage() {
 
                                         <AIVoiceSample 
             industry="construction"
-            text="We've reviewed your project. You're all set, we'll handle it from here."
+            text="Hi, thanks for calling Knoxified Construction. I know a project like this can feel overwhelming, especially with cost and timeline on your mind. I can get an estimator out to walk the site with you this week, no obligation. Want me to get that scheduled?"
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">

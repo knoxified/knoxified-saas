@@ -49,7 +49,7 @@ export default function RecruitmentSystemPage() {
 
                                         <AIVoiceSample 
             industry="recruitment"
-            text="Welcome to Knoxified Staffing. We&apos;re helping the recruiting team collect structured details for the Senior Developer position. I have a few recruiter-approved intake questions, and the hiring team will review your responses."
+            text="Hi, thanks for calling about the Senior Developer role. I just need a few quick details so the hiring team has everything they need to give your application a proper look. Ready when you are."
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">

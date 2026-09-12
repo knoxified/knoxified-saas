@@ -194,9 +194,9 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="text-5xl md:text-7xl font-bold tracking-tight text-white mb-8 leading-[1.1] md:leading-[1.1]"
           >
-            Your Competitors Are Automating.<br className="hidden md:block" />
+            Every Missed Call Is<br className="hidden md:block" />
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent [text-shadow:_0_0_20px_rgb(6_182_212_/_30%)]">
-              Are You Still Leaving Growth on the Table?
+              a Lost Customer.
             </span>
           </motion.h1>
           <motion.p 
@@ -205,7 +205,7 @@ export default function HomePage() {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="text-lg md:text-xl text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed"
           >
-            Our system builds the invisible operating system that catches every missed call, recovers every lost lead, and scales your business – 24/7.
+            It rings after hours. Nobody picks up. They hang up and call the next name on the list. Knoxified answers every time, day or night, so that call becomes a customer instead of someone else's.
           </motion.p>
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -217,7 +217,7 @@ export default function HomePage() {
               href="/get-started" 
               className="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-semibold rounded-xl transition-all shadow-[0_0_25px_rgba(6,182,212,0.4)] hover:shadow-[0_0_35px_rgba(6,182,212,0.6)] flex items-center justify-center gap-2"
             >
-              Get Started <ArrowRight className="w-5 h-5" />
+              See What I&apos;m Losing <ArrowRight className="w-5 h-5" />
             </Link>
             <audio
               ref={heroAudioRef}
@@ -891,7 +891,7 @@ export default function HomePage() {
               href="/get-started" 
               className="px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:from-cyan-400 hover:to-blue-400 font-bold rounded-xl transition-all shadow-[0_0_30px_rgba(6,182,212,0.3)] hover:shadow-[0_0_40px_rgba(6,182,212,0.5)] flex items-center justify-center gap-2"
             >
-              Start Free Trial <ArrowRight className="w-5 h-5" />
+              See What I&apos;m Losing <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
         </div>

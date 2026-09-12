@@ -47,7 +47,7 @@ export default function EcommerceSystemPage() {
 
                                         <AIVoiceSample 
             industry="ecommerce"
-            text="Hi! I&apos;m Knoxified Commerce&apos;s assistant. I noticed you&apos;ve got the wireless noise-canceling headphones sitting in your cart. I&apos;d hate for you to miss out before they sell out—can I answer any quick questions, or perhaps apply a one-time 10% discount to help you complete your order?"
+            text="Hi! I&apos;m Knoxified Commerce&apos;s assistant. I noticed you&apos;ve got the wireless noise-canceling headphones sitting in your cart. I&apos;d hate for you to miss out, so let me know if you have any questions, or I can apply a one-time 10% discount to help you complete your order."
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">
