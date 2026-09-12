@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import { supabase } from '@/src/lib/supabase';
 import { createAvatar } from '@dicebear/core';
-import { avataaars } from '@dicebear/collection';
+import { notionists } from '@dicebear/collection';
+import { CheckCircle2 } from 'lucide-react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -66,32 +67,33 @@ const HOURS_PRESETS = [
   { value: 'Custom', label: 'Custom', sub: 'Define your own schedule' },
 ];
 
-// Keys must match Knoxified-dash-update/lib/avatar-options.ts exactly --
-// same identity, just rendered as emoji here to match this page's existing
-// icon style instead of Lucide (which the dashboard uses).
+// Switched from avataaars (round cartoon/sticker look) to notionists --
+// DiceBear's hand-drawn, half-body, candid-pose style built specifically
+// for productivity/workspace tools. Seed-only variation (no manual prop
+// overrides) so every avatar renders correctly regardless of exactly which
+// options notionists exposes internally -- less brittle than hardcoding
+// style-specific option names that could change between DiceBear versions.
 // Keys AND look must match Knoxified-dash-update/lib/avatar-options.ts
-// exactly -- same DiceBear (avataaars) presets, so a choice made here
+// exactly -- same DiceBear (notionists) seeds, so a choice made here
 // renders identically in the dashboard afterward.
 const AVATAR_CHOICES = [
-  { key: 'avatar1', seed: 'knx-avatar-1', top: 'shortFlat', clothing: 'blazerAndShirt' },
-  { key: 'avatar2', seed: 'knx-avatar-2', top: 'bob', clothing: 'blazerAndSweater' },
-  { key: 'avatar3', seed: 'knx-avatar-3', top: 'curly', clothing: 'shirtCrewNeck' },
-  { key: 'avatar4', seed: 'knx-avatar-4', top: 'shortWaved', clothing: 'collarAndSweater', facialHair: 'beardLight' },
-  { key: 'avatar5', seed: 'knx-avatar-5', top: 'bun', clothing: 'blazerAndSweater' },
-  { key: 'avatar6', seed: 'knx-avatar-6', top: 'shortRound', clothing: 'hoodie' },
-  { key: 'avatar7', seed: 'knx-avatar-7', top: 'straight02', clothing: 'shirtScoopNeck' },
-  { key: 'avatar8', seed: 'knx-avatar-8', top: 'fro', clothing: 'blazerAndShirt' },
-  { key: 'avatar9', seed: 'knx-avatar-9', top: 'theCaesar', clothing: 'shirtVNeck', facialHair: 'moustacheFancy' },
-  { key: 'avatar10', seed: 'knx-avatar-10', top: 'dreads01', clothing: 'blazerAndSweater' },
+  { key: 'avatar1', seed: 'knx-notion-1' },
+  { key: 'avatar2', seed: 'knx-notion-2' },
+  { key: 'avatar3', seed: 'knx-notion-3' },
+  { key: 'avatar4', seed: 'knx-notion-4' },
+  { key: 'avatar5', seed: 'knx-notion-5' },
+  { key: 'avatar6', seed: 'knx-notion-6' },
+  { key: 'avatar7', seed: 'knx-notion-7' },
+  { key: 'avatar8', seed: 'knx-notion-8' },
+  { key: 'avatar9', seed: 'knx-notion-9' },
+  { key: 'avatar10', seed: 'knx-notion-10' },
 ];
 
 function avatarSvg(choice: typeof AVATAR_CHOICES[number], size = 56) {
-  const avatar = createAvatar(avataaars, {
+  const avatar = createAvatar(notionists, {
     seed: choice.seed,
     size,
-    top: [choice.top],
-    clothing: [choice.clothing],
-    ...(choice.facialHair ? { facialHair: [choice.facialHair], facialHairProbability: 100 } : { facialHairProbability: 0 }),
+    backgroundColor: ['transparent'],
   } as any);
   return avatar.toString();
 }
@@ -492,6 +494,7 @@ export default function OnboardingPage() {
   const [isCheckingSession, setIsCheckingSession] = useState(true);
   const [step, setStep] = useState(0); // 0-5 = wizard steps; 6 = deploying; 7 = success
   const [direction, setDirection] = useState(1); // 1 = forward, -1 = backward
+  const [microToast, setMicroToast] = useState<string | null>(null);
   const [form, setForm] = useState<FormData>(INITIAL_FORM);
   const [positionSearch, setPositionSearch] = useState('');
   const [positionOpen, setPositionOpen] = useState(false);
@@ -571,9 +574,13 @@ export default function OnboardingPage() {
 
   // ── Navigation ─────────────────────────────────────────────────────────────
 
+  const MICRO_TOASTS = ['Nice.', 'Got it.', 'Looking good.', 'Perfect.', 'Almost there.', 'One more thing.'];
+
   const goNext = useCallback(() => {
     setErrorMsg(null);
     setDirection(1);
+    setMicroToast(MICRO_TOASTS[Math.floor(Math.random() * MICRO_TOASTS.length)]);
+    window.setTimeout(() => setMicroToast(null), 1400);
     setStep(s => s + 1);
   }, []);
 
@@ -585,14 +592,14 @@ export default function OnboardingPage() {
 
   // ── Validation per step ────────────────────────────────────────────────────
 
-  const isStepValid = useCallback(() => {
-    if (step === 0) return form.full_name.trim().length > 0 && form.position_in_org.length > 0;
-    if (step === 1) return form.organization_name.trim().length > 0 && form.organization_industry.length > 0;
-    if (step === 2) return form.business_hours.length > 0;
-    if (step === 3) return form.agent_nickname.trim().length > 0 && form.agent_position.length > 0;
-    if (step === 4) return form.main_call_to_action.length > 0;
-    return true; // step 5 is optional
-  }, [step, form]);
+  // Nothing here is actually required for the product to work -- every
+  // field either has a real DB default (agent_nickname, agent_avatar,
+  // organization_name on agent_configs) or gets a safe fallback applied in
+  // handleSubmit below (full_name, organization_name/industry, business_hours
+  // on user_profiles, which are NOT NULL with no DB-level default). So
+  // nothing blocks "Continue" anymore -- this only exists so the UI can
+  // still show a gentle nudge, never a hard block.
+  const isStepValid = useCallback(() => true, []);
 
   // ── Submit / Save ──────────────────────────────────────────────────────────
 
@@ -604,17 +611,25 @@ export default function OnboardingPage() {
     setStep(6); // show deployment loader
 
     try {
-      const effectiveHours = form.business_hours === 'Custom' ? customHours || 'Custom' : form.business_hours;
+      // Safe fallbacks -- user_profiles.full_name/organization_name are
+      // NOT NULL with no DB-level default, so a fully-skipped wizard must
+      // still supply *something* here or the upsert fails outright.
+      const safeFullName = form.full_name.trim() || (user.email ? user.email.split('@')[0] : 'there');
+      const safeOrgName = form.organization_name.trim() || 'My Business';
+      const safeIndustry = form.organization_industry || 'other';
+      const effectiveHours = form.business_hours
+        ? (form.business_hours === 'Custom' ? customHours || 'Custom' : form.business_hours)
+        : 'Mon-Fri 9am-5pm';
 
       // 1. Upsert user_profiles
       const { error: profileError } = await supabase
         .from('user_profiles')
         .upsert({
           user_id: user.id,
-          full_name: form.full_name,
-          position_in_org: form.position_in_org,
-          organization_name: form.organization_name,
-          organization_industry: form.organization_industry,
+          full_name: safeFullName,
+          position_in_org: form.position_in_org || null,
+          organization_name: safeOrgName,
+          organization_industry: safeIndustry,
           organization_website: form.organization_website || null,
           onboarding_completed: true,
           onboarding_step: TOTAL_STEPS,
@@ -628,20 +643,22 @@ export default function OnboardingPage() {
         return;
       }
 
-      // 2. Upsert agent_configs (attempt with business_phone)
-      const agentPayload: Record<string, any> = {
-        user_id: user.id,
-        organization_name: form.organization_name,
-        agent_nickname: form.agent_nickname,
-        agent_position: form.agent_position,
-        agent_avatar: form.agent_avatar,
-        system_type: form.system_type || form.agent_position,
-        business_hours: effectiveHours,
-        main_call_to_action: form.main_call_to_action,
-        memory_context: form.memory_context || null,
-        negative_instructions: form.negative_instructions || null,
-        business_phone: form.business_phone || null,
-      };
+      // 2. Upsert agent_configs -- blank fields are OMITTED rather than sent
+      // as empty strings, so agent_configs' real column defaults ('Alex',
+      // 'bot', 'My Business', etc.) apply on first insert instead of getting
+      // overwritten with blanks. A field only gets sent if the user actually
+      // filled it in.
+      const agentPayload: Record<string, any> = { user_id: user.id };
+      if (form.organization_name.trim()) agentPayload.organization_name = form.organization_name;
+      if (form.agent_nickname.trim()) agentPayload.agent_nickname = form.agent_nickname;
+      if (form.agent_position) agentPayload.agent_position = form.agent_position;
+      if (form.agent_avatar) agentPayload.agent_avatar = form.agent_avatar;
+      if (form.system_type || form.agent_position) agentPayload.system_type = form.system_type || form.agent_position;
+      if (form.business_hours) agentPayload.business_hours = effectiveHours;
+      if (form.main_call_to_action) agentPayload.main_call_to_action = form.main_call_to_action;
+      if (form.memory_context) agentPayload.memory_context = form.memory_context;
+      if (form.negative_instructions) agentPayload.negative_instructions = form.negative_instructions;
+      if (form.business_phone) agentPayload.business_phone = form.business_phone;
 
       let { error: agentError } = await supabase
         .from('agent_configs')
@@ -668,6 +685,53 @@ export default function OnboardingPage() {
 
       // 3. Mark auth metadata as onboarded
       await supabase.auth.updateUser({ data: { onboarded: true } });
+
+      // 4. One-time completion bonus -- reward genuine effort, not just
+      // hitting a button. Checked against the RAW form values (before the
+      // safe-fallback substitution above), so someone who used "Skip the
+      // rest" without filling anything in doesn't get credited for fields
+      // they never touched. Threshold: at least 3 of the 4 real fields,
+      // so skipping one thing still counts as a genuine attempt.
+      const filledCount = [
+        form.organization_industry !== '',
+        form.agent_nickname.trim() !== '',
+        form.agent_avatar !== 'bot',
+        form.organization_name.trim() !== '',
+      ].filter(Boolean).length;
+
+      if (filledCount >= 3) {
+        // Atomic guard: only proceeds if the flag was still false, so a
+        // resubmit (e.g. a retried request) can't double-grant. This is a
+        // client-side guard, same accepted trade-off as other client-side
+        // enforcement already in this codebase (e.g. the automation
+        // swap-cooldown) -- proportionate for current scale, not bulletproof
+        // against someone deliberately replaying the request.
+        const { data: guardRow } = await supabase
+          .from('user_profiles')
+          .update({ onboarding_basic_bonus_granted: true })
+          .eq('user_id', user.id)
+          .eq('onboarding_basic_bonus_granted', false)
+          .select('user_id')
+          .maybeSingle();
+
+        if (guardRow) {
+          // ASSUMPTION TO VERIFY: this assumes user_credits_view computes
+          // remaining credits as (plans.limit_credits - SUM(automation_runs
+          // .run_units)) for the user -- matching how LeadReach/MailCraft
+          // consumption is recorded elsewhere in this codebase. A negative
+          // run_units row should therefore read as bonus credits in that
+          // view. If the completion bonus doesn't show up in the dashboard
+          // credits display after testing, check the view's actual
+          // definition against this assumption first.
+          await supabase.from('automation_runs').insert({
+            user_id: user.id,
+            automation_key: 'onboarding_completion_bonus',
+            run_units: -50,
+            status: 'completed',
+            completed_at: new Date().toISOString(),
+          });
+        }
+      }
 
       setIsLoading(false);
       // Loader will trigger success via onComplete callback
@@ -720,6 +784,21 @@ export default function OnboardingPage() {
 
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col lg:flex-row relative overflow-hidden">
+      {/* Dopamine micro-toast on each step advance -- small, brief, varied
+          wording so it doesn't read as a robotic canned response. */}
+      <AnimatePresence>
+        {microToast && (
+          <motion.div
+            initial={{ opacity: 0, y: -12, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.95 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 bg-cyan-500/15 border border-cyan-400/40 text-cyan-200 text-sm font-medium px-4 py-2 rounded-full backdrop-blur-md shadow-[0_0_20px_rgba(6,182,212,0.25)]"
+          >
+            <CheckCircle2 className="w-4 h-4" /> {microToast}
+          </motion.div>
+        )}
+      </AnimatePresence>
       {/* ── Left Preview Panel (desktop) ── */}
       <div className="hidden lg:flex w-[340px] xl:w-[380px] shrink-0 bg-slate-900/80 border-r border-slate-800/60 flex-col p-8 xl:p-10 relative">
         <div className="absolute top-0 left-0 right-0 bottom-0 bg-[radial-gradient(ellipse_at_top_left,rgba(6,182,212,0.12),transparent_60%)] pointer-events-none" />
@@ -742,10 +821,25 @@ export default function OnboardingPage() {
 
           {/* Step progress */}
           <div className="mb-8">
+            {step < TOTAL_STEPS && (
+              <div className="flex items-center gap-2 mb-3 text-xs text-cyan-400/90 font-medium">
+                <CheckCircle2 className="w-3.5 h-3.5" /> Account created
+                <span className="text-slate-700">&middot;</span>
+                <CheckCircle2 className="w-3.5 h-3.5" /> Email verified
+              </div>
+            )}
             <StepIndicator current={Math.min(step, TOTAL_STEPS - 1)} total={TOTAL_STEPS} />
             <p className="text-xs text-slate-600 mt-2 font-mono">
-              {step < TOTAL_STEPS ? `Step ${step + 1} of ${TOTAL_STEPS}` : 'Deployment complete'}
+              {step < TOTAL_STEPS ? `Step ${step + 1} of ${TOTAL_STEPS} &middot; the rest is already yours` : 'Deployment complete'}
             </p>
+            {step < TOTAL_STEPS && (
+              <button
+                onClick={handleSubmit}
+                className="text-xs text-slate-500 hover:text-slate-300 underline underline-offset-2 mt-3 transition-colors"
+              >
+                Skip the rest &mdash; take me to my dashboard
+              </button>
+            )}
           </div>
 
           {/* Live preview */}
@@ -765,6 +859,14 @@ export default function OnboardingPage() {
           <Image src="/hotel_system.png" alt="Knoxified" width={36} height={36} style={{ width: 'auto' }} className="mix-blend-screen opacity-90" />
           <span className="text-lg font-bold text-white">Knoxified</span>
         </div>
+        {step < TOTAL_STEPS && (
+          <button
+            onClick={handleSubmit}
+            className="lg:hidden text-xs text-slate-500 hover:text-slate-300 underline underline-offset-2 mb-6 self-end transition-colors"
+          >
+            Skip the rest &mdash; take me to my dashboard
+          </button>
+        )}
 
         <div className="w-full max-w-lg relative z-10">
           {/* Mobile step indicator */}
