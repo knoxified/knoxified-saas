@@ -1,10 +1,10 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
-import { PhoneOff, Bot, Clock, TrendingUp, CheckCircle2, ChevronRight, MessageSquare, Zap, XCircle, ArrowRight, Activity, CalendarDays, Inbox, Building, ShieldCheck, Globe, Star } from 'lucide-react';
+import { PhoneOff, Bot, Clock, TrendingUp, CheckCircle2, ChevronRight, MessageSquare, Zap, XCircle, ArrowRight, Activity, CalendarDays, Inbox, Building, ShieldCheck, Globe, Star, Play, Pause } from 'lucide-react';
 
 const testimonials = [
   {
@@ -68,6 +68,21 @@ export default function HomePage() {
   const [hasDismissedModal, setHasDismissedModal] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [autoScroll, setAutoScroll] = useState(true);
+  const [isHeroSamplePlaying, setIsHeroSamplePlaying] = useState(false);
+  const heroAudioRef = useRef<HTMLAudioElement | null>(null);
+
+  const toggleHeroSample = () => {
+    const audio = heroAudioRef.current;
+    if (!audio) return;
+    if (isHeroSamplePlaying) {
+      audio.pause();
+      setIsHeroSamplePlaying(false);
+    } else {
+      audio.currentTime = 0;
+      audio.play().catch(() => {});
+      setIsHeroSamplePlaying(true);
+    }
+  };
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -204,6 +219,19 @@ export default function HomePage() {
             >
               Get Started <ArrowRight className="w-5 h-5" />
             </Link>
+            <audio
+              ref={heroAudioRef}
+              src="/audio/home-care.mp3"
+              preload="none"
+              onEnded={() => setIsHeroSamplePlaying(false)}
+            />
+            <button
+              onClick={toggleHeroSample}
+              className="w-full sm:w-auto px-8 py-4 bg-transparent border border-cyan-500/40 hover:border-cyan-400 text-cyan-300 hover:text-cyan-200 font-semibold rounded-xl transition-all flex items-center justify-center gap-2"
+            >
+              {isHeroSamplePlaying ? <Pause className="w-5 h-5 fill-current" /> : <Play className="w-5 h-5 fill-current" />}
+              Hear It Answer a Call
+            </button>
           </motion.div>
         </div>
       </section>
