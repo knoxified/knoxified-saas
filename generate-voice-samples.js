@@ -29,10 +29,13 @@ const API_KEY = process.env.CARTESIA_API_KEY;
 // more varied the site sounds. These three are placeholders and will fail
 // if they're not real, valid voice IDs on your account.
 const VOICE_POOL = [
-  'e07c00bc-4134-4eae-9ea4-1a55fb45746b', // current platform default -- verify this is actually a valid voice on your account
-  // 'REPLACE_WITH_REAL_VOICE_ID_2',
-  // 'REPLACE_WITH_REAL_VOICE_ID_3',
-  // 'REPLACE_WITH_REAL_VOICE_ID_4',
+  'db6b0ed5-d5d3-463d-ae85-518a07d3c2b4', // Skylar
+  '9626c31c-bec5-4cca-baa8-f8ba9e84c8bc', // Jacqueline
+  'ef191366-f52f-447a-a398-ed8c0f2943a1', // Archie
+  '30894953-bcce-41fe-892c-15ce19c843ff', // Parker
+  '47c38ca4-5f35-497b-b1a3-415245fb35e1', // Daniel
+  'f6ff7c0c-e396-40a9-a70b-f7607edb6937', // Emma
+  'a5136bf9-224c-4d76-b823-52bd5efcffcc', // Jameson
 ];
 
 // Optional: force a specific industry to a specific voice regardless of the
