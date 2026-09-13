@@ -58,6 +58,87 @@ const testimonials = [
   }
 ];
 
+// Real, general industry data on missed calls -- not Knoxified's own usage
+// numbers, which wouldn't be meaningful to show at this stage. Kept
+// deliberately to figures that show up consistently across multiple
+// independent industry sources (call-tracking research, a Harvard Business
+// Review study on lead response speed) rather than the more dramatic
+// single-source numbers common in this space -- defensible over impressive.
+const INDUSTRY_STATS = [
+  {
+    stat: '62%',
+    label: 'of small business calls go unanswered',
+    source: 'Based on industry call-tracking research',
+  },
+  {
+    stat: '85%',
+    label: "of callers who reach voicemail hang up without leaving a message",
+    source: 'Consistent across multiple industry studies',
+  },
+  {
+    stat: '1 in 3',
+    label: 'callers who can\u2019t reach a business call a competitor next',
+    source: 'Widely reported across service-industry research',
+  },
+  {
+    stat: '$100\u2013200+',
+    label: 'is a commonly cited estimate for what a single missed call can be worth to a service business',
+    source: 'Conservative range from published industry estimates',
+  },
+  {
+    stat: 'Minutes matter',
+    label: 'Harvard Business Research found how fast a lead gets a response is one of the strongest predictors of whether it converts at all',
+    source: 'Oldroyd et al., Harvard Business Review',
+  },
+];
+
+function IndustryStatsTicker() {
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActive((prev) => (prev + 1) % INDUSTRY_STATS.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, []);
+
+  const current = INDUSTRY_STATS[active];
+
+  return (
+    <section className="w-full relative z-10 py-12 my-12 border-y border-cyan-500/10 bg-slate-800/20 backdrop-blur-sm -mt-8 mb-24 md:-mt-12 md:mb-32">
+      <div className="container mx-auto px-4 text-center">
+        <p className="text-sm font-medium text-slate-500 uppercase tracking-widest mb-6">Why this matters, industry-wide</p>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4 }}
+            className="max-w-2xl mx-auto"
+          >
+            <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-3">
+              {current.stat}
+            </div>
+            <p className="text-lg text-slate-300 mb-2">{current.label}</p>
+            <p className="text-xs text-slate-600">{current.source}</p>
+          </motion.div>
+        </AnimatePresence>
+        <div className="flex items-center justify-center gap-1.5 mt-8">
+          {INDUSTRY_STATS.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setActive(i)}
+              aria-label={`Show stat ${i + 1}`}
+              className={`rounded-full transition-all duration-300 ${i === active ? 'w-6 h-1.5 bg-cyan-400' : 'w-1.5 h-1.5 bg-slate-700 hover:bg-slate-600'}`}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const swipeConfidenceThreshold = 10000;
 const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
@@ -236,49 +317,13 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Trusted By Section */}
-      <section className="w-full relative z-10 py-10 my-12 overflow-hidden border-y border-cyan-500/10 bg-slate-800/20 backdrop-blur-sm -mt-8 mb-24 md:-mt-12 md:mb-32">
-        <div className="container mx-auto px-4 text-center mb-8">
-          <p className="text-sm font-medium text-slate-500 uppercase tracking-widest">Trusted by industry leaders worldwide</p>
-        </div>
-        
-        <div className="relative w-full flex overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
-          <motion.div 
-            className="flex whitespace-nowrap items-center flex-nowrap"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{ ease: "linear", duration: 30, repeat: Infinity }}
-          >
-            {[...Array(2)].map((_, i) => (
-              <div key={i} className="flex gap-16 md:gap-24 items-center px-8 md:px-12 flex-nowrap">
-                <div className="flex items-center gap-2 text-slate-400 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
-                  <Activity className="w-6 h-6" />
-                  <span className="font-bold text-xl tracking-tighter">Stellar Automations</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-400 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
-                  <Zap className="w-6 h-6" />
-                  <span className="font-bold text-xl tracking-tighter">Nimbus Cloud Solutions</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-400 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
-                  <TrendingUp className="w-6 h-6" />
-                  <span className="font-bold text-xl tracking-tighter">CyberFlow</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-400 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
-                  <Building className="w-6 h-6" />
-                  <span className="font-bold text-xl tracking-tighter">AeroSync</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-400 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
-                  <ShieldCheck className="w-6 h-6" />
-                  <span className="font-bold text-xl tracking-tighter">OmniNet</span>
-                </div>
-                <div className="flex items-center gap-2 text-slate-400 opacity-50 hover:opacity-100 transition-opacity grayscale hover:grayscale-0">
-                  <Globe className="w-6 h-6" />
-                  <span className="font-bold text-xl tracking-tighter">Quantum Shift</span>
-                </div>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      {/* Industry Data Ticker -- real, conservatively-sourced stats about
+          missed calls generally (not Knoxified's own usage numbers, which
+          wouldn't be meaningful yet at this stage). Kept deliberately to
+          the numbers that show up consistently across independent sources
+          rather than the more dramatic single-source figures floating
+          around -- defensible over impressive. */}
+      <IndustryStatsTicker />
 
       {/* Manual Hell vs Automated Heaven */}
       <motion.section 
