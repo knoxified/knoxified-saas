@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
+import { ChatBot } from './components/chat-bot';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
@@ -138,11 +139,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
           
           <div className="container mx-auto px-4 mt-12 pt-12 border-t border-slate-700/50 relative z-10">
-            <p className="text-sm text-slate-500 text-center">© Knoxified 2025. All rights reserved.</p>
+            <p className="text-sm text-slate-500 text-center">&copy; Knoxified 2026. All rights reserved.</p>
           </div>
         </footer>
-        <script src="https://cdn.botpress.cloud/webchat/v1/inject.js"></script>
-        <script src="https://mediafiles.botpress.cloud/f004f977-d4af-4da7-a5db-68ec3ecce7ca/webchat/config.js" defer></script>
+        <ChatBot />
       </body>
     </html>
   );

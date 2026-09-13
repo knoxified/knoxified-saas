@@ -1,11 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { X, Send } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
-
-const clientId = 'f004f977-d4af-4da7-a5db-68ec3ecce7ca';
 
 const personas = {
   calista: {
@@ -25,30 +23,32 @@ const personas = {
   },
 };
 
-function getPersonaKey() {
-  if (typeof window === 'undefined') {
-    return 'calista' as keyof typeof personas;
-  }
+type PersonaKey = keyof typeof personas;
 
+function getPersonaKey(): PersonaKey {
+  if (typeof window === 'undefined') return 'calista';
   const stored = window.sessionStorage.getItem('knoxified_persona');
-
-  if (stored && stored in personas) {
-    return stored as keyof typeof personas;
-  }
-
-  const keys = Object.keys(personas) as Array<keyof typeof personas>;
+  if (stored && stored in personas) return stored as PersonaKey;
+  const keys = Object.keys(personas) as PersonaKey[];
   const randomKey = keys[Math.floor(Math.random() * keys.length)];
-
   window.sessionStorage.setItem('knoxified_persona', randomKey);
-
   return randomKey;
+}
+
+interface ChatMessage {
+  role: 'user' | 'assistant';
+  content: string;
 }
 
 export function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [booting, setBooting] = useState(true);
   const [showPersona, setShowPersona] = useState(false);
-  const [personaKey, setPersonaKey] = useState<keyof typeof personas>('calista');
+  const [personaKey, setPersonaKey] = useState<PersonaKey>('calista');
+  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [input, setInput] = useState('');
+  const [isSending, setIsSending] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setPersonaKey(getPersonaKey());
@@ -62,73 +62,50 @@ export function ChatBot() {
       setShowPersona(false);
       return;
     }
-
-    const revealPersonaTimer = window.setTimeout(() => {
-      setShowPersona(true);
-    }, 3000);
-
+    const revealPersonaTimer = window.setTimeout(() => setShowPersona(true), 900);
     const bootingTimer = window.setTimeout(() => {
       setBooting(false);
-    }, 5000);
-
+      if (messages.length === 0) {
+        setMessages([{
+          role: 'assistant',
+          content: `Hi, I'm ${persona.name}. Ask me anything about Knoxified, or how it'd work for your business.`,
+        }]);
+      }
+    }, 1500);
     return () => {
       window.clearTimeout(revealPersonaTimer);
       window.clearTimeout(bootingTimer);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   useEffect(() => {
-    if (!isOpen) return;
+    scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: 'smooth' });
+  }, [messages, isSending]);
 
-    const containerId = 'bp-webchat-container';
-    const container = document.getElementById(containerId);
+  const sendMessage = async () => {
+    const trimmed = input.trim();
+    if (!trimmed || isSending) return;
 
-    if (!container) return;
+    const nextMessages: ChatMessage[] = [...messages, { role: 'user', content: trimmed }];
+    setMessages(nextMessages);
+    setInput('');
+    setIsSending(true);
 
-    const initializeWebchat = () => {
-      const bp = (window as Window & { botpressWebChat?: { init?: (config: Record<string, unknown>) => void } }).botpressWebChat;
-
-      if (!bp?.init) {
-        window.setTimeout(initializeWebchat, 250);
-        return;
-      }
-
-      container.innerHTML = '';
-      bp.init({
-        containerId,
-        hostUrl: 'https://cdn.botpress.cloud/webchat/v1',
-        messagingUrl: 'https://messaging.botpress.cloud',
-        clientId,
-        botName: persona.name,
-        botAvatarUrl: persona.avatar,
-        composerPlaceholder: `Chat with ${persona.name}`,
-        botConversationDescription: 'AI automation assistant for Knoxified',
-        useSessionStorage: true,
-        showCloseButton: true,
-        hideWidget: true,
-        themeName: 'prism',
-        color: '#06b6d4',
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: nextMessages }),
       });
-    };
-
-    const existingScript = document.querySelector('script[src="https://cdn.botpress.cloud/webchat/v1/inject.js"]');
-
-    if ((window as Window & { botpressWebChat?: unknown }).botpressWebChat) {
-      initializeWebchat();
-      return;
+      const data = await res.json();
+      setMessages(prev => [...prev, { role: 'assistant', content: data.text || "I didn't quite catch that -- could you rephrase?" }]);
+    } catch {
+      setMessages(prev => [...prev, { role: 'assistant', content: "I'm having trouble connecting right now. Please try again in a moment." }]);
+    } finally {
+      setIsSending(false);
     }
-
-    if (existingScript) {
-      existingScript.addEventListener('load', initializeWebchat, { once: true });
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src = 'https://cdn.botpress.cloud/webchat/v1/inject.js';
-    script.async = true;
-    script.onload = initializeWebchat;
-    document.body.appendChild(script);
-  }, [isOpen, persona.avatar, persona.name]);
+  };
 
   return (
     <>
@@ -188,8 +165,8 @@ export function ChatBot() {
                 </div>
               </div>
             ) : (
-              <div className="w-full h-full bg-slate-900">
-                <div className="flex items-center justify-between border-b border-slate-700 bg-slate-900 px-4 py-3 text-white">
+              <div className="w-full h-full bg-slate-900 flex flex-col">
+                <div className="flex items-center justify-between border-b border-slate-700 bg-slate-900 px-4 py-3 text-white shrink-0">
                   <div className="flex items-center gap-3">
                     <div className="relative h-8 w-8 overflow-hidden rounded-full">
                       <Image src={persona.avatar} alt={persona.name} fill sizes="32px" className="object-cover" />
@@ -213,7 +190,51 @@ export function ChatBot() {
                     <X className="h-5 w-5" />
                   </button>
                 </div>
-                <div id="bp-webchat-container" className="h-[calc(100%-57px)] w-full bg-slate-900" />
+
+                <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
+                  {messages.map((m, i) => (
+                    <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                      <div
+                        className={`max-w-[80%] rounded-2xl px-3.5 py-2 text-sm leading-relaxed ${
+                          m.role === 'user'
+                            ? 'bg-cyan-500 text-slate-950 rounded-br-sm'
+                            : 'bg-slate-800 text-slate-200 border border-slate-700 rounded-bl-sm'
+                        }`}
+                      >
+                        {m.content}
+                      </div>
+                    </div>
+                  ))}
+                  {isSending && (
+                    <div className="flex justify-start">
+                      <div className="bg-slate-800 border border-slate-700 rounded-2xl rounded-bl-sm px-3.5 py-2.5 flex gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-500 animate-bounce [animation-delay:-0.3s]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-500 animate-bounce [animation-delay:-0.15s]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-500 animate-bounce" />
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="border-t border-slate-700 p-3 shrink-0">
+                  <div className="flex items-center gap-2">
+                    <input
+                      value={input}
+                      onChange={e => setInput(e.target.value)}
+                      onKeyDown={e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); } }}
+                      placeholder={`Message ${persona.name}...`}
+                      className="flex-1 bg-slate-800 border border-slate-700 rounded-full px-4 py-2 text-sm text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-cyan-500/60"
+                    />
+                    <button
+                      onClick={sendMessage}
+                      disabled={!input.trim() || isSending}
+                      aria-label="Send message"
+                      className="shrink-0 w-9 h-9 rounded-full bg-cyan-500 hover:bg-cyan-400 disabled:bg-slate-700 disabled:cursor-not-allowed flex items-center justify-center transition-colors"
+                    >
+                      <Send className="w-4 h-4 text-slate-950" />
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </motion.div>
