@@ -139,6 +139,47 @@ function IndustryStatsTicker() {
   );
 }
 
+// Real infrastructure Knoxified is actually built on -- telephony, TTS/STT,
+// LLM inference, automation, and hosting. Text wordmarks rather than
+// reproduced logo artwork (avoids any trademark/branding-guideline
+// mismatch), same infinite-scroll treatment as before, just true.
+const INFRASTRUCTURE_VENDORS = [
+  'Twilio', 'Telnyx', 'Cartesia', 'Deepgram', 'Groq', 'OpenAI', 'Anthropic',
+  'DeepSeek', 'OpenRouter', 'NVIDIA', 'Cloudflare', 'Supabase', 'n8n',
+  'Make', 'Zapier', 'Google', 'Microsoft', 'GitHub',
+];
+
+function InfrastructureMarquee() {
+  return (
+    <section className="w-full relative z-10 py-10 overflow-hidden">
+      <div className="container mx-auto px-4 text-center mb-8">
+        <p className="text-sm font-medium text-slate-500 uppercase tracking-widest">Built on real, established infrastructure</p>
+      </div>
+
+      <div className="relative w-full flex overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
+        <motion.div
+          className="flex whitespace-nowrap items-center flex-nowrap"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ ease: "linear", duration: 40, repeat: Infinity }}
+        >
+          {[...Array(2)].map((_, dupeIndex) => (
+            <div key={dupeIndex} className="flex gap-12 md:gap-16 items-center px-6 md:px-8 flex-nowrap">
+              {INFRASTRUCTURE_VENDORS.map((name) => (
+                <span
+                  key={name}
+                  className="font-bold text-xl tracking-tighter text-slate-400 opacity-50 hover:opacity-100 transition-opacity"
+                >
+                  {name}
+                </span>
+              ))}
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 const swipeConfidenceThreshold = 10000;
 const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
@@ -324,6 +365,7 @@ export default function HomePage() {
           rather than the more dramatic single-source figures floating
           around -- defensible over impressive. */}
       <IndustryStatsTicker />
+      <InfrastructureMarquee />
 
       {/* Manual Hell vs Automated Heaven */}
       <motion.section 
