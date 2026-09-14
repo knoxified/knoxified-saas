@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 import { PhoneOff, Bot, Clock, TrendingUp, CheckCircle2, ChevronRight, MessageSquare, Zap, XCircle, ArrowRight, Activity, CalendarDays, Inbox, Building, ShieldCheck, Globe, Star, Play, Pause } from 'lucide-react';
+import { VENDOR_LOGOS, TEXT_ONLY_VENDORS } from '@/lib/vendor-logos';
 
 const testimonials = [
   {
@@ -140,13 +141,15 @@ function IndustryStatsTicker() {
 }
 
 // Real infrastructure Knoxified is actually built on -- telephony, TTS/STT,
-// LLM inference, automation, and hosting. Text wordmarks rather than
-// reproduced logo artwork (avoids any trademark/branding-guideline
-// mismatch), same infinite-scroll treatment as before, just true.
-const INFRASTRUCTURE_VENDORS = [
-  'Twilio', 'Telnyx', 'Cartesia', 'Deepgram', 'Groq', 'OpenAI', 'Anthropic',
-  'DeepSeek', 'OpenRouter', 'NVIDIA', 'Cloudflare', 'Supabase', 'n8n',
-  'Make', 'Zapier', 'Google', 'Microsoft', 'GitHub',
+// LLM inference, automation, and hosting. Real SVG brand marks (via the
+// simple-icons package, CC0 licensed, no attribution required) for every
+// vendor confirmed available in that library; a clean text wordmark for
+// the handful that aren't in it (Twilio, Telnyx, Cartesia, Groq, OpenAI,
+// Microsoft -- verified missing, not just unchecked), so nothing here is
+// an invented or mismatched logo.
+const INFRASTRUCTURE_ITEMS = [
+  ...VENDOR_LOGOS.map((v) => ({ type: 'logo' as const, ...v })),
+  ...TEXT_ONLY_VENDORS.map((name) => ({ type: 'text' as const, name })),
 ];
 
 function InfrastructureMarquee() {
@@ -160,18 +163,37 @@ function InfrastructureMarquee() {
         <motion.div
           className="flex whitespace-nowrap items-center flex-nowrap"
           animate={{ x: ["0%", "-50%"] }}
-          transition={{ ease: "linear", duration: 40, repeat: Infinity }}
+          transition={{ ease: "linear", duration: 44, repeat: Infinity }}
         >
           {[...Array(2)].map((_, dupeIndex) => (
             <div key={dupeIndex} className="flex gap-12 md:gap-16 items-center px-6 md:px-8 flex-nowrap">
-              {INFRASTRUCTURE_VENDORS.map((name) => (
-                <span
-                  key={name}
-                  className="font-bold text-xl tracking-tighter text-slate-400 opacity-50 hover:opacity-100 transition-opacity"
-                >
-                  {name}
-                </span>
-              ))}
+              {INFRASTRUCTURE_ITEMS.map((item, i) =>
+                item.type === 'logo' ? (
+                  <div
+                    key={`${item.name}-${i}`}
+                    className="group flex items-center gap-2.5 opacity-50 hover:opacity-100 transition-opacity"
+                    title={item.name}
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="w-6 h-6 fill-slate-400 group-hover:fill-[var(--vendor-hex)] transition-colors"
+                      style={{ ['--vendor-hex' as any]: item.hex }}
+                    >
+                      <path d={item.path} />
+                    </svg>
+                    <span className="font-semibold text-lg tracking-tight text-slate-400 group-hover:text-slate-200 transition-colors">
+                      {item.name}
+                    </span>
+                  </div>
+                ) : (
+                  <span
+                    key={`${item.name}-${i}`}
+                    className="font-bold text-xl tracking-tighter text-slate-400 opacity-50 hover:opacity-100 transition-opacity"
+                  >
+                    {item.name}
+                  </span>
+                )
+              )}
             </div>
           ))}
         </motion.div>
