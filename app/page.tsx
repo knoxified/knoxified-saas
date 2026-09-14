@@ -724,15 +724,9 @@ export default function HomePage() {
               <h3 className="text-xl font-bold text-slate-50 mb-2">Pro</h3>
               <p className="text-sm text-cyan-400">The complete growth engine for scaling teams.</p>
             </div>
-            <div className="mb-4 flex items-baseline gap-1">
+            <div className="mb-6 flex items-baseline gap-1">
               <span className="text-5xl font-bold text-slate-50">$697</span>
               <span className="text-slate-400">/mo</span>
-            </div>
-            <div className="mb-6 flex items-start gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2.5">
-              <Zap className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-              <p className="text-xs text-amber-200 leading-relaxed">
-                <span className="font-semibold">Founding Rate available.</span> Try your agent once during your trial and your rate locks in for good &mdash; before it goes up.
-              </p>
             </div>
             <ul className="space-y-4 mb-8 flex-1">
               <li className="flex items-start gap-3 text-sm text-white">
