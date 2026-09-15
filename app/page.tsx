@@ -728,12 +728,6 @@ export default function HomePage() {
               <span className="text-5xl font-bold text-slate-50">$697</span>
               <span className="text-slate-400">/mo</span>
             </div>
-            <div className="mb-6 flex items-start gap-2 rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2.5">
-              <Zap className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
-              <p className="text-xs text-amber-200 leading-relaxed">
-                <span className="font-semibold">Upgrade within 48 hours of signing up</span> and your first month is $397 instead of $697. Renews at $697/mo after that.
-              </p>
-            </div>
             <ul className="space-y-4 mb-8 flex-1">
               <li className="flex items-start gap-3 text-sm text-white">
                 <CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
