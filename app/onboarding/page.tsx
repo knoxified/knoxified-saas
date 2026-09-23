@@ -87,6 +87,7 @@ const AVATAR_CHOICES = [
   { key: 'avatar8', seed: 'knx-notion-8' },
   { key: 'avatar9', seed: 'knx-notion-9' },
   { key: 'avatar10', seed: 'knx-notion-10' },
+  { key: 'calista', seed: 'calista' },
 ];
 
 function avatarSvg(choice: typeof AVATAR_CHOICES[number], size = 56) {
