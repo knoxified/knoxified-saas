@@ -268,10 +268,10 @@ export default function HomeCareSystemPage() {
 
       <SystemAutomations automations={[
   {
-    "title": "LeadLoom",
-    "icon": "🎯",
-    "description": "Engages every inbound inquiry the moment it comes in, screening gently before handoff to your care coordinator.",
-    "href": "/automations/leadloom"
+    "title": "CarePulse",
+    "icon": "🩺",
+    "description": "Triggers gentle post-visit check-ins with families to monitor satisfaction and catch concerns early.",
+    "href": "/automations/carepulse"
   },
   {
     "title": "AppointMate",

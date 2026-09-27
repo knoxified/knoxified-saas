@@ -226,10 +226,10 @@ export default function MedSpaSystemPage() {
 
       <SystemAutomations automations={[
         {
-          "title": "LeadLoom",
-          "icon": "🧲",
-          "description": "Engages web visitors, educating them on treatments and driving direct consultation bookings.",
-          "href": "/automations/leadloom"
+          "title": "ProofPulse",
+          "icon": "⭐",
+          "description": "Triggers review requests after every successful treatment to keep your reputation compounding.",
+          "href": "/automations/proofpulse"
         },
         {
           "title": "AppointMate",

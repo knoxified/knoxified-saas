@@ -232,10 +232,10 @@ export default function ConstructionSystemPage() {
           "href": "/automations/estimate"
         },
         {
-          "title": "LeadLoom",
-          "icon": "🧲",
-          "description": "Engages top-of-funnel website visitors, answering specific service questions and screening project budgets.",
-          "href": "/automations/leadloom"
+          "title": "StatuSync",
+          "icon": "🚚",
+          "description": "Keeps clients informed with automated 'on-the-way' notifications and live ETAs for crews and inspectors.",
+          "href": "/automations/statusync"
         },
         {
           "title": "RouteMaster",

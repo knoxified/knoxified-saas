@@ -306,18 +306,6 @@ export default function DentalSystemPage() {
     "icon": "⭐",
     "description": "Triggers review requests to satisfied customers automatically after successful transactions or services.",
     "href": "/automations/proofpulse"
-  },
-  {
-    "title": "OmniServe",
-    "icon": "💬",
-    "description": "Triages and routes incoming support emails and chats to the appropriate department.",
-    "href": "/automations/omniserve"
-  },
-  {
-    "title": "ReplyBot",
-    "icon": "🤖",
-    "description": "Instantly answers common customer questions, deflecting basic inquiries away from human agents.",
-    "href": "/automations/replybot"
   }
 ]} />
 

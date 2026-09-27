@@ -313,10 +313,10 @@ export default function CorporateSystemPage() {
     "href": "/automations/signsync"
   },
   {
-    "title": "LeadLoom",
-    "icon": "🎯",
-    "description": "Routes incoming leads instantly to the correct sales rep based on territory, size, or round-robin rules.",
-    "href": "/automations/leadloom"
+    "title": "OnboardIQ",
+    "icon": "📑",
+    "description": "Automates new-hire document collection and IT provisioning requests the moment an offer is signed.",
+    "href": "/automations/onboardiq"
   }
 ]} />
 

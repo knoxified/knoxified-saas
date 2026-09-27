@@ -291,10 +291,10 @@ export default function HVACSystemPage() {
     "href": "/automations/statusync"
   },
   {
-    "title": "LeadLoom",
-    "icon": "🎯",
-    "description": "Routes incoming leads instantly to the correct sales rep based on territory, size, or round-robin rules.",
-    "href": "/automations/leadloom"
+    "title": "ReminderBot",
+    "icon": "⏰",
+    "description": "Sends seasonal maintenance recall reminders so tune-ups get booked before the next breakdown.",
+    "href": "/automations/reminderbot"
   },
   {
     "title": "ProofPulse",

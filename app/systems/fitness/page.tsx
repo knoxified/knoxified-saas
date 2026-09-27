@@ -223,10 +223,10 @@ export default function FitnessSystemPage() {
 
       <SystemAutomations automations={[
         {
-          "title": "LeadLoom",
-          "icon": "🧲",
-          "description": "Engages top-of-funnel website visitors, answering facility questions and driving them directly into free trials.",
-          "href": "/automations/leadloom"
+          "title": "OmniPulse",
+          "icon": "🚀",
+          "description": "Sends customer-authorized SMS updates for membership milestones, renewals, and re-engagement offers.",
+          "href": "/automations/omnipulse"
         },
         {
           "title": "AppointMate",

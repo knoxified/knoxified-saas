@@ -135,11 +135,6 @@ export default function AutomationsDirectory() {
     "href": "/automations/invoiceai"
   },
   {
-    "title": "LeadLoom 🎯",
-    "desc": "Routes incoming leads instantly to the correct sales rep based on territory, size, or round-robin rules.",
-    "href": "/automations/leadloom"
-  },
-  {
     "title": "FraudShield 🛑",
     "desc": "Monitors e-commerce transactions and flags highly suspicious orders for manual review.",
     "href": "/automations/fraudshield"

@@ -15,7 +15,6 @@ const enterpriseSystems = [
   { id: 'hotel', name: 'Hotel System', iconName: 'Building', desc: 'Elevates guest experiences through automated concierge-level service, upselling amenities and deflecting front-desk volume.', tier: 'Enterprise Tier', complexity: 'High' },
   { id: 'solar', name: 'Solar Consultant System', iconName: 'Sun', desc: 'Manages the multi-step solar qualification process, verifying homeowner leads to secure solid, ready-to-close appointments.', tier: 'Enterprise Tier', complexity: 'High' },
   { id: 'retail', name: 'Retail Frontdesk System', iconName: 'ShoppingBag', desc: 'Drives true sales volume by handling inventory questions instantly, providing VIP-level guidance that brings customers to the register.', tier: 'Enterprise Tier', complexity: 'High' },
-  { id: 'dental', name: 'Dental Receptionist System', iconName: 'Stethoscope', desc: 'Controls complex treatment scheduling and insurance verification to ensure your chairs stay full and patients stay engaged.', tier: 'Enterprise Tier', complexity: 'High' },
   { id: 'custom', name: 'Custom Agent System', iconName: 'Briefcase', desc: 'An exclusive, tailored AI operating system engineered specifically to resolve your exact bottlenecks and scale your unique capabilities.', tier: 'Custom Setup', complexity: 'Advanced' }
 ];
 
@@ -25,7 +24,9 @@ const proSystems = [
   { id: 'roofing', name: 'Roofing Estimator System', iconName: 'Hammer', desc: 'Catches storm damage leads instantly and schedules your inspections.', tier: 'Pro Tier', complexity: 'Standard' },
   { id: 'restaurant', name: 'Restaurant System', iconName: 'Utensils', desc: 'Takes reservations automatically and answers basic customer questions.', tier: 'Pro Tier', complexity: 'Standard' },
   { id: 'fitness', name: 'Gym & Fitness System', iconName: 'Dumbbell', desc: 'Answers membership inquiries and helps book trial passes for new visitors.', tier: 'Pro Tier', complexity: 'Standard' },
-  { id: 'automotive', name: 'Automotive Dealership System', iconName: 'Car', desc: 'Helps dealerships book test drives and log initial vehicle interest.', tier: 'Pro Tier', complexity: 'Standard' }
+  { id: 'automotive', name: 'Automotive Dealership System', iconName: 'Car', desc: 'Helps dealerships book test drives and log initial vehicle interest.', tier: 'Pro Tier', complexity: 'Standard' },
+  { id: 'dental', name: 'Dental Receptionist System', iconName: 'Stethoscope', desc: 'Controls complex treatment scheduling and insurance verification to ensure your chairs stay full and patients stay engaged.', tier: 'Pro Tier', complexity: 'Standard' },
+  { id: 'home-care', name: 'Home Care Intake System', iconName: 'HeartHandshake', desc: 'Answers family inquiries the moment they call, schedules the first assessment, and prepares intake paperwork automatically.', tier: 'Pro Tier', complexity: 'Standard' }
 ];
 
 const automations = [

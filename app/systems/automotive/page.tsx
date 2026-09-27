@@ -221,10 +221,10 @@ export default function AutomotiveSystemPage() {
 
       <SystemAutomations automations={[
         {
-          "title": "LeadLoom",
-          "icon": "🧲",
-          "description": "Engages top-of-funnel website visitors, answering inventory questions and screening financing requirements instantly.",
-          "href": "/automations/leadloom"
+          "title": "OmniServe",
+          "icon": "💬",
+          "description": "Routes incoming calls and messages straight to sales or service, so inquiries never sit in the wrong queue.",
+          "href": "/automations/omniserve"
         },
         {
           "title": "AppointMate",

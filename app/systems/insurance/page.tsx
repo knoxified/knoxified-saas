@@ -294,10 +294,10 @@ export default function InsuranceSystemPage() {
     "href": "/automations/signsync"
   },
   {
-    "title": "LeadLoom",
-    "icon": "🎯",
-    "description": "Routes incoming leads instantly to the correct sales rep based on territory, size, or round-robin rules.",
-    "href": "/automations/leadloom"
+    "title": "ReminderBot",
+    "icon": "⏰",
+    "description": "Sends timed renewal and document-deadline reminders so policies never lapse and claims paperwork never stalls.",
+    "href": "/automations/reminderbot"
   },
   {
     "title": "FraudShield",
