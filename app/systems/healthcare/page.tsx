@@ -13,7 +13,7 @@ export default function HealthcareSystemPage() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: `Healthcare Inquiry System`,
+    name: `Medical Practice Intake System`,
     description: 'Transform Patient Intake and Triage — 24/7, Clinically-Informed, Empathy-Driven',
     provider: {
       '@type': 'Organization',
@@ -35,7 +35,7 @@ export default function HealthcareSystemPage() {
              Healthcare First Responder
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-50 mb-6 tracking-tight leading-tight">
-            Healthcare Inquiry System
+            Medical Practice Intake System
           </h1>
           <p className="text-xl font-medium text-cyan-400 mb-6">
             Transform Patient Intake and Triage — 24/7, Clinically-Informed, Empathy-Driven
@@ -55,7 +55,7 @@ export default function HealthcareSystemPage() {
           />
           
           <Link href="/pricing" className="inline-flex px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white font-bold rounded-lg transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]">
-            Activate Healthcare System
+            Activate Medical Practice System
           </Link>
         </div>
         
@@ -63,7 +63,7 @@ export default function HealthcareSystemPage() {
           <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 blur-[100px] rounded-full pointer-events-none"></div>
           <div className="w-full aspect-square relative bg-slate-800/50 backdrop-blur-xl border border-slate-700 rounded-3xl p-8 overflow-hidden flex items-center justify-center transform transition-transform duration-700 hover:rotate-y-12 shadow-2xl">
             {/* The Logo */}
-            <img src="/hotel_system.png" alt="Healthcare Inquiry System Logo" className="w-[80%] h-[80%] object-contain mix-blend-screen opacity-90 drop-shadow-[0_0_50px_rgba(6,182,212,0.6)]" />
+            <img src="/hotel_system.png" alt="Medical Practice Intake System Logo" className="w-[80%] h-[80%] object-contain mix-blend-screen opacity-90 drop-shadow-[0_0_50px_rgba(6,182,212,0.6)]" />
             
             {/* Abstract Decorative Elements */}
             <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/20 blur-[50px] rounded-full mix-blend-screen"></div>
@@ -232,7 +232,7 @@ export default function HealthcareSystemPage() {
            <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-500/5 blur-[80px] rounded-full pointer-events-none"></div>
            <h3 className="text-3xl font-bold text-slate-50 mb-6 relative z-10">Role Overview</h3>
            <p className="text-slate-400 text-lg leading-relaxed mb-6 relative z-10">
-             Meet the ultimate digital triage specialist. Healthcare Inquiry System understands patient concerns, gauges urgency, and directs responses in real time, faster than any human workflow.
+             Meet the ultimate digital triage specialist. The Medical Practice Intake System understands patient concerns, gauges urgency, and directs responses in real time, faster than any human workflow.
            </p>
            <p className="text-slate-400 text-lg leading-relaxed mb-6 relative z-10">
              It books appointments, connects callers to medical professionals, or dispatches emergency services as needed. Emotionally calibrated yet operationally relentless.
@@ -323,7 +323,7 @@ export default function HealthcareSystemPage() {
              Transform patient intake and triage today.
            </p>
            <p className="text-lg text-slate-500 mb-10 max-w-2xl mx-auto">
-             Activate Healthcare Inquiry System, the always-on, clinically-informed, empathetic responder that safeguards patients, supports staff, and ensures every call is answered with intelligence and care.
+             Activate the Medical Practice Intake System, the always-on, clinically-informed, empathetic responder that safeguards patients, supports staff, and ensures every call is answered with intelligence and care.
            </p>
            
            <Link href="/pricing" className="inline-flex items-center gap-2 px-10 py-5 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-full transition-all shadow-[0_0_30px_rgba(6,182,212,0.4)] hover:shadow-[0_0_50px_rgba(6,182,212,0.6)] hover:-translate-y-1 text-lg">
