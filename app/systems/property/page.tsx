@@ -232,12 +232,6 @@ export default function PropertyManagementSystemPage() {
           "href": "/automations/maintainbot"
         },
         {
-          "title": "OmniServe",
-          "icon": "💬",
-          "description": "24/7 concierge for leasing questions, policy queries, and amenity availability across all properties.",
-          "href": "/automations/omniserve"
-        },
-        {
           "title": "PulsePay",
           "icon": "💳",
           "description": "Automates multi-channel rent reminders and seamless late-fee execution.",

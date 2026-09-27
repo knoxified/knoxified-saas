@@ -269,12 +269,6 @@ export default function SolarSystemPage() {
 
       <SystemAutomations automations={[
   {
-    "title": "QualiSync",
-    "icon": "🚀",
-    "description": "Engages new leads instantly via chat or SMS to vet them before handing off to sales.",
-    "href": "/automations/qualisync"
-  },
-  {
     "title": "AppointMate",
     "icon": "📅",
     "description": "Automates calendar availability, booking, and buffer time allocation to eliminate email ping-pong.",

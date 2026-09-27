@@ -303,12 +303,6 @@ export default function HealthcareSystemPage() {
     "description": "Manages the entire e-signature lifecycle, from sending to follow-ups and final storage.",
     "href": "/automations/signsync"
   },
-  {
-    "title": "OmniServe",
-    "icon": "💬",
-    "description": "Triages and routes incoming support emails and chats to the appropriate department.",
-    "href": "/automations/omniserve"
-  }
 ]} />
 
       {/* CTA Box */}

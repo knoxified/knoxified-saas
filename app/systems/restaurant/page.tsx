@@ -235,18 +235,6 @@ export default function RestaurantSystemPage() {
           "href": "/automations/caterbot"
         },
         {
-          "title": "OmniServe",
-          "icon": "💬",
-          "description": "24/7 concierge answering common FAQs around hours, parking, dress codes, and complex allergen menus across SMS and site chat.",
-          "href": "/automations/omniserve"
-        },
-        {
-          "title": "ReplyBot",
-          "icon": "📝",
-          "description": "Monitors Google Business and Yelp reviews, generating personalized, brand-aligned responses to mitigate negative feedback and boost SEO.",
-          "href": "/automations/replybot"
-        },
-        {
           "title": "ProofPulse",
           "icon": "⭐",
           "description": "Triggers customized review requests to satisfied diners automatically after successful meals to supercharge local search visibility.",

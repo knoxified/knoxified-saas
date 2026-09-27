@@ -244,12 +244,6 @@ export default function MedSpaSystemPage() {
           "href": "/automations/carepulse"
         },
         {
-          "title": "WinBackBot",
-          "icon": "🔥",
-          "description": "Automates reach-out to patients exactly when their results (like neurotoxins) are mathematically due to fade.",
-          "href": "/automations/winbackbot"
-        },
-        {
           "title": "ReminderBot",
           "icon": "⏰",
           "description": "Ensures adherence to required pre-care instructions (like avoiding blood thinners) while confirming appointments.",

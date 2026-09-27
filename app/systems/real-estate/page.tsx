@@ -285,12 +285,6 @@ export default function RealEstateSystemPage() {
 
       <SystemAutomations automations={[
   {
-    "title": "QualiSync",
-    "icon": "🚀",
-    "description": "Engages new leads instantly via chat or SMS to vet them before handing off to sales.",
-    "href": "/automations/qualisync"
-  },
-  {
     "title": "DocuFlow",
     "icon": "📄",
     "description": "Auto-generates contracts, proposals, and reports from CRM data instantly.",

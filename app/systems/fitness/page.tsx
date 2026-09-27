@@ -241,12 +241,6 @@ export default function FitnessSystemPage() {
           "href": "/automations/reminderbot"
         },
         {
-          "title": "WinBackBot",
-          "icon": "🔥",
-          "description": "Identifies historically dormant accounts or recent cancelations and automatically re-engages them with personalized welcome-back discounts.",
-          "href": "/automations/winbackbot"
-        },
-        {
           "title": "ProofPulse",
           "icon": "⭐",
           "description": "Detects high-attendance check-ins and prompts the most active members to leave glowing local reviews.",

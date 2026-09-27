@@ -30,11 +30,6 @@ export default function AutomationsDirectory() {
     "href": "/automations/caterbot"
   },
   {
-    "title": "WinBackBot 🔥",
-    "desc": "Helps teams prepare authorized follow-ups for existing clients with relevant service updates.",
-    "href": "/automations/winbackbot"
-  },
-  {
     "title": "MemoMind 🧠",
     "desc": "Automatically transcribes and summarizes meetings, capturing key decisions without manual effort.",
     "href": "/automations/memomind"
@@ -70,16 +65,6 @@ export default function AutomationsDirectory() {
     "href": "/automations/proofpulse"
   },
   {
-    "title": "OmniServe 💬",
-    "desc": "Triages and routes incoming support emails and chats to the appropriate department.",
-    "href": "/automations/omniserve"
-  },
-  {
-    "title": "ReplyBot 🤖",
-    "desc": "Instantly answers common customer questions, deflecting basic inquiries away from human agents.",
-    "href": "/automations/replybot"
-  },
-  {
     "title": "RouteMaster 🗺️",
     "desc": "Optimizes field service and delivery routes based on location, traffic, and schedule.",
     "href": "/automations/routemaster"
@@ -98,11 +83,6 @@ export default function AutomationsDirectory() {
     "title": "StockSentinel 📦",
     "desc": "Monitors inventory levels and automatically alerts procurement when stocks drop below critical metrics.",
     "href": "/automations/stocksentinel"
-  },
-  {
-    "title": "QualiSync 🚀",
-    "desc": "Engages new leads instantly via chat or SMS to vet them before handing off to sales.",
-    "href": "/automations/qualisync"
   },
   {
     "title": "ScreenSync 🤝",

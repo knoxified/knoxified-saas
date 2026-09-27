@@ -281,12 +281,6 @@ export default function RoofingSystemPage() {
 
       <SystemAutomations automations={[
   {
-    "title": "QualiSync",
-    "icon": "🚀",
-    "description": "Engages new leads instantly via chat or SMS to vet them before handing off to sales.",
-    "href": "/automations/qualisync"
-  },
-  {
     "title": "RouteMaster",
     "icon": "🗺️",
     "description": "Optimizes field service and delivery routes based on location, traffic, and schedule.",

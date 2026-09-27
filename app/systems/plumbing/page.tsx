@@ -291,12 +291,6 @@ export default function PlumbingSystemPage() {
     "href": "/automations/statusync"
   },
   {
-    "title": "QualiSync",
-    "icon": "🚀",
-    "description": "Engages new leads instantly via chat or SMS to vet them before handing off to sales.",
-    "href": "/automations/qualisync"
-  },
-  {
     "title": "ProofPulse",
     "icon": "⭐",
     "description": "Triggers review requests to satisfied customers automatically after successful transactions or services.",

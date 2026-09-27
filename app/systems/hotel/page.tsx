@@ -289,18 +289,6 @@ export default function HotelSystemPage() {
     "href": "/automations/proofpulse"
   },
   {
-    "title": "OmniServe",
-    "icon": "💬",
-    "description": "Triages and routes incoming support emails and chats to the appropriate department.",
-    "href": "/automations/omniserve"
-  },
-  {
-    "title": "ReplyBot",
-    "icon": "🤖",
-    "description": "Instantly answers common customer questions, deflecting basic inquiries away from human agents.",
-    "href": "/automations/replybot"
-  },
-  {
     "title": "OmniPulse",
     "icon": "🚀",
     "description": "Sends personalized SMS updates to opted-in customers based on their account activity.",

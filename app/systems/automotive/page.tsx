@@ -221,12 +221,6 @@ export default function AutomotiveSystemPage() {
 
       <SystemAutomations automations={[
         {
-          "title": "OmniServe",
-          "icon": "💬",
-          "description": "Routes incoming calls and messages straight to sales or service, so inquiries never sit in the wrong queue.",
-          "href": "/automations/omniserve"
-        },
-        {
           "title": "AppointMate",
           "icon": "📅",
           "description": "Automates test drive and service bay scheduling to eliminate the back-and-forth and keep schedules full.",
@@ -237,18 +231,6 @@ export default function AutomotiveSystemPage() {
           "icon": "⏰",
           "description": "Fires timely multi-channel reminders before sales appointments and service visits to slash no-show rates.",
           "href": "/automations/reminderbot"
-        },
-        {
-          "title": "WinBackBot",
-          "icon": "🔥",
-          "description": "Engages past buyers whose leases are ending or who are statistically due for a vehicle upgrade.",
-          "href": "/automations/winbackbot"
-        },
-        {
-          "title": "ReplyBot",
-          "icon": "💬",
-          "description": "Monitors dealer reviews across the web, auto-drafting thoughtful, professional replies to safeguard local reputation.",
-          "href": "/automations/replybot"
         },
         {
           "title": "ProofPulse",
