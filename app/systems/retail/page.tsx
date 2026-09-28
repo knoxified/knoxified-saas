@@ -1,10 +1,8 @@
 import { PhoneCall, CheckCircle2, ChevronRight, XCircle, ShoppingBag, BarChart, CreditCard, Globe } from 'lucide-react';
 
 import { SystemAutomations } from '@/app/components/system-automations';
-import { AnimatedCounter } from '@/app/components/animated-counter';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { BenchmarkWidget } from '@/app/components/benchmark-widget';
 import { AIVoiceSample } from '@/components/ui/ai-voice-sample';
 
 export default function RetailSystemPage() {
@@ -182,44 +180,6 @@ export default function RetailSystemPage() {
                   <span><strong>Promotion Guidance:</strong> Supports seasonal campaigns, flash sales, or in-store promotions based on real-time inventory and behavior.</span>
                 </li>
               </ul>
-            </div>
-         </div>
-      </div>
-
-      {/* Performance Summary Dashboard */}
-      <div className="mb-24">
-         <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">Performance Summary</h2>
-         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Sales Conversion</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={31} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Leads lost to slow responses & poor engagement" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Cart Abandonment</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={45} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Revenue lost from dropped transactions" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Transaction Speed</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={28} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Bottle necks created by manual processing" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Repeat Purchases</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={33} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Churn cost from lack of post-purchase engagement" />
             </div>
          </div>
       </div>

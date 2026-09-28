@@ -1,10 +1,8 @@
 import { PhoneCall, CheckCircle2, ChevronRight, XCircle, Calendar, Users, BarChart, Globe } from 'lucide-react';
 
 import { SystemAutomations } from '@/app/components/system-automations';
-import { AnimatedCounter } from '@/app/components/animated-counter';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { BenchmarkWidget } from '@/app/components/benchmark-widget';
 import { AIVoiceSample } from '@/components/ui/ai-voice-sample';
 
 export default function RecruitmentSystemPage() {
@@ -186,44 +184,6 @@ export default function RecruitmentSystemPage() {
                   <span><strong>Recruiter Review Support:</strong> Collects post-interview feedback and organizes preliminary notes for human review.</span>
                 </li>
               </ul>
-            </div>
-         </div>
-      </div>
-
-      {/* Performance Summary Dashboard */}
-      <div className="mb-24">
-         <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">Performance Summary</h2>
-         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Placement Cycles</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={25} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Every hour of delay increases drop-off risk by 18%" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Admin Workload</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={40} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Recruiter fatigue leads to stalled pipelines and lost placements" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Candidate Engagement</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={24} prefix="" suffix="/7" /></div>
-              </div>
-              <BenchmarkWidget description="Top talent goes off-market within 10 days on average" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Offer Acceptance</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={35} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Top talent rejects offers due to slow timelines" />
             </div>
          </div>
       </div>

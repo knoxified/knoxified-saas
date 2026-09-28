@@ -1,10 +1,8 @@
 import { PhoneCall, CheckCircle2, ChevronRight, XCircle, Car, Calendar, Users, Wrench } from 'lucide-react';
 
 import { SystemAutomations } from '@/app/components/system-automations';
-import { AnimatedCounter } from '@/app/components/animated-counter';
 import Link from 'next/link';
 
-import { BenchmarkWidget } from '@/app/components/benchmark-widget';
 import { AIVoiceSample } from '@/components/ui/ai-voice-sample';
 
 export default function AutomotiveSystemPage() {
@@ -147,44 +145,6 @@ export default function AutomotiveSystemPage() {
          </div>
       </div>
 
-      {/* Performance Summary Dashboard */}
-      <div className="mb-24">
-         <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">Performance Summary</h2>
-         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Showroom Visits</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={42} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Higher test-drive booking and show rates" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Lead Decay</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={85} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Instant engagement prevents leads from shopping elsewhere" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Service Retention</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={30} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="More past buyers returning for routine maintenance" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Sales Efficiency</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={25} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Sales reps spend less time qualifying, more time closing" />
-            </div>
-         </div>
-      </div>
-
       {/* Role Overview & Benefits */}
       <div className="grid md:grid-cols-2 gap-12 mb-24">
         <div className="p-8 md:p-12 rounded-3xl bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 relative overflow-hidden">
@@ -199,7 +159,7 @@ export default function AutomotiveSystemPage() {
            <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500/5 blur-[80px] rounded-full pointer-events-none"></div>
            <h3 className="text-3xl font-bold text-slate-50 mb-6 relative z-10">Why Dealerships Love It</h3>
            <p className="text-slate-400 text-lg leading-relaxed mb-6 relative z-10">
-             Buyers move fast. If you don&apos;t respond in minutes, your competitor will. Dealerships report:
+             Buyers move fast. If you don&apos;t respond in minutes, your competitor will. Here is what this system is designed to deliver:
            </p>
            
            <div className="space-y-4 relative z-10">

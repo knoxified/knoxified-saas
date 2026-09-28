@@ -3,10 +3,8 @@ import { ClipboardCheck, Clock } from 'lucide-react';
 import { PhoneCall, CheckCircle2, ChevronRight, XCircle, Users, Hammer, Truck } from 'lucide-react';
 
 import { SystemAutomations } from '@/app/components/system-automations';
-import { AnimatedCounter } from '@/app/components/animated-counter';
 import Link from 'next/link';
 
-import { BenchmarkWidget } from '@/app/components/benchmark-widget';
 import { AIVoiceSample } from '@/components/ui/ai-voice-sample';
 
 export default function ConstructionSystemPage() {
@@ -148,44 +146,6 @@ export default function ConstructionSystemPage() {
                   <span><strong>Emergency Intake:</strong> Automatically triage and escalate emergency requests (e.g., burst pipes, roof leaks) outside normal business hours.</span>
                 </li>
               </ul>
-            </div>
-         </div>
-      </div>
-
-      {/* Performance Summary Dashboard */}
-      <div className="mb-24">
-         <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">Performance Summary</h2>
-         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Lead Conversion</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={38} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Higher conversion rates simply by responding within 5 minutes" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Estimator Time</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={15} prefix="+" suffix="hrs" /></div>
-              </div>
-              <BenchmarkWidget description="Saved per week per estimator on administrative back-and-forth" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">No-Shows</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={60} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Reduction in missed homeowner estimation appointments" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Local Reviews</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={22} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Increase in local 5-star SEO rankings via automated prompts" />
             </div>
          </div>
       </div>

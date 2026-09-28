@@ -3,10 +3,8 @@ import { HeartHandshake, FileText } from 'lucide-react';
 import { PhoneCall, CheckCircle2, ChevronRight, XCircle, Calendar } from 'lucide-react';
 
 import { SystemAutomations } from '@/app/components/system-automations';
-import { AnimatedCounter } from '@/app/components/animated-counter';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { BenchmarkWidget } from '@/app/components/benchmark-widget';
 import { AIVoiceSample } from '@/components/ui/ai-voice-sample';
 
 export default function HomeCareSystemPage() {
@@ -172,44 +170,6 @@ export default function HomeCareSystemPage() {
                   <span><strong>Bilingual Capabilities:</strong> Comfortably manages English and Spanish inquiries to serve more families in your community.</span>
                 </li>
               </ul>
-            </div>
-         </div>
-      </div>
-
-      {/* Performance Summary Dashboard */}
-      <div className="mb-24">
-         <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">Performance Summary</h2>
-         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Inquiry Conversion</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={38} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Families lost to the agency that answered first" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">After-Hours Bookings</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={54} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Inquiries that come in outside routine 9-5 office hours" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Assessment No-Shows</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={31} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Wasted coordinator time on missed first-assessment visits" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Admin Overhead</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={40} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Office staff hours spent on intake calls and paperwork prep" />
             </div>
          </div>
       </div>

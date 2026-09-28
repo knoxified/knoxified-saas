@@ -1,10 +1,8 @@
 import { PhoneCall, CheckCircle2, ChevronRight, XCircle, Calendar, Users, Briefcase, Utensils, Globe } from 'lucide-react';
 
 import { SystemAutomations } from '@/app/components/system-automations';
-import { AnimatedCounter } from '@/app/components/animated-counter';
 import Link from 'next/link';
 
-import { BenchmarkWidget } from '@/app/components/benchmark-widget';
 import { AIVoiceSample } from '@/components/ui/ai-voice-sample';
 
 export default function RestaurantSystemPage() {
@@ -149,44 +147,6 @@ export default function RestaurantSystemPage() {
          </div>
       </div>
 
-      {/* Performance Summary Dashboard */}
-      <div className="mb-24">
-         <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">Performance Summary</h2>
-         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Reservations</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={30} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Increase in captured bookings during peak hours" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Waitlist Drop-off</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={45} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Reduction in no-shows and queue abandonment" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Catering Leads</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={60} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Higher conversion from fast, automated inquiry responses" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Loyalty</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={22} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Repeat visits generated from automated follow-ups" />
-            </div>
-         </div>
-      </div>
-
       {/* Role Overview & Benefits */}
       <div className="grid md:grid-cols-2 gap-12 mb-24">
         <div className="p-8 md:p-12 rounded-3xl bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 relative overflow-hidden">
@@ -201,7 +161,7 @@ export default function RestaurantSystemPage() {
            <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500/5 blur-[80px] rounded-full pointer-events-none"></div>
            <h3 className="text-3xl font-bold text-slate-50 mb-6 relative z-10">Why Restaurants Love It</h3>
            <p className="text-slate-400 text-lg leading-relaxed mb-6 relative z-10">
-             Missed calls and long waitlines result in lost diners and frustrated staff. Restaurants report:
+             Missed calls and long waitlines result in lost diners and frustrated staff. Here is what this system is designed to deliver:
            </p>
            
            <div className="space-y-4 relative z-10">

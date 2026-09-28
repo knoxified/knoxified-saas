@@ -1,10 +1,8 @@
 import { PhoneCall, CheckCircle2, ChevronRight, XCircle, Calendar, Users, Video, Briefcase, BarChart } from 'lucide-react';
 
 import { SystemAutomations } from '@/app/components/system-automations';
-import { AnimatedCounter } from '@/app/components/animated-counter';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { BenchmarkWidget } from '@/app/components/benchmark-widget';
 import { AIVoiceSample } from '@/components/ui/ai-voice-sample';
 
 export default function CorporateSystemPage() {
@@ -189,44 +187,6 @@ export default function CorporateSystemPage() {
                   <span><strong>Integration Ready:</strong> Connects with Slack, Teams, Zoom, Google Workspace, Outlook, and CRMs for fully synchronized operations.</span>
                 </li>
               </ul>
-            </div>
-         </div>
-      </div>
-
-      {/* Performance Summary Dashboard */}
-      <div className="mb-24">
-         <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">Performance Summary</h2>
-         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Time Saved Weekly</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={12} prefix="+" suffix=" Hrs" /></div>
-              </div>
-              <BenchmarkWidget description="Productivity lost to scheduling chaos & admin" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Summary Accuracy</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={95} prefix="" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Human error in note-taking and missed details" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Action Follow-ups</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={100} prefix="" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Delayed decisions and forgotten follow-ups" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Manual Workload</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={50} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="High opportunity cost of executive time wasted" />
             </div>
          </div>
       </div>

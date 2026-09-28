@@ -1,5 +1,6 @@
 
 import Link from 'next/link';
+import { ComingSoonBadge, isLiveAutomation } from '../components/automation-status';
 import { Bot, ChevronRight, Zap, Target, BarChart, Settings, Repeat } from 'lucide-react';
 
 export default function AutomationsDirectory() {
@@ -176,7 +177,7 @@ export default function AutomationsDirectory() {
              <div className="bg-slate-800/40 border border-slate-700/50 hover:border-cyan-500/50 rounded-2xl p-8 h-full transition-all hover:bg-slate-800/80 hover:-translate-y-1 shadow-lg flex flex-col justify-between">
                 <div>
                    <h3 className="text-2xl font-bold text-slate-50 mb-4 flex items-center justify-between">
-                     <span>{auto.title}</span>
+                     <span>{auto.title}</span>{!isLiveAutomation(auto.href) && <ComingSoonBadge />}
                      <ChevronRight className="w-5 h-5 text-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                    </h3>
                    <p className="text-slate-400 leading-relaxed mb-6">

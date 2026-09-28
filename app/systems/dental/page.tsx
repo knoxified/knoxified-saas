@@ -1,10 +1,8 @@
-import { PhoneCall, CheckCircle2, ChevronRight, XCircle, Briefcase, BarChart, Globe } from 'lucide-react';
+import { PhoneCall, CheckCircle2, ChevronRight, XCircle, Briefcase, Globe } from 'lucide-react';
 
 import { SystemAutomations } from '@/app/components/system-automations';
-import { AnimatedCounter } from '@/app/components/animated-counter';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { BenchmarkWidget } from '@/app/components/benchmark-widget';
 import { AIVoiceSample } from '@/components/ui/ai-voice-sample';
 
 export default function DentalSystemPage() {
@@ -73,160 +71,87 @@ export default function DentalSystemPage() {
       {/* Features Grid */}
       <div className="mb-24">
          <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">Core Competencies</h2>
-         
+
          <div className="grid md:grid-cols-2 gap-8">
-{/* Voice Capability Add-on */}<div className="p-8 rounded-2xl bg-slate-800/60 backdrop-blur-md border border-slate-700/50 hover:border-cyan-500/30 transition-all shadow-xl"><div className="flex items-center gap-4 mb-6"><div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400"><PhoneCall className="w-6 h-6" /></div><h3 className="text-2xl font-bold text-slate-50">Inbound &amp; Proactive Voice</h3></div><ul className="space-y-5"><li className="flex items-start gap-3 text-slate-300"><CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" /><span><strong>Inbound Handling:</strong> Instantly answers and routes incoming calls 24/7 without placing customers on hold.</span></li><li className="flex items-start gap-3 text-slate-300"><CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" /><span><strong>Proactive Follow-Up Calling:</strong> Places follow-up, confirmation, and re-engagement calls to your existing customers and leads, based on their prior consent.</span></li></ul></div>
             {/* Category 1 */}
             <div className="p-8 rounded-2xl bg-slate-800/60 backdrop-blur-md border border-slate-700/50 hover:border-cyan-500/30 transition-all shadow-xl">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
                   <PhoneCall className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-50">Patient Engagement & Call Management</h3>
+                <h3 className="text-2xl font-bold text-slate-50">Inbound Call Handling</h3>
               </div>
               <ul className="space-y-5">
                 <li className="flex items-start gap-3 text-slate-300">
                   <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Instant Call Response:</strong> Answers every call with natural empathy, eliminating hold times and dropped calls.</span>
+                  <span><strong>24/7 Answering:</strong> Instantly answers and routes incoming calls around the clock, no hold music, no voicemail wall.</span>
                 </li>
                 <li className="flex items-start gap-3 text-slate-300">
                   <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Appointment Handling:</strong> Books, reschedules, and cancels appointments in real time, fully synced with clinic calendars and patient management systems.</span>
-                </li>
-                <li className="flex items-start gap-3 text-slate-300">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>New Patient Intake:</strong> Collects names, contacts, insurance, and treatment needs automatically.</span>
-                </li>
-                <li className="flex items-start gap-3 text-slate-300">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Emergency Detection:</strong> Identifies urgent cases via tone, keywords, and patient history, routing directly to dentists or assistants.</span>
+                  <span><strong>Automatic Intake:</strong> Collects the caller&apos;s name, contact details, and reason for calling during the conversation, so your team has the context before they ever pick up.</span>
                 </li>
               </ul>
             </div>
-
             {/* Category 2 */}
             <div className="p-8 rounded-2xl bg-slate-800/60 backdrop-blur-md border border-slate-700/50 hover:border-cyan-500/30 transition-all shadow-xl">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
                   <Briefcase className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-50">Clinical & Operational Coordination</h3>
+                <h3 className="text-2xl font-bold text-slate-50">Appointment Scheduling</h3>
               </div>
               <ul className="space-y-5">
                 <li className="flex items-start gap-3 text-slate-300">
                   <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Record Retrieval:</strong> Accesses patient files securely to personalize every interaction.</span>
+                  <span><strong>Real-Time Booking:</strong> Books, reschedules, and cancels appointments live, checked against your connected calendar so nothing double-books.</span>
                 </li>
                 <li className="flex items-start gap-3 text-slate-300">
                   <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Staff Handoff & Escalation:</strong> Connects calls to staff, leaves detailed voice notes, or escalates priority cases instantly.</span>
-                </li>
-                <li className="flex items-start gap-3 text-slate-300">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Recall & Follow-Up Campaigns:</strong> Manages hygiene recalls, overdue treatments, and follow-ups automatically.</span>
-                </li>
-                <li className="flex items-start gap-3 text-slate-300">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Insurance & Billing Support:</strong> Handles verification and basic billing inquiries without staff intervention.</span>
+                  <span><strong>Coming soon:</strong> automated confirmation and reminder messages ahead of the appointment to cut down no-shows.</span>
                 </li>
               </ul>
             </div>
-
             {/* Category 3 */}
+            <div className="p-8 rounded-2xl bg-slate-800/60 backdrop-blur-md border border-slate-700/50 hover:border-cyan-500/30 transition-all shadow-xl">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
+                  <XCircle className="w-6 h-6" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-50">Call Routing &amp; Escalation</h3>
+              </div>
+              <ul className="space-y-5">
+                <li className="flex items-start gap-3 text-slate-300">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
+                  <span><strong>Keyword-Triggered Transfer:</strong> You set the words and phrases that matter (like a dental emergency, or a billing dispute) and a number to send them to; the agent transfers the live call the moment it hears one.</span>
+                </li>
+                <li className="flex items-start gap-3 text-slate-300">
+                  <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
+                  <span><strong>Coming soon:</strong> reaching your on-call dentist in the background while staying on the line with the caller, so the call never just ends if no one picks up.</span>
+                </li>
+              </ul>
+            </div>
+            {/* Category 4 */}
             <div className="p-8 rounded-2xl bg-slate-800/60 backdrop-blur-md border border-slate-700/50 hover:border-cyan-500/30 transition-all shadow-xl">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
                   <Globe className="w-6 h-6" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-50">Patient Experience & Personalization</h3>
+                <h3 className="text-2xl font-bold text-slate-50">Practice Knowledge</h3>
               </div>
               <ul className="space-y-5">
                 <li className="flex items-start gap-3 text-slate-300">
                   <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Multilingual & Accent Adaptation:</strong> Communicates naturally across languages and patient preferences.</span>
+                  <span><strong>Answers From Your Business Summary:</strong> Hours, location, accepted insurance, and procedure questions, answered consistently from the details you give it, no person needed.</span>
                 </li>
                 <li className="flex items-start gap-3 text-slate-300">
                   <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Procedure Guidance:</strong> Explains preparation steps, post-care instructions, and additional services like whitening or aligners consistently.</span>
-                </li>
-                <li className="flex items-start gap-3 text-slate-300">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Patient Feedback Capture:</strong> Flags dissatisfaction, treatment opportunities, and questions for follow-up.</span>
-                </li>
-                <li className="flex items-start gap-3 text-slate-300">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Reminders & Notifications:</strong> Sends automated confirmations via call, SMS, or email to reduce no-shows.</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Category 4 */}
-            <div className="p-8 rounded-2xl bg-slate-800/60 backdrop-blur-md border border-slate-700/50 hover:border-cyan-500/30 transition-all shadow-xl">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-                  <BarChart className="w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-bold text-slate-50">Analytics & Performance Insights</h3>
-              </div>
-              <ul className="space-y-5">
-                <li className="flex items-start gap-3 text-slate-300">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Front-Desk Dashboards:</strong> Summarizes call volume, peak hours, cancellations, emergencies, and bookings.</span>
-                </li>
-                <li className="flex items-start gap-3 text-slate-300">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Trend Monitoring:</strong> Detects recurring questions, operational gaps, and patient education opportunities.</span>
-                </li>
-                <li className="flex items-start gap-3 text-slate-300">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>EMR/EHR Integration:</strong> Feeds structured data directly into patient records, payment portals, and engagement platforms.</span>
-                </li>
-                <li className="flex items-start gap-3 text-slate-300">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Workload Optimization:</strong> Tracks staff and patient flow to maximize efficiency and resource allocation.</span>
+                  <span><strong>Coming soon:</strong> multilingual conversations and automated review requests after a visit.</span>
                 </li>
               </ul>
             </div>
          </div>
       </div>
 
-      {/* Performance Summary Dashboard */}
-      <div className="mb-24">
-         <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">Performance Summary</h2>
-         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Appointments Booked</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={45} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="25% empty chair time due to missed callbacks" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">No-Show Rate</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={60} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="15% industry avg no-shows without automated follow-ups" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Call Answer Rate</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={100} prefix="" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="34% missed calls during peak clinic hours" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Intake Efficiency</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={85} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="60% of front desk time lost on manual data entry" />
-            </div>
-         </div>
-      </div>
 
       {/* Role Overview & Benefits */}
       <div className="grid md:grid-cols-2 gap-12 mb-24">
@@ -240,7 +165,7 @@ export default function DentalSystemPage() {
              Dental Receptionist System sounds indistinguishable from your best human receptionist: warm, articulate, and emotionally attuned.
            </p>
            <p className="text-slate-400 text-lg leading-relaxed relative z-10">
-             It manages every patient interaction with speed and care from scheduling and record review to emergency routing and recall campaigns — turning every call into a seamless workflow.
+             It manages every patient interaction with speed and care from first hello to booked appointment, turning every call into a seamless workflow.
            </p>
         </div>
 
@@ -248,7 +173,7 @@ export default function DentalSystemPage() {
            <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500/5 blur-[80px] rounded-full pointer-events-none"></div>
            <h3 className="text-3xl font-bold text-slate-50 mb-6 relative z-10">Why Clinics Love It</h3>
            <p className="text-slate-400 text-lg leading-relaxed mb-8 relative z-10">
-             Every call is an opportunity to build trust, retain patients, and grow revenue. Clinics report:
+             Every call is an opportunity to build trust, retain patients, and grow revenue. Here is what this system is designed to deliver:
            </p>
            
            <div className="space-y-4 mb-8 relative z-10">

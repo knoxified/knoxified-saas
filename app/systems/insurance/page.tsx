@@ -3,10 +3,8 @@ import { RefreshCw } from 'lucide-react';
 import { PhoneCall, CheckCircle2, ChevronRight, XCircle, Shield, BarChart, CreditCard } from 'lucide-react';
 
 import { SystemAutomations } from '@/app/components/system-automations';
-import { AnimatedCounter } from '@/app/components/animated-counter';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { BenchmarkWidget } from '@/app/components/benchmark-widget';
 import { AIVoiceSample } from '@/components/ui/ai-voice-sample';
 
 export default function InsuranceSystemPage() {
@@ -180,44 +178,6 @@ export default function InsuranceSystemPage() {
                   <span><strong>Post-Interaction Follow-Up:</strong> Automates satisfaction checks and follow-ups for continuous engagement.</span>
                 </li>
               </ul>
-            </div>
-         </div>
-      </div>
-
-      {/* Performance Summary Dashboard */}
-      <div className="mb-24">
-         <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">Performance Summary</h2>
-         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Wait Times</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={0} prefix="" suffix=" Min" /></div>
-              </div>
-              <BenchmarkWidget description="High abandonment rate during peak claim periods" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Claim Intake Velocity</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={45} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Slower claims processing frustrating customers" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Policy Renewals</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={32} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Client churn resulting from neglected follow-ups" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Staff Overhead</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={30} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Agent burnout from answering routine policy queries" />
             </div>
          </div>
       </div>

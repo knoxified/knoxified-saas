@@ -3,10 +3,8 @@ import { ShieldAlert, Mail } from 'lucide-react';
 import { PhoneCall, CheckCircle2, ChevronRight, XCircle, Calendar, HeartPulse, Shield, Stethoscope } from 'lucide-react';
 
 import { SystemAutomations } from '@/app/components/system-automations';
-import { AnimatedCounter } from '@/app/components/animated-counter';
 import Link from 'next/link';
 
-import { BenchmarkWidget } from '@/app/components/benchmark-widget';
 import { AIVoiceSample } from '@/components/ui/ai-voice-sample';
 
 export default function MedSpaSystemPage() {
@@ -148,44 +146,6 @@ export default function MedSpaSystemPage() {
                   <span><strong>&quot;Neurotoxin Due&quot; Cycles:</strong> Automatically calculates treatment lifespans (e.g., 3-4 months) and messages patients right when results are fading to rebook.</span>
                 </li>
               </ul>
-            </div>
-         </div>
-      </div>
-
-      {/* Performance Summary Dashboard */}
-      <div className="mb-24">
-         <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">Performance Summary</h2>
-         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Rebooking Rate</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={43} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Higher retention through precise, lifecycle-based outreach" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Consult Conversions</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={32} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="More visitors converting into paid consultations" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">No-Shows</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={70} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Decrease in costly empty chair time for providers" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Membership Utilization</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={65} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Increase in members actively using their monthly aesthetic benefits" />
             </div>
          </div>
       </div>

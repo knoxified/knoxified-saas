@@ -3,10 +3,8 @@ import { AlertTriangle, MapPin, FileText } from 'lucide-react';
 import { PhoneCall, CheckCircle2, ChevronRight, XCircle, Calendar } from 'lucide-react';
 
 import { SystemAutomations } from '@/app/components/system-automations';
-import { AnimatedCounter } from '@/app/components/animated-counter';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { BenchmarkWidget } from '@/app/components/benchmark-widget';
 import { AIVoiceSample } from '@/components/ui/ai-voice-sample';
 
 export default function PlumbingSystemPage() {
@@ -183,44 +181,6 @@ export default function PlumbingSystemPage() {
                   <span><strong>Winterization Reminders:</strong> Proactively texts clients to prep outdoor plumbing for extreme freeze conditions.</span>
                 </li>
               </ul>
-            </div>
-         </div>
-      </div>
-
-      {/* Performance Summary Dashboard */}
-      <div className="mb-24">
-         <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">Performance Summary</h2>
-         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Emergency Capture</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={52} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Lost high-margin emergency jobs to faster competitors" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Tech Utilization</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={31} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Idle time due to poor scheduling or late cancellations" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Quote Win Rate</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={35} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Complex jobs lost due to lack of follow-up on estimates" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Operations Overhead</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={42} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="High overhead for 24/7 call centers and dispatch teams" />
             </div>
          </div>
       </div>

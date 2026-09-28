@@ -3,10 +3,8 @@ import { Megaphone, Clock } from 'lucide-react';
 import { PhoneCall, CheckCircle2, ChevronRight, XCircle, Calendar, Users, Dumbbell } from 'lucide-react';
 
 import { SystemAutomations } from '@/app/components/system-automations';
-import { AnimatedCounter } from '@/app/components/animated-counter';
 import Link from 'next/link';
 
-import { BenchmarkWidget } from '@/app/components/benchmark-widget';
 import { AIVoiceSample } from '@/components/ui/ai-voice-sample';
 
 export default function FitnessSystemPage() {
@@ -149,44 +147,6 @@ export default function FitnessSystemPage() {
          </div>
       </div>
 
-      {/* Performance Summary Dashboard */}
-      <div className="mb-24">
-         <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">Performance Summary</h2>
-         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Trial Conversions</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={35} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Boosts trial conversion rates with instant engagement" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Member Churn</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={28} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Significantly lowers churn through continuous nurturing" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Class Attendance</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={40} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Higher attendance via automated push reminders" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Reactivations</div>
-                 <div className="text-5xl font-black text-emerald-500 tracking-tight mb-4"><AnimatedCounter value={18} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Dormant members brought back via win-back follow-ups" />
-            </div>
-         </div>
-      </div>
-
       {/* Role Overview & Benefits */}
       <div className="grid md:grid-cols-2 gap-12 mb-24">
         <div className="p-8 md:p-12 rounded-3xl bg-slate-800/40 backdrop-blur-sm border border-slate-700/50 relative overflow-hidden">
@@ -201,7 +161,7 @@ export default function FitnessSystemPage() {
            <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500/5 blur-[80px] rounded-full pointer-events-none"></div>
            <h3 className="text-3xl font-bold text-slate-50 mb-6 relative z-10">Why Fitness Centers Love It</h3>
            <p className="text-slate-400 text-lg leading-relaxed mb-6 relative z-10">
-             Delayed follow-ups and unengaged members hurt your bottom line. Fitness owners report:
+             Delayed follow-ups and unengaged members hurt your bottom line. Here is what this system is designed to deliver:
            </p>
            
            <div className="space-y-4 relative z-10">

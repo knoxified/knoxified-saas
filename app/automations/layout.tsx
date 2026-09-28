@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ComingSoonNotice } from '../components/coming-soon-notice';
 
 export const metadata: Metadata = {
   title: 'Automations — LeadReach, AppointMate & MailCraft | Knoxified',
@@ -9,5 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default function AutomationsLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      <ComingSoonNotice />
+      {children}
+    </>
+  );
 }

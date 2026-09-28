@@ -3,10 +3,8 @@ import { Activity, FileText } from 'lucide-react';
 import { PhoneCall, CheckCircle2, ChevronRight, XCircle, Globe } from 'lucide-react';
 
 import { SystemAutomations } from '@/app/components/system-automations';
-import { AnimatedCounter } from '@/app/components/animated-counter';
 import Link from 'next/link';
 import { motion } from 'motion/react';
-import { BenchmarkWidget } from '@/app/components/benchmark-widget';
 import { AIVoiceSample } from '@/components/ui/ai-voice-sample';
 
 export default function HealthcareSystemPage() {
@@ -184,44 +182,6 @@ export default function HealthcareSystemPage() {
                   <span><strong>Error & Gap Detection:</strong> Flags potential triage errors proactively for supervisor review.</span>
                 </li>
               </ul>
-            </div>
-         </div>
-      </div>
-
-      {/* Performance Summary Dashboard */}
-      <div className="mb-24">
-         <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-12 text-center tracking-tight">Performance Summary</h2>
-         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Patient Wait Times</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={54} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Delayed emergencies due to queue bottlenecks" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Manual Triage Tasks</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={70} prefix="-" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Nurse burnout causing mis-triaged scenarios" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Patient Satisfaction</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={42} prefix="+" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Frustration and anxiety from poor communication" />
-            </div>
-
-            <div className="bg-slate-900/50 border border-slate-700/50 p-8 rounded-2xl shadow-xl flex flex-col justify-between">
-              <div>
-                 <div className="text-slate-400 text-sm font-semibold uppercase tracking-wider mb-2">Record Keeping</div>
-                 <div className="text-3xl font-extrabold text-emerald-400 tracking-tight mb-4"><AnimatedCounter value={100} prefix="" suffix="%" /></div>
-              </div>
-              <BenchmarkWidget description="Compliance violations from incomplete EMR logs" />
             </div>
          </div>
       </div>
