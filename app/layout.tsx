@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import { ChatBot } from './components/chat-bot';
+import { RefCapture } from './components/ref-capture';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className={`${inter.className} bg-slate-900 text-slate-50 antialiased min-h-screen flex flex-col`} suppressHydrationWarning>
+        <RefCapture />
         <noscript
           dangerouslySetInnerHTML={{
             __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGJ3T3BR" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,

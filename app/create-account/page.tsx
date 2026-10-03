@@ -7,6 +7,7 @@ import Link from 'next/link';
 
 import { Eye, EyeOff } from 'lucide-react';
 import { supabase } from '@/src/lib/supabase';
+import { getStoredRef } from '../components/ref-capture';
 
 export default function CreateAccountPage() {
   const router = useRouter();
@@ -66,6 +67,9 @@ export default function CreateAccountPage() {
         password,
         options: {
           emailRedirectTo: `${window.location.origin}/onboarding`,
+          // Partner attribution rides along in the account's metadata so it
+          // survives email confirmation on a different browser or device.
+          ...(getStoredRef() ? { data: { partner_ref: getStoredRef() } } : {}),
         },
       });
 
