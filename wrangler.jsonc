@@ -2,9 +2,17 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "knoxified-saas",
   "main": ".open-next/worker.js",
-  "compatibility_date": "2026-08-20",
+  "compatibility_date": "2026-10-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+  "routes": [
+    { "pattern": "knoxified.org", "zone_name": "knoxified.org", "custom_domain": true }
+  ],
+  "services": [
+    { "binding": "WORKER_SELF_REFERENCE", "service": "knoxified-saas" }
+  ],
+  "images": { "binding": "IMAGES" },
+  "observability": { "enabled": true, "logs": { "enabled": true } },
   "vars": {
     "NEXT_PUBLIC_SUPABASE_URL": "https://elpljgrwrzaugsunoidf.supabase.co"
   }
