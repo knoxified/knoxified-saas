@@ -7,3 +7,5 @@ build/
 .env.test.local
 .env.production.local
 *.log
+!.env.production
+.open-next/
