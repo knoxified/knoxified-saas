@@ -4,8 +4,9 @@ import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
-import { PhoneOff, Bot, Clock, TrendingUp, CheckCircle2, ChevronRight, MessageSquare, Zap, XCircle, ArrowRight, Activity, CalendarDays, Inbox, Building, ShieldCheck, Globe, Star, Play, Pause } from 'lucide-react';
+import { PhoneOff, Bot, Clock, TrendingUp, CheckCircle2, ChevronRight, MessageSquare, Zap, XCircle, ArrowRight, Activity, CalendarDays, Inbox, Building, ShieldCheck, Globe, Star } from 'lucide-react';
 import { VENDOR_LOGOS, TEXT_ONLY_VENDORS } from '@/lib/vendor-logos';
+import DemoCallWidget from '@/components/DemoCallWidget';
 
 const testimonials = [
   {
@@ -212,21 +213,7 @@ export default function HomePage() {
   const [hasDismissedModal, setHasDismissedModal] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [autoScroll, setAutoScroll] = useState(true);
-  const [isHeroSamplePlaying, setIsHeroSamplePlaying] = useState(false);
-  const heroAudioRef = useRef<HTMLAudioElement | null>(null);
 
-  const toggleHeroSample = () => {
-    const audio = heroAudioRef.current;
-    if (!audio) return;
-    if (isHeroSamplePlaying) {
-      audio.pause();
-      setIsHeroSamplePlaying(false);
-    } else {
-      audio.currentTime = 0;
-      audio.play().catch(() => {});
-      setIsHeroSamplePlaying(true);
-    }
-  };
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
@@ -363,21 +350,28 @@ export default function HomePage() {
             >
               See What I&apos;m Losing <ArrowRight className="w-5 h-5" />
             </Link>
-            <audio
-              ref={heroAudioRef}
-              src="/audio/home-care.mp3"
-              preload="none"
-              onEnded={() => setIsHeroSamplePlaying(false)}
-            />
-            <button
-              onClick={toggleHeroSample}
-              className="w-full sm:w-auto px-8 py-4 bg-transparent border border-cyan-500/40 hover:border-cyan-400 text-cyan-300 hover:text-cyan-200 font-semibold rounded-xl transition-all flex items-center justify-center gap-2"
-            >
-              {isHeroSamplePlaying ? <Pause className="w-5 h-5 fill-current" /> : <Play className="w-5 h-5 fill-current" />}
-              Hear It Answer a Call
-            </button>
           </motion.div>
         </div>
+      </section>
+
+      {/* ── Live Demo Section ─────────────────────────────────────────────── */}
+      <section className="w-full relative z-10 py-16 px-4">
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-800/80 backdrop-blur-md border border-cyan-500/30 text-sm font-medium text-cyan-400 mb-6 shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+            Live demo — real AI, real voice
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Pick your industry.{' '}
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Talk to the agent.
+            </span>
+          </h2>
+          <p className="text-slate-400 text-lg max-w-xl mx-auto">
+            This is a live call — not a recording, not a script. Pick your business type and have a real conversation with the AI agent.
+          </p>
+        </div>
+        <DemoCallWidget />
       </section>
 
       {/* Industry Data Ticker -- real, conservatively-sourced stats about
