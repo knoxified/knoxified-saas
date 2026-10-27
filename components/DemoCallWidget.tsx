@@ -30,7 +30,9 @@ export default function DemoCallWidget() {
 
   // Auto-scroll transcript
   useEffect(() => {
-    txEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    // Scroll only the transcript box. scrollIntoView also scrolls the whole page.
+    const box = txEndRef.current?.parentElement;
+    if (box) box.scrollTo({ top: box.scrollHeight, behavior: 'smooth' });
   }, [transcript]);
 
   const handleStart = useCallback(async () => {
