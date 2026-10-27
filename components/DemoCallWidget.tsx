@@ -214,7 +214,7 @@ export default function DemoCallWidget() {
           {/* Live transcript */}
           <div className="px-5 pb-5">
             <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-2">Live Transcript</p>
-            <div className="space-y-2 overflow-y-auto max-h-48 pr-1">
+            <div className="space-y-2 overflow-y-auto h-48 pr-1 overscroll-contain [overflow-anchor:none]">
               {transcript.length === 0 && callStatus === 'active' && (
                 <p className="text-slate-500 text-sm">Listening…</p>
               )}
