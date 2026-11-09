@@ -5,10 +5,10 @@ import { ArrowRight, Calendar, User } from 'lucide-react';
 const posts = [
   {
     id: 1,
-    title: "How Voice AI is Replacing the Traditional Receptionist",
-    excerpt: "The first 5 seconds of a phone call dictate 80% of your closing rate. Discover how perfectly calibrated AI agents are weaponizing those 5 seconds to out-convert human receptionists.",
+    title: "The call nobody answered at 12:40 on a Saturday",
+    excerpt: "A story about a missed call, a patient who booked somewhere else, and why the first few seconds of a phone call matter more than most owners think.",
     category: "AI Voice",
-    date: "Oct 12, 2023",
+    date: "Oct 28, 2026",
     author: "Knoxified Team",
     readTime: "5 min read",
     slug: "/blog/1",
@@ -16,10 +16,10 @@ const posts = [
   },
   {
     id: 2,
-    title: "The Mathematical Cost of Missed Follow-up Calls",
-    excerpt: "We analyzed 10,000 local businesses. The '5-minute decay rule' in lead response is silently bankrupting companies. Here is the mathematical proof of what you're losing.",
+    title: "What one missed call actually costs",
+    excerpt: "A simple, back-of-the-envelope way to work out what unanswered calls cost your business. Plug in your own numbers; they will probably surprise you.",
     category: "Growth Strategy",
-    date: "Sep 28, 2023",
+    date: "Oct 21, 2026",
     author: "Knoxified Team",
     readTime: "7 min read",
     slug: "/blog/2",
@@ -27,10 +27,10 @@ const posts = [
   },
   {
     id: 3,
-    title: "Building an 'Always On' Sales Pipeline",
-    excerpt: "Human willpower is a finite resource; code is infinite. Learn how to architect an automation system that relentlessly prospects, nurtures, and closes while you sleep.",
+    title: "A sales pipeline that keeps working after you go home",
+    excerpt: "Most follow-up fails for a boring reason: people get busy. Here is how to set things up so the right message goes out even on your worst week.",
     category: "Sales Automation",
-    date: "Sep 15, 2023",
+    date: "Oct 14, 2026",
     author: "Knoxified Team",
     readTime: "6 min read",
     slug: "/blog/3",
@@ -38,10 +38,10 @@ const posts = [
   },
   {
     id: 4,
-    title: "Why Niche-Trained AI Outperforms General Models",
-    excerpt: "ChatGPT writes great poems, but it can't run your HVAC dispatch. Uncover why hyper-specialized, industry-trained AI models are destroying general tools in ROI.",
+    title: "Why an AI that knows your industry beats one that knows everything",
+    excerpt: "General AI tools are brilliant at a thousand things. Your front desk needs to be brilliant at one. Here is the difference it makes on a real call.",
     category: "AI Technology",
-    date: "Aug 30, 2023",
+    date: "Oct 07, 2026",
     author: "Knoxified Team",
     readTime: "8 min read",
     slug: "/blog/4",
@@ -49,10 +49,10 @@ const posts = [
   },
   {
     id: 5,
-    title: "Client Reactivation: Finding Gold in Dead Pipelines",
-    excerpt: "Your CRM is a graveyard of ignored leads. Through the psychology of 'curiosity gaps,' our AI wakes up dormant prospects and turns cold data into immediate cash flow.",
+    title: "The old leads in your inbox are not dead",
+    excerpt: "Somewhere in your inbox are people who said maybe, not now, or nothing at all. A kind, well-timed message can bring a few of them back.",
     category: "Client Retention",
-    date: "Aug 14, 2023",
+    date: "Sep 30, 2026",
     author: "Knoxified Team",
     readTime: "4 min read",
     slug: "/blog/5",
@@ -60,10 +60,10 @@ const posts = [
   },
   {
     id: 6,
-    title: "Integrating AI Without Losing Your Brand's Soul",
-    excerpt: "Automation shouldn't sound like a robocall. Explore the paradox of 'synthesized empathy'—how to inject warmth, humor, and hyper-personalized brand voice into your AI.",
+    title: "How to make automation sound like your business, not a robocall",
+    excerpt: "People do not mind talking to an AI. They mind talking to something that sounds like it does not care. A few practical ways to keep your brand's warmth.",
     category: "Brand Identity",
-    date: "Jul 22, 2023",
+    date: "Sep 23, 2026",
     author: "Knoxified Team",
     readTime: "5 min read",
     slug: "/blog/6",
@@ -80,7 +80,7 @@ export default function BlogPage() {
         </div>
         <h1 className="text-4xl md:text-6xl font-bold text-slate-50 mb-6 tracking-tight">The Knoxified Blog</h1>
         <p className="text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
-          Insights, strategies, and deep dives into the world of AI automation and scaling your agency.
+          Practical stories and ideas on answering every call, following up properly and growing a service business with AI.
         </p>
       </div>
 
@@ -111,15 +111,15 @@ export default function BlogPage() {
               <span className="px-3 py-1 bg-slate-800 border border-slate-700 text-slate-300 text-xs font-semibold rounded-full">
                 Vision
               </span>
-              <span className="text-slate-500 text-sm hidden sm:block">10 min read</span>
+              <span className="text-slate-500 text-sm hidden sm:block">6 min read</span>
             </div>
             
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-50 mb-4 group-hover:text-cyan-400 transition-colors tracking-tight leading-tight">
-              The Agentic Future: How AI is Moving from Chat to Action
+              Why I stopped thinking of AI as a chatbot
             </h2>
             
             <p className="text-slate-400 text-base md:text-lg mb-8 leading-relaxed">
-              Chatbots are dead. The new era belongs to AI agents that don&apos;t just talk, but execute complex multi-step workflows across your entire tech stack autonomously. Discover why functional execution is the new standard.
+              Nobody calls a business at 2 AM to have a conversation. They want to know someone is coming. Here is how that changed the way I build.
             </p>
             
             <div className="flex items-center justify-between mt-auto">
@@ -130,7 +130,7 @@ export default function BlogPage() {
                 <div>
                   <div className="font-semibold text-slate-300">Knoxified Founder</div>
                   <div className="flex items-center gap-1 text-slate-500 text-xs mt-0.5">
-                    <Calendar className="w-3 h-3" /> Nov 05, 2023
+                    <Calendar className="w-3 h-3" /> Nov 02, 2026
                   </div>
                 </div>
               </div>
