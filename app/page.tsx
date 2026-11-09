@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { PhoneOff, Bot, Clock, TrendingUp, CheckCircle2, ChevronRight, MessageSquare, Zap, XCircle, ArrowRight, Activity, CalendarDays, Inbox, Building, ShieldCheck, Globe, Star } from 'lucide-react';
 import { VENDOR_LOGOS, TEXT_ONLY_VENDORS } from '@/lib/vendor-logos';
 import DemoCallWidget from '@/components/DemoCallWidget';
+import { PlatformSection } from '@/app/components/platform-section';
 
 const testimonials = [
   {
@@ -548,6 +549,8 @@ export default function HomePage() {
           </div>
         </div>
       </motion.section>
+
+      <PlatformSection />
 
       {/* Proof Section */}
       <motion.section 
