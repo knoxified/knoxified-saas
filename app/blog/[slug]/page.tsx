@@ -46,7 +46,7 @@ const articles: Record<string, any> = {
   '1': {
     title: "The call nobody answered at 12:40 on a Saturday",
     category: "AI Voice",
-    date: "Oct 28, 2026",
+    date: "Oct 11, 2026",
     readTime: "5 min read",
     author: {
       name: "Knoxified Team",
@@ -69,7 +69,7 @@ const articles: Record<string, any> = {
   '2': {
     title: "What one missed call actually costs",
     category: "Growth Strategy",
-    date: "Oct 21, 2026",
+    date: "Aug 19, 2026",
     readTime: "5 min read",
     author: {
       name: "Knoxified Team",
@@ -97,7 +97,7 @@ const articles: Record<string, any> = {
   '3': {
     title: "A sales pipeline that keeps working after you go home",
     category: "Sales Automation",
-    date: "Oct 14, 2026",
+    date: "Jul 07, 2026",
     readTime: "5 min read",
     author: {
       name: "Knoxified Team",
@@ -123,7 +123,7 @@ const articles: Record<string, any> = {
   '4': {
     title: "Why an AI that knows your industry beats one that knows everything",
     category: "AI Technology",
-    date: "Oct 07, 2026",
+    date: "May 26, 2026",
     readTime: "5 min read",
     author: {
       name: "Knoxified Team",
@@ -145,7 +145,7 @@ const articles: Record<string, any> = {
   '5': {
     title: "The old leads in your inbox are not dead",
     category: "Client Retention",
-    date: "Sep 30, 2026",
+    date: "Apr 14, 2026",
     readTime: "5 min read",
     author: {
       name: "Knoxified Team",
@@ -169,7 +169,7 @@ const articles: Record<string, any> = {
   '6': {
     title: "How to make automation sound like your business, not a robocall",
     category: "Brand Identity",
-    date: "Sep 23, 2026",
+    date: "Feb 24, 2026",
     readTime: "5 min read",
     author: {
       name: "Knoxified Team",
