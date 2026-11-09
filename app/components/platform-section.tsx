@@ -32,13 +32,15 @@ const automations = [
     icon: Search,
     name: 'LeadReach',
     line: 'Finds and enriches a lead with verified contact details.',
-    example: ['Dana Whitfield', 'Owner, Brightside Roofing', 'Email and phone verified'],
+    gives: 'A company, role or lead to look up',
+    returns: 'Name, email, phone and social profiles in one record',
   },
   {
     icon: PenLine,
     name: 'MailCraft',
     line: 'Drafts a personal follow-up for your team to review.',
-    example: ['"Hi Dana, I noticed Brightside is hiring estimators..."', 'Draft ready for your review'],
+    gives: 'The contact context you approve',
+    returns: 'A ready-to-review email draft in your voice',
   },
 ];
 
@@ -69,9 +71,9 @@ export function PlatformSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative rounded-2xl border border-slate-700/50 bg-slate-800/60 p-8 backdrop-blur-md transition-all hover:border-cyan-500/40 hover:shadow-[0_0_30px_rgba(6,182,212,0.12)]"
+              className="relative rounded-2xl border border-slate-700/50 bg-slate-800/60 p-8 backdrop-blur-md"
             >
-              <div className="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-5 group-hover:bg-cyan-500/20 transition-colors">
+              <div className="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-5 ">
                 <f.icon className="w-5 h-5 text-cyan-400" />
               </div>
               <h3 className="text-xl font-semibold text-slate-50 mb-2">{f.title}</h3>
@@ -106,11 +108,15 @@ export function PlatformSection() {
                 <span className="text-lg font-semibold text-slate-50">{a.name}</span>
               </div>
               <p className="text-slate-400 mb-5">{a.line}</p>
-              <div className="rounded-xl bg-slate-950/60 border border-slate-700/50 p-4 space-y-1.5 text-sm text-slate-300">
-                <div className="text-[10px] uppercase tracking-wider text-slate-500 mb-1">Example</div>
-                {a.example.map((l) => (
-                  <div key={l}>{l}</div>
-                ))}
+              <div className="rounded-xl bg-slate-950/60 border border-slate-700/50 p-4 space-y-3 text-sm">
+                <div>
+                  <div className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">You give it</div>
+                  <div className="text-slate-300">{a.gives}</div>
+                </div>
+                <div>
+                  <div className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">You get back</div>
+                  <div className="text-slate-300">{a.returns}</div>
+                </div>
               </div>
             </motion.div>
           ))}
