@@ -8,6 +8,7 @@ import { PhoneOff, Bot, Clock, TrendingUp, CheckCircle2, ChevronRight, MessageSq
 import { VENDOR_LOGOS, TEXT_ONLY_VENDORS } from '@/lib/vendor-logos';
 import DemoCallWidget from '@/components/DemoCallWidget';
 import { PlatformSection } from '@/app/components/platform-section';
+import { NeonFrame } from '@/app/components/neon-frame';
 
 const testimonials = [
   {
@@ -372,7 +373,11 @@ export default function HomePage() {
             This is a live call — not a recording, not a script. Pick your business type and have a real conversation with the AI agent.
           </p>
         </div>
-        <DemoCallWidget />
+        <div className="max-w-3xl mx-auto">
+          <NeonFrame className="bg-slate-900/60 p-3 md:p-4">
+            <DemoCallWidget />
+          </NeonFrame>
+        </div>
       </section>
 
       {/* Industry Data Ticker -- real, conservatively-sourced stats about

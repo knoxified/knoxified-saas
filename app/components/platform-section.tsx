@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'motion/react';
+import { NeonFrame } from './neon-frame';
 import { PhoneCall, HelpCircle, BookOpen, Users, Search, PenLine, Send, CalendarCheck, ArrowRight } from 'lucide-react';
 
 const features = [
@@ -32,15 +33,15 @@ const automations = [
     icon: Search,
     name: 'LeadReach',
     line: 'Finds and enriches a lead with verified contact details.',
-    gives: 'A company, role or lead to look up',
-    returns: 'Name, email, phone and social profiles in one record',
+    example: ['Dana Whitfield', 'Owner, Brightside Roofing', 'Email and phone verified'],
+    color: 'cyan' as const,
   },
   {
     icon: PenLine,
     name: 'MailCraft',
     line: 'Drafts a personal follow-up for your team to review.',
-    gives: 'The contact context you approve',
-    returns: 'A ready-to-review email draft in your voice',
+    example: ['"Hi Dana, I noticed Brightside is hiring estimators..."', 'Draft ready for your review'],
+    color: 'violet' as const,
   },
 ];
 
@@ -71,9 +72,9 @@ export function PlatformSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="relative rounded-2xl border border-slate-700/50 bg-slate-800/60 p-8 backdrop-blur-md"
+              className="group relative rounded-2xl border border-slate-700/50 bg-slate-800/60 p-8 backdrop-blur-md transition-all hover:border-cyan-500/40 hover:shadow-[0_0_30px_rgba(6,182,212,0.12)]"
             >
-              <div className="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-5 ">
+              <div className="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-5 group-hover:bg-cyan-500/20 transition-colors">
                 <f.icon className="w-5 h-5 text-cyan-400" />
               </div>
               <h3 className="text-xl font-semibold text-slate-50 mb-2">{f.title}</h3>
@@ -97,27 +98,24 @@ export function PlatformSection() {
           {automations.map((a, i) => (
             <motion.div
               key={a.name}
-              initial={{ opacity: 0, x: i === 0 ? -30 : 30 }}
+              initial={{ opacity: 0, x: i === 0 ? -60 : 60 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.6 }}
-              className="rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-slate-800/80 to-slate-900/80 p-7"
+              transition={{ duration: 0.7, ease: 'easeOut' }}
             >
-              <div className="flex items-center gap-3 mb-3">
-                <a.icon className="w-5 h-5 text-cyan-400" />
-                <span className="text-lg font-semibold text-slate-50">{a.name}</span>
-              </div>
-              <p className="text-slate-400 mb-5">{a.line}</p>
-              <div className="rounded-xl bg-slate-950/60 border border-slate-700/50 p-4 space-y-3 text-sm">
-                <div>
-                  <div className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">You give it</div>
-                  <div className="text-slate-300">{a.gives}</div>
+              <NeonFrame color={a.color} delay={i * 0.8} className="bg-gradient-to-br from-slate-800/90 to-slate-900/90 p-7 h-full">
+                <div className="flex items-center gap-3 mb-3">
+                  <a.icon className={`w-5 h-5 ${a.color === 'cyan' ? 'text-cyan-400' : 'text-fuchsia-400'}`} />
+                  <span className="text-lg font-semibold text-slate-50">{a.name}</span>
                 </div>
-                <div>
-                  <div className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">You get back</div>
-                  <div className="text-slate-300">{a.returns}</div>
+                <p className="text-slate-400 mb-5">{a.line}</p>
+                <div className="rounded-xl bg-slate-950/60 border border-slate-700/50 p-4 space-y-1.5 text-sm text-slate-300">
+                  <div className="text-[10px] uppercase tracking-wider text-slate-500 mb-1">Sample output. Illustration only, not live data</div>
+                  {a.example.map((l) => (
+                    <div key={l}>{l}</div>
+                  ))}
                 </div>
-              </div>
+              </NeonFrame>
             </motion.div>
           ))}
         </div>
