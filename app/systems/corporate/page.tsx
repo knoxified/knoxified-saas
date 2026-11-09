@@ -13,7 +13,8 @@ export default function CorporateSystemPage() {
     description: 'Your 24/7 Executive Partner for Maximum Productivity. Attends every voice and video meeting, captures key points, and manages schedules.',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

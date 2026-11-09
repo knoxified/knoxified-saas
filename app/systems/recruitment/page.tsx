@@ -13,7 +13,8 @@ export default function RecruitmentSystemPage() {
     description: 'Transform Candidate Engagement & Placement — 24/7, Smart, Empathetic, Reliable',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

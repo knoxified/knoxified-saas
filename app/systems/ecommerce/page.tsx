@@ -14,7 +14,8 @@ export default function EcommerceSystemPage() {
     description: 'Provide instant support, process returns, and recover abandoned carts 24/7.',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

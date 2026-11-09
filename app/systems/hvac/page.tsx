@@ -15,7 +15,8 @@ export default function HVACSystemPage() {
     description: 'Transform HVAC Operations — 24/7 Service Calls, Triage & Tech Routing',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

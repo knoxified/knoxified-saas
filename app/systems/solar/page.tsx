@@ -15,7 +15,8 @@ export default function SolarSystemPage() {
     description: 'Automate Lead Qualification, Follow-ups, and Solar Consultation Scheduling 24/7.',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

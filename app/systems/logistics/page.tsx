@@ -16,7 +16,8 @@ export default function LogisticsSystemPage() {
     description: 'Transform Post-Purchase Experiences — 24/7, Intelligent, Empathy-Driven Operations',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

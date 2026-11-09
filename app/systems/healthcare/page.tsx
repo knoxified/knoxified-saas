@@ -15,7 +15,8 @@ export default function HealthcareSystemPage() {
     description: 'Transform Patient Intake and Triage — 24/7, Clinically-Informed, Empathy-Driven',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

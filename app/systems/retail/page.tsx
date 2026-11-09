@@ -13,7 +13,8 @@ export default function RetailSystemPage() {
     description: 'Transform Customer Interactions — 24/7, Sales-Driven, Empathetic Automation',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

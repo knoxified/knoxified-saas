@@ -15,7 +15,8 @@ export default function InsuranceSystemPage() {
     description: 'Automate Every Client Interaction — 24/7, Human-Level Care',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

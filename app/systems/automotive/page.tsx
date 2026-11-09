@@ -13,7 +13,8 @@ export default function AutomotiveSystemPage() {
     description: 'Test drive bookings, lead qualification, and service reminders handled automatically.',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

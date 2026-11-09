@@ -13,7 +13,8 @@ export default function DentalSystemPage() {
     description: 'Your 24/7 Front-Desk Superstar — Human-Like Care, Zero Wait, Maximum Efficiency',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

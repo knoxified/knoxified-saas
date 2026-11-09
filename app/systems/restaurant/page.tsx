@@ -13,7 +13,8 @@ export default function RestaurantSystemPage() {
     description: 'Reservations, waitlists, catering inquiries, and follow-ups handled automatically.',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

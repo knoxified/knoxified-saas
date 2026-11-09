@@ -15,7 +15,8 @@ export default function RoofingSystemPage() {
     description: 'Transform Roofing Operations — 24/7 Lead Capture, Inspection Scheduling, and Follow-ups',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

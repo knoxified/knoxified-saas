@@ -15,7 +15,8 @@ export default function FitnessSystemPage() {
     description: 'Membership inquiries, trial bookings, follow-ups, re-engagement automation, and class scheduling automated.',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

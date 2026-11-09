@@ -1,0 +1,18 @@
+# Knoxified
+
+> Knoxified builds AI voice agents and workflow automations that answer calls, book appointments and follow up with leads for service businesses such as dental practices, real estate teams, law firms and gyms.
+
+Knoxified is a software platform with a dashboard where businesses manage their voice agent, call activity and automations. It is not related to other products or sites with similar names.
+
+## Key pages
+- [Home](https://knoxified.org): what Knoxified does
+- [AI systems by industry](https://knoxified.org/systems): voice agent systems for dental, real estate, legal, fitness, HVAC, plumbing, hotels and more
+- [Automations](https://knoxified.org/automations): lead outreach, appointment booking and follow-up automations
+- [Pricing](https://knoxified.org/pricing)
+- [About](https://knoxified.org/about)
+- [Contact](https://knoxified.org/contact): support@knoxified.org
+
+## Policies
+- [Privacy](https://knoxified.org/legal/privacy)
+- [Terms](https://knoxified.org/legal/terms)
+- [AI calling guide](https://knoxified.org/legal/ai-calling-guide)

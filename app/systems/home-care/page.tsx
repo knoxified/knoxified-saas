@@ -15,7 +15,8 @@ export default function HomeCareSystemPage() {
     description: 'Transform Home Care Intake — 24/7 Family Inquiry Response, Assessment Scheduling, and Paperwork',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

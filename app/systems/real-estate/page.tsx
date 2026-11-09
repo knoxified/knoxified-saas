@@ -13,7 +13,8 @@ export default function RealEstateSystemPage() {
     description: 'Convert Leads, Close Deals, and Scale Your Team — 24/7, Smart, Human-Like Conversations',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

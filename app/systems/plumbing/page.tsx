@@ -15,7 +15,8 @@ export default function PlumbingSystemPage() {
     description: 'Transform Plumbing Operations — 24/7 Emergency Triage & Tech Scheduling',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

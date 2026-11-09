@@ -14,7 +14,8 @@ export default function LegalSystemPage() {
     description: 'Flawlessly screen inquiries and book case consultations automatically.',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 

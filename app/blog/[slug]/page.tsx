@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { ArrowLeft, Calendar, Clock, Share2, Twitter, Linkedin, Facebook } from 'lucide-react';
 import { notFound } from 'next/navigation';
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return [
     { slug: 'featured' },
@@ -253,6 +255,19 @@ const articles: Record<string, any> = {
   }
 };
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = articles[slug];
+  if (!post) return { title: 'Not found — Knoxified', robots: { index: false } };
+  const description = String(post.content).replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 155);
+  return {
+    title: `${post.title} | Knoxified`,
+    description,
+    alternates: { canonical: `https://knoxified.org/blog/${slug}` },
+    openGraph: { title: post.title, description, url: `https://knoxified.org/blog/${slug}`, type: 'article' },
+  };
+}
+
 interface BlogPostProps {
   params: Promise<{ slug: string }>;
 }
@@ -260,37 +275,21 @@ interface BlogPostProps {
 export default async function BlogPostPage({ params }: BlogPostProps) {
   const resolvedParams = await params;
   
-  // Use generic content for other slugs
-  const post = articles[resolvedParams.slug] || {
-    title: `The Future of Automation - Part ${resolvedParams.slug}`,
-    category: "AI Technology",
-    date: "Oct 12, 2023",
-    readTime: "5 min read",
-    author: {
-      name: "Knoxified Team",
-      role: "Automation Specialists",
-      avatar: `https://picsum.photos/seed/author${resolvedParams.slug}/100/100`
-    },
-    image: `https://picsum.photos/seed/blog${resolvedParams.slug}/1200/600`,
-    content: `
-      <h2>Embracing Next-Generation Workflow</h2>
-      <p>Integrating complex AI systems into your daily operations doesn't have to be overwhelming. At Knoxified, we believe the secret lies in addressing the lowest-hanging fruit first, converting operational bottlenecks into automated, high-yield pipelines.</p>
-      
-      <p>Whether you're in contracting, real estate, healthcare, or retail, speed-to-lead and consistent follow-ups are the lifeblood of revenue growth.</p>
-      
-      <h3>Key Considerations for Scaling</h3>
-      <ul>
-        <li><strong>Analyze current friction:</strong> Where does your team spend the most manual effort?</li>
-        <li><strong>Map out the logic:</strong> Good AI automation starts with a perfectly mapped flowchart.</li>
-        <li><strong>Iterate and optimize:</strong> Agents improve as you give them more data.</li>
-      </ul>
-      
-      <p>As we transition fully into the agentic era, those who harness autonomous systems will decouple their revenue growth from their headcount growth. Stay ahead of the curve.</p>
-    `
+  const post = articles[resolvedParams.slug];
+  if (!post) notFound();
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    author: { '@type': 'Organization', name: 'Knoxified', url: 'https://knoxified.org' },
+    publisher: { '@type': 'Organization', name: 'Knoxified', url: 'https://knoxified.org' },
+    mainEntityOfPage: `https://knoxified.org/blog/${resolvedParams.slug}`,
   };
 
   return (
     <div className="container mx-auto px-4 py-24 max-w-4xl">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Link href="/blog" className="inline-flex items-center text-cyan-400 hover:text-cyan-300 font-medium mb-12 transition-colors">
         <ArrowLeft className="w-4 h-4 mr-2" /> Back to Blog
       </Link>

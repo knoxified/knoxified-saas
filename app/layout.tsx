@@ -8,29 +8,61 @@ const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://knoxified.org'),
-  title: 'Knoxified — AI Systems & Automation for Growing Businesses',
-  description: 'Knoxified builds AI systems and automation workflows for calls, appointments, operations, and customer communication - built for growing businesses that want to scale.',
+  title: 'Knoxified — AI Voice Agents & Automation for Service Businesses',
+  description: 'Knoxified builds AI voice agents and workflow automations that answer calls, book appointments and follow up with leads for dental, real estate, legal, fitness and other service businesses.',
   alternates: {
     canonical: 'https://knoxified.org',
   },
+  applicationName: 'Knoxified',
   openGraph: {
-    title: 'Knoxified — AI Systems & Automation for Growing Businesses',
-    description: 'Knoxified builds AI systems and automation workflows for calls, appointments, operations, and customer communication - built for growing businesses that want to scale.',
+    siteName: 'Knoxified',
+    title: 'Knoxified — AI Voice Agents & Automation for Service Businesses',
+    description: 'Knoxified builds AI voice agents and workflow automations that answer calls, book appointments and follow up with leads for dental, real estate, legal, fitness and other service businesses.',
     type: 'website',
     url: 'https://knoxified.org',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Knoxified' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Knoxified — AI Systems & Automation for Growing Businesses',
-    description: 'Knoxified builds AI systems and automation workflows for calls, appointments, operations, and customer communication - built for growing businesses that want to scale.',
-    images: ['/og-image.png'],
+    title: 'Knoxified — AI Voice Agents & Automation for Service Businesses',
+    description: 'Knoxified builds AI voice agents and workflow automations that answer calls, book appointments and follow up with leads for dental, real estate, legal, fitness and other service businesses.',
   },
   icons: {
   icon: '/favicon.png',
   shortcut: '/favicon.png',
   apple: '/favicon.png',
   },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': 'https://knoxified.org/#organization',
+      name: 'Knoxified',
+      url: 'https://knoxified.org',
+      logo: 'https://knoxified.org/logo.png',
+      email: 'support@knoxified.org',
+      description: 'Knoxified builds AI voice agents and workflow automations that answer calls, book appointments and follow up with leads for dental, real estate, legal, fitness and other service businesses.',
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://knoxified.org/#website',
+      url: 'https://knoxified.org',
+      name: 'Knoxified',
+      publisher: { '@id': 'https://knoxified.org/#organization' },
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': 'https://knoxified.org/#software',
+      name: 'Knoxified',
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
+      url: 'https://knoxified.org',
+      description: 'Knoxified builds AI voice agents and workflow automations that answer calls, book appointments and follow up with leads for dental, real estate, legal, fitness and other service businesses.',
+      publisher: { '@id': 'https://knoxified.org/#organization' },
+    },
+  ],
 };
 
 export const viewport = {
@@ -41,6 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className="dark">
       <head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WGJ3T3BR');`,

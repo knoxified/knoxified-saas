@@ -13,7 +13,8 @@ export default function HotelSystemPage() {
     description: 'Flawless First Impressions, Every Time — 24/7 Guest Care, Human-Like Service',
     provider: {
       '@type': 'Organization',
-      name: 'Platform'
+      name: 'Knoxified',
+      url: 'https://knoxified.org'
     }
   };
 
