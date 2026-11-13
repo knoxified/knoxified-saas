@@ -77,6 +77,7 @@ export default function PrivacyPage() {
 
         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">9. Cookies &amp; Tracking Technologies</h2>
         <p>Our website and dashboard may use cookies and similar technologies to operate core functionality, keep you signed in, and understand aggregate usage patterns. Non-essential cookies (such as analytics) are only used with your consent where required by applicable law. You can control cookie preferences through your browser settings.</p>
+        <p className="mt-4">If you arrive through a partner or referral link, we store that partner&apos;s referral code and a random visitor identifier in a first-party cookie for up to 60 days. If you then create an account, we associate the referral with your account so the referring partner can be credited, any sign-up bonus or discount can be applied, and referral performance can be measured. This cookie contains no personal information, and you can delete it at any time through your browser settings.</p>
 
         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">10. International Data Transfers</h2>
         <p>Knoxified operates internationally, and information may be processed or stored in countries other than your own, including where our hosting and infrastructure providers operate. Where required by applicable law, we take reasonable steps to ensure such transfers are subject to appropriate safeguards.</p>
