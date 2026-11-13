@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import { ChatBot } from './components/chat-bot';
+import { ReferralTracker } from './components/referral-tracker';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
@@ -175,6 +176,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <p className="text-sm text-slate-500 text-center">&copy; Knoxified 2026. All rights reserved.</p>
           </div>
         </footer>
+        <ReferralTracker />
         <ChatBot />
       </body>
     </html>

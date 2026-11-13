@@ -61,11 +61,23 @@ export default function CreateAccountPage() {
 
     setIsLoading(true);
     try {
+      // Partner referral (set by ReferralTracker). Read by the signup trigger server-side.
+      const readCookie = (name: string) => {
+        const hit = document.cookie.split('; ').find((c) => c.startsWith(name + '='));
+        return hit ? decodeURIComponent(hit.slice(name.length + 1)) : null;
+      };
+      const refCode = readCookie('kx_ref');
+      const visitorId = readCookie('kx_vid');
+
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
         options: {
           emailRedirectTo: `${window.location.origin}/onboarding`,
+          data: {
+            ...(refCode ? { ref_code: refCode } : {}),
+            ...(visitorId ? { visitor_id: visitorId } : {}),
+          },
         },
       });
 
