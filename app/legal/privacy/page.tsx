@@ -2,7 +2,7 @@ export default function PrivacyPage() {
   return (
     <div className="container mx-auto px-4 py-24 max-w-4xl">
       <h1 className="text-4xl md:text-5xl font-bold text-slate-50 mb-8 tracking-tight">Privacy Policy</h1>
-      <p className="text-slate-500 text-sm mb-8 italic">Last Updated: July 6, 2026</p>
+      <p className="text-slate-500 text-sm mb-8 italic">Last Updated: November 14, 2026</p>
       <div className="prose prose-invert prose-lg text-slate-300 max-w-none">
         
         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">1. Information We Collect</h2>
@@ -46,7 +46,7 @@ export default function PrivacyPage() {
         <p className="mt-4">Information may be shared only as reasonably necessary for service delivery, security, operations, legal compliance, or integration functionality.</p>
 
         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">4. Billing & Subscription Processing</h2>
-        <p>Subscription payments and billing operations may be processed through third-party payment providers such as Paddle or other authorized billing partners.</p>
+        <p>Subscription payments and billing operations may be processed through third-party payment providers or other authorized billing partners.</p>
         <p className="mt-2">Knoxified does not directly store full payment card information on its systems.</p>
 
         <h2 className="text-2xl font-bold text-slate-50 mt-12 mb-4">5. Data Retention</h2>
