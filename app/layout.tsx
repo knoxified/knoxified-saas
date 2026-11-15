@@ -163,6 +163,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <h4 className="font-semibold text-white mb-2">Legal</h4>
                 <Link href="/legal/terms" className="hover:text-cyan-400 transition-colors">Terms &amp; Conditions</Link>
                 <Link href="/legal/privacy" className="hover:text-cyan-400 transition-colors">Privacy Policy</Link>
+                <Link href="/legal/affiliate-terms" className="hover:text-cyan-400 transition-colors">Affiliate Terms</Link>
                 <Link href="/legal/acceptable-use" className="hover:text-cyan-400 transition-colors">Acceptable Use Policy</Link>
                 <Link href="/legal/compliance" className="hover:text-cyan-400 transition-colors">Compliance</Link>
                 <Link href="/legal/ai-calling-guide" className="hover:text-cyan-400 transition-colors">AI Calling Guide</Link>
