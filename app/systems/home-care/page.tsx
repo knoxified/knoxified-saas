@@ -229,22 +229,28 @@ export default function HomeCareSystemPage() {
 
       <SystemAutomations automations={[
   {
-    "title": "CarePulse",
-    "icon": "🩺",
-    "description": "Triggers gentle post-visit check-ins with families to monitor satisfaction and catch concerns early.",
-    "href": "/automations/carepulse"
-  },
-  {
     "title": "AppointMate",
     "icon": "📅",
     "description": "Automates scheduling for the first in-home assessment, based on your coordinator's real-time availability.",
     "href": "/automations/appointmate"
   },
   {
+    "title": "CarePulse",
+    "icon": "🩺",
+    "description": "Triggers gentle post-visit check-ins with families to monitor satisfaction and catch concerns early.",
+    "href": "/automations/carepulse"
+  },
+  {
     "title": "DocuFlow",
     "icon": "📄",
     "description": "Auto-generates the care agreement and intake paperwork ahead of the first visit, straight from the call.",
     "href": "/automations/docuflow"
+  },
+  {
+    "title": "ProofPulse",
+    "icon": "⭐",
+    "description": "Triggers review requests to satisfied customers automatically after successful transactions or services.",
+    "href": "/automations/proofpulse"
   }
 ]} />
 

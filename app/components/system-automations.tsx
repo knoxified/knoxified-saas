@@ -16,7 +16,7 @@ export function SystemAutomations({ automations }: SystemAutomationsProps) {
     <div className="mb-24 mt-24 border-t border-slate-700/50 pt-16">
       <h2 className="text-3xl md:text-4xl font-bold text-slate-50 mb-4 text-center tracking-tight">Powered By Core Automations</h2>
       <p className="text-slate-400 text-center max-w-2xl mx-auto mb-12">
-        This system is designed around these Knoxified automations. Ones marked Coming soon are still in development.
+        This system is designed around these Knoxified automations.
       </p>
       
       <div className="grid md:grid-cols-3 gap-6">

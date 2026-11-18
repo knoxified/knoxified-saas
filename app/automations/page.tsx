@@ -61,6 +61,11 @@ export default function AutomationsDirectory() {
     "href": "/automations/reminderbot"
   },
   {
+    "title": "RecallBot 🔁",
+    "desc": "Brings patients back for their routine cleanings and overdue checkups with timed recall calls and texts.",
+    "href": "/automations/recallbot"
+  },
+  {
     "title": "ProofPulse ⭐",
     "desc": "Triggers review requests to satisfied customers automatically after successful transactions or services.",
     "href": "/automations/proofpulse"

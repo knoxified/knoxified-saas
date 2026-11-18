@@ -184,16 +184,16 @@ export default function FitnessSystemPage() {
 
       <SystemAutomations automations={[
         {
-          "title": "OmniPulse",
-          "icon": "🚀",
-          "description": "Sends customer-authorized SMS updates for membership milestones, renewals, and re-engagement offers.",
-          "href": "/automations/omnipulse"
-        },
-        {
           "title": "AppointMate",
           "icon": "📅",
           "description": "Automates group fitness reservations, PT scheduling, and capacity thresholds to completely eliminate double bookings.",
           "href": "/automations/appointmate"
+        },
+        {
+          "title": "OmniPulse",
+          "icon": "🚀",
+          "description": "Sends customer-authorized SMS updates for membership milestones, renewals, and re-engagement offers.",
+          "href": "/automations/omnipulse"
         },
         {
           "title": "ReminderBot",

@@ -184,6 +184,12 @@ export default function RestaurantSystemPage() {
 
       <SystemAutomations automations={[
         {
+          "title": "AppointMate",
+          "icon": "📅",
+          "description": "Automates group fitness reservations, PT scheduling, and capacity thresholds to completely eliminate double bookings.",
+          "href": "/automations/appointmate"
+        },
+        {
           "title": "WaitlistBot",
           "icon": "🛎️",
           "description": "Intelligently manages virtual queues, providing live text updates and minimizing host stand crowding.",

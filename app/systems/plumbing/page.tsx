@@ -240,28 +240,28 @@ export default function PlumbingSystemPage() {
 
       <SystemAutomations automations={[
   {
+    "title": "AppointMate",
+    "icon": "📅",
+    "description": "Automates group fitness reservations, PT scheduling, and capacity thresholds to completely eliminate double bookings.",
+    "href": "/automations/appointmate"
+  },
+  {
     "title": "RouteMaster",
     "icon": "🗺️",
     "description": "Optimizes field service and delivery routes based on location, traffic, and schedule.",
     "href": "/automations/routemaster"
   },
   {
-    "title": "StatuSync",
-    "icon": "🚚",
-    "description": "Keeps clients informed with automated 'on-the-way' notifications and live ETAs.",
-    "href": "/automations/statusync"
+    "title": "InvoiceAI",
+    "icon": "💰",
+    "description": "Creates and dispatches accurate invoices based on logged hours or completed project milestones.",
+    "href": "/automations/invoiceai"
   },
   {
     "title": "ProofPulse",
     "icon": "⭐",
     "description": "Triggers review requests to satisfied customers automatically after successful transactions or services.",
     "href": "/automations/proofpulse"
-  },
-  {
-    "title": "InvoiceAI",
-    "icon": "💰",
-    "description": "Creates and dispatches accurate invoices based on logged hours or completed project milestones.",
-    "href": "/automations/invoiceai"
   }
 ]} />
 

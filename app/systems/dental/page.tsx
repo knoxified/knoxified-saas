@@ -108,7 +108,7 @@ export default function DentalSystemPage() {
                 </li>
                 <li className="flex items-start gap-3 text-slate-300">
                   <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Coming soon:</strong> automated confirmation and reminder messages ahead of the appointment to cut down no-shows.</span>
+                  <span><strong>Appointment Reminders:</strong> automated confirmation and reminder messages ahead of the appointment to cut down no-shows.</span>
                 </li>
               </ul>
             </div>
@@ -146,7 +146,7 @@ export default function DentalSystemPage() {
                 </li>
                 <li className="flex items-start gap-3 text-slate-300">
                   <CheckCircle2 className="w-5 h-5 text-cyan-500 mt-1 flex-shrink-0" />
-                  <span><strong>Coming soon:</strong> multilingual conversations and automated review requests after a visit.</span>
+                  <span><strong>Review Requests:</strong> automated review requests sent after a visit.</span>
                 </li>
               </ul>
             </div>
@@ -226,6 +226,12 @@ export default function DentalSystemPage() {
     "icon": "⏰",
     "description": "Reduces no-shows by sending timed SMS and email reminders to scheduled clients.",
     "href": "/automations/reminderbot"
+  },
+  {
+    "title": "RecallBot",
+    "icon": "🔁",
+    "description": "Brings patients back for their routine cleanings and overdue checkups with timed recall calls and texts.",
+    "href": "/automations/recallbot"
   },
   {
     "title": "ProofPulse",

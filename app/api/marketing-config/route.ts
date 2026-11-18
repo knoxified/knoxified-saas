@@ -40,6 +40,7 @@ const automations = [
   { "title": "SignSync 🖋️", "desc": "Manages the entire e-signature lifecycle, from sending to follow-ups and final storage.", "id": "signsync" },
   { "title": "AppointMate 📅", "desc": "Automates calendar availability, booking, and buffer time allocation to eliminate email ping-pong.", "id": "appointmate" },
   { "title": "ReminderBot ⏰", "desc": "Reduces no-shows by sending timed SMS and email reminders to scheduled clients.", "id": "reminderbot" },
+  { "title": "RecallBot 🔁", "desc": "Brings patients back for their routine cleanings and overdue checkups with timed recall calls and texts.", "id": "recallbot" },
   { "title": "ProofPulse ⭐", "desc": "Triggers review requests to satisfied customers automatically after successful transactions or services.", "id": "proofpulse" },
   { "title": "CaseGen 💼", "desc": "Drafts compelling case studies and portfolio entries based on project wrap-up data.", "id": "casegen" },
   { "title": "SocialSync 📱", "desc": "Monitors industry trends and generates relevant social media posts aligned with brand voice.", "id": "socialsync" },

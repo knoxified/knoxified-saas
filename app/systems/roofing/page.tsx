@@ -242,16 +242,10 @@ export default function RoofingSystemPage() {
 
       <SystemAutomations automations={[
   {
-    "title": "RouteMaster",
-    "icon": "🗺️",
-    "description": "Optimizes field service and delivery routes based on location, traffic, and schedule.",
-    "href": "/automations/routemaster"
-  },
-  {
-    "title": "StatuSync",
-    "icon": "🚚",
-    "description": "Keeps clients informed with automated 'on-the-way' notifications and live ETAs.",
-    "href": "/automations/statusync"
+    "title": "AppointMate",
+    "icon": "📅",
+    "description": "Automates group fitness reservations, PT scheduling, and capacity thresholds to completely eliminate double bookings.",
+    "href": "/automations/appointmate"
   },
   {
     "title": "DocuFlow",
@@ -264,6 +258,12 @@ export default function RoofingSystemPage() {
     "icon": "💰",
     "description": "Creates and dispatches accurate invoices based on logged hours or completed project milestones.",
     "href": "/automations/invoiceai"
+  },
+  {
+    "title": "ProofPulse",
+    "icon": "⭐",
+    "description": "Triggers review requests to satisfied customers automatically after successful transactions or services.",
+    "href": "/automations/proofpulse"
   }
 ]} />
 
