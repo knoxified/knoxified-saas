@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import { supabase } from '@/src/lib/supabase';
+import { track } from '@/lib/track';
 import { createAvatar } from '@dicebear/core';
 import { lorelei } from '@dicebear/collection';
 import { CheckCircle2 } from 'lucide-react';
@@ -485,7 +486,7 @@ function SuccessScreen({ form }: { form: FormData }) {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4 }}
-        onClick={() => { window.open('https://dashboard.knoxified.org', '_blank', 'noopener,noreferrer'); }}
+        onClick={() => { track('onboarding_dashboard_click'); window.open('https://dashboard.knoxified.org', '_blank', 'noopener,noreferrer'); }}
         className={`w-full py-4 rounded-xl font-bold text-white bg-gradient-to-r ${gradient} hover:opacity-90 transition-all shadow-[0_0_25px_rgba(6,182,212,0.35)] hover:shadow-[0_0_40px_rgba(6,182,212,0.5)] flex items-center justify-center gap-3 text-base`}
       >
         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -543,6 +544,7 @@ export default function OnboardingPage() {
       try {
         const { data: { user: authUser }, error } = await supabase.auth.getUser();
         if (error || !authUser) {
+          track('onboarding_no_session');
           window.location.href = 'https://dashboard.knoxified.org/login';
           return;
         }
@@ -577,6 +579,7 @@ export default function OnboardingPage() {
           console.warn('Device registration skipped:', fpErr);
         }
       } catch {
+        track('onboarding_no_session', { cause: 'exception' });
         window.location.href = 'https://dashboard.knoxified.org/login';
       } finally {
         setIsCheckingSession(false);
@@ -584,6 +587,13 @@ export default function OnboardingPage() {
     };
     fetchSession();
   }, [router]);
+
+  // Funnel: which wizard step the visitor is on, and completion.
+  useEffect(() => {
+    if (isCheckingSession) return;
+    if (step === 7) track('onboarding_complete');
+    else track('onboarding_step', { step });
+  }, [step, isCheckingSession]);
 
   // ── Close dropdown on outside click ───────────────────────────────────────
 

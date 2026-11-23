@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
@@ -7,6 +7,7 @@ import Link from 'next/link';
 
 import { Eye, EyeOff } from 'lucide-react';
 import { supabase } from '@/src/lib/supabase';
+import { track } from '@/lib/track';
 
 export default function CreateAccountPage() {
   const router = useRouter();
@@ -28,8 +29,13 @@ export default function CreateAccountPage() {
     }
   }, [email]);
 
+  const startedRef = useRef(false);
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newEmail = e.target.value;
+    if (!startedRef.current && newEmail) {
+      startedRef.current = true;
+      track('signup_started');
+    }
     setEmail(newEmail);
     localStorage.setItem('signup_email', newEmail);
   };
@@ -56,8 +62,10 @@ export default function CreateAccountPage() {
     setErrorMsg(null);
     
     if (!isValidPassword) {
+      track('signup_invalid', { min_length: hasMinLength, number: hasNumber, special: hasSpecialChar, match: passwordsMatch });
       return;
     }
+    track('signup_submit');
 
     setIsLoading(true);
     try {
@@ -82,11 +90,13 @@ export default function CreateAccountPage() {
       });
 
       if (error) {
+        track('signup_error', { message: error.message.slice(0, 120) });
         setErrorMsg(error.message);
         setIsLoading(false);
         return;
       }
 
+      track('signup_success', { needs_confirm: !data.session });
       console.log('Account creation succeeded', data);
       localStorage.removeItem('signup_email');
       
@@ -97,6 +107,7 @@ export default function CreateAccountPage() {
         setIsSuccess(true);
       }
     } catch (err: any) {
+      track('signup_error', { message: String(err?.message || 'unexpected').slice(0, 120) });
       setErrorMsg(err.message || 'An unexpected error occurred during signup.');
     } finally {
       setIsLoading(false);

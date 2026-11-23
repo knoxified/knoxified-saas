@@ -3,6 +3,7 @@ import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
+import { track } from '@/lib/track';
 
 // Conservative, defensible defaults per industry -- NOT "every missed call
 // becomes a full-price sale." avgValue is what a converted call is
@@ -42,16 +43,19 @@ export default function GetStartedPage() {
 
   const pickIndustry = (ind: typeof INDUSTRIES[number]) => {
     setIndustry(ind.key);
+    track('get_started_industry', { industry: ind.key });
     setAvgValue(ind.avgValue);
     setConvertRate(ind.convertRate);
     setStep(2);
   };
 
   const handleSkip = () => {
+    track('get_started_skip', { step });
     router.push('/create-account');
   };
 
   const handleContinue = () => {
+    track('get_started_continue', { step });
     router.push('/create-account');
   };
 
@@ -185,7 +189,7 @@ export default function GetStartedPage() {
                    </details>
 
                    <button
-                     onClick={() => setStep(3)}
+                     onClick={() => { track('get_started_step', { step: 3 }); setStep(3); }}
                      className="w-full py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)]"
                    >
                      Calculate

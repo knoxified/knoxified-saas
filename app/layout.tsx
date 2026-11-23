@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import { ChatBot } from './components/chat-bot';
+import { SiteTracker } from './components/site-tracker';
 import { ReferralTracker } from './components/referral-tracker';
 import './globals.css';
 
@@ -178,6 +179,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </footer>
         <ReferralTracker />
+        <SiteTracker />
         <ChatBot />
       </body>
     </html>
