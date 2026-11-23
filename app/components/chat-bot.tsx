@@ -38,6 +38,26 @@ function getPersonaKey(): PersonaKey {
 interface ChatMessage {
   role: 'user' | 'assistant';
   content: string;
+  askEmail?: boolean;
+}
+
+const SESSION_KEY = 'knoxified_chat_session';
+
+// Anonymous visitor id so repeat conversations can be grouped. Reuses the site's
+// existing cookie when present; otherwise a random id kept in localStorage.
+function getVisitorId(): string | null {
+  try {
+    const hit = document.cookie.split('; ').find((c) => c.startsWith('kx_vid='));
+    if (hit) return decodeURIComponent(hit.slice(7));
+    let id = window.localStorage.getItem('kx_chat_vid');
+    if (!id) {
+      id = crypto.randomUUID();
+      window.localStorage.setItem('kx_chat_vid', id);
+    }
+    return id;
+  } catch {
+    return null;
+  }
 }
 
 export function ChatBot() {
@@ -49,8 +69,17 @@ export function ChatBot() {
   const [input, setInput] = useState('');
   const [isSending, setIsSending] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const [leadEmail, setLeadEmail] = useState('');
+  const [leadWebsite, setLeadWebsite] = useState(''); // honeypot: real visitors never see or fill this
+  const [leadStatus, setLeadStatus] = useState<'idle' | 'sending' | 'done'>('idle');
+  const [leadError, setLeadError] = useState<string | null>(null);
 
   useEffect(() => {
+    try {
+      const saved = window.sessionStorage.getItem(SESSION_KEY);
+      if (saved) setSessionId(saved);
+    } catch {}
     setPersonaKey(getPersonaKey());
   }, []);
 
@@ -96,14 +125,57 @@ export function ChatBot() {
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: nextMessages }),
+        body: JSON.stringify({
+          messages: nextMessages.map(({ role, content }) => ({ role, content })),
+          sessionId,
+          visitorId: getVisitorId(),
+          persona: personaKey,
+          page: window.location.pathname,
+          referrer: document.referrer || null,
+        }),
       });
       const data = await res.json();
-      setMessages(prev => [...prev, { role: 'assistant', content: data.text || "I didn't quite catch that -- could you rephrase?" }]);
+      if (data.sessionId && data.sessionId !== sessionId) {
+        setSessionId(data.sessionId);
+        try { window.sessionStorage.setItem(SESSION_KEY, data.sessionId); } catch {}
+      }
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: data.text || "I didn't quite catch that -- could you rephrase?",
+        askEmail: data.askEmail === true,
+      }]);
     } catch {
       setMessages(prev => [...prev, { role: 'assistant', content: "I'm having trouble connecting right now. Please try again in a moment." }]);
     } finally {
       setIsSending(false);
+    }
+  };
+
+  const submitLead = async () => {
+    const email = leadEmail.trim();
+    if (!email || leadStatus === 'sending') return;
+    setLeadStatus('sending');
+    setLeadError(null);
+    try {
+      const res = await fetch('/api/chat/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId, email, website: leadWebsite }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        setLeadError(data.error || 'Something went wrong. Please try again.');
+        setLeadStatus('idle');
+        return;
+      }
+      setLeadStatus('done');
+      setMessages(prev => [...prev, {
+        role: 'assistant',
+        content: `Thanks. The team will reply to ${email}.`,
+      }]);
+    } catch {
+      setLeadError('Something went wrong. Please try again.');
+      setLeadStatus('idle');
     }
   };
 
@@ -205,6 +277,42 @@ export function ChatBot() {
                       </div>
                     </div>
                   ))}
+                  {leadStatus !== 'done' && sessionId && messages.length > 0 && messages[messages.length - 1].askEmail && !isSending && (
+                    <div className="rounded-2xl border border-slate-700 bg-slate-800/60 p-3 space-y-2">
+                      <div className="flex items-center gap-2">
+                        <input
+                          type="email"
+                          value={leadEmail}
+                          onChange={e => setLeadEmail(e.target.value)}
+                          onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); submitLead(); } }}
+                          placeholder="you@company.com"
+                          autoComplete="email"
+                          className="flex-1 min-w-0 bg-slate-900 border border-slate-700 rounded-full px-3 py-2 text-sm text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-cyan-500/60"
+                        />
+                        <input
+                          type="text"
+                          name="website"
+                          value={leadWebsite}
+                          onChange={e => setLeadWebsite(e.target.value)}
+                          tabIndex={-1}
+                          autoComplete="off"
+                          aria-hidden="true"
+                          className="absolute left-[-9999px] h-0 w-0 opacity-0"
+                        />
+                        <button
+                          onClick={submitLead}
+                          disabled={!leadEmail.trim() || leadStatus === 'sending'}
+                          className="shrink-0 rounded-full bg-cyan-500 px-3 py-2 text-sm font-medium text-slate-950 hover:bg-cyan-400 disabled:bg-slate-700 disabled:text-slate-400 transition-colors"
+                        >
+                          {leadStatus === 'sending' ? 'Sending' : 'Send'}
+                        </button>
+                      </div>
+                      {leadError && <div className="text-xs text-red-400">{leadError}</div>}
+                      <div className="text-[11px] text-slate-500">
+                        Only used to reply to you. <a href="/legal/privacy" className="underline hover:text-slate-300">Privacy policy</a>
+                      </div>
+                    </div>
+                  )}
                   {isSending && (
                     <div className="flex justify-start">
                       <div className="bg-slate-800 border border-slate-700 rounded-2xl rounded-bl-sm px-3.5 py-2.5 flex gap-1">

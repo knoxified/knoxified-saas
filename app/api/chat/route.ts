@@ -1,101 +1,214 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenAI, Type } from "@google/genai";
 import { NextRequest, NextResponse } from "next/server";
+import { supabaseAdmin } from "@/src/lib/supabase-admin";
+import { SYSTEM_PROMPT } from "@/lib/chat/knowledge";
 
-// Knoxified's actual product facts, kept here so the widget can't invent
-// pricing, trial terms, or features it doesn't actually have. Update this
-// alongside real pricing/plan changes -- an AI chat widget confidently
-// stating the wrong price is worse than no widget at all.
-const SYSTEM_PROMPT = `You are a helpful assistant for Knoxified (knoxified.org), answering questions for visitors on the marketing site.
+const GEMINI_MODEL = process.env.GEMINI_CHAT_MODEL || "gemini-2.5-flash-lite"; // cheapest capable tier: high-volume widget, not a reasoning task
+const OPENROUTER_MODEL = "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free"; // free fallback only
 
-WHAT KNOXIFIED IS: An AI voice agent and automation platform. It answers a business's phone calls 24/7 (including after-hours and overflow), so missed calls become booked customers instead of lost leads. It also includes automations like lead follow-up, appointment booking, and cold outreach tools, depending on plan.
+const MAX_HISTORY = 12; // messages sent to the model
+const MAX_MESSAGE_CHARS = 1000; // per visitor message
+const MAX_USER_MESSAGES_PER_SESSION = 40; // hard cap per conversation (cost protection)
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
-WHO IT'S FOR: Local service businesses that lose revenue to missed calls -- home care agencies, dental practices, HVAC, plumbing, roofing, real estate, restaurants, fitness studios, automotive, and similar. Works for any industry with phone-based customer intake, not just these.
+type ChatMessage = { role: "user" | "assistant"; content: string };
+type BotReply = { reply: string; unanswered: boolean; question: string; askEmail: boolean };
 
-PLANS: Trial (free, no card required, limited voice minutes, a fixed set of automations), Starter ($247/mo), Pro ($697/mo, includes more automations and higher usage limits), Enterprise ($2,497/mo, full access). Annual billing available at a discount. Never state an exact discount percentage or invent a price not listed here.
+const FALLBACK_TEXT =
+  "I'm having trouble connecting right now. You can start a free trial directly, or email support@knoxified.org and the team will reply.";
 
-TRIAL: Currently free, no credit card required to start.
+// Models sometimes wrap JSON in fences or add text around it. Be defensive.
+function parseBotReply(raw: string): BotReply | null {
+  const text = raw.trim();
+  const start = text.indexOf("{");
+  const end = text.lastIndexOf("}");
+  if (start === -1 || end <= start) return null;
+  try {
+    const obj = JSON.parse(text.slice(start, end + 1));
+    if (typeof obj.reply !== "string" || !obj.reply.trim()) return null;
+    return {
+      reply: obj.reply.trim(),
+      unanswered: obj.unanswered === true,
+      question: typeof obj.question === "string" ? obj.question.trim().slice(0, 500) : "",
+      askEmail: obj.ask_email === true,
+    };
+  } catch {
+    return null;
+  }
+}
 
-TONE: Brief, warm, direct -- a knowledgeable person, not a sales script. Never use exclamation marks or corporate hype language. Don't oversell or exaggerate results.
-
-WHAT TO DO IF UNSURE: If asked something you don't have a confident, specific answer for (exact integration details, technical specifics, something not covered above), say so honestly and suggest they start a free trial or reach out directly rather than guessing. Never invent a statistic, customer name, or feature that isn't stated here.
-
-Keep answers short -- 2-4 sentences unless the question genuinely needs more.`;
-
-async function tryGemini(messages: { role: string; content: string }[]): Promise<string | null> {
+async function tryGemini(messages: ChatMessage[]): Promise<BotReply | null> {
   if (!process.env.GEMINI_API_KEY) return null;
   try {
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-    const prompt = messages.map((m) => `${m.role === 'user' ? 'User' : 'Assistant'}: ${m.content}`).join("\n") + "\nAssistant:";
-
     const response = await ai.models.generateContent({
-      model: "gemini-2.5-flash-lite", // deliberately the cheapest capable tier -- this is a high-volume widget, not a reasoning task
-      contents: prompt,
-      config: { systemInstruction: SYSTEM_PROMPT },
+      model: GEMINI_MODEL,
+      contents: messages.map((m) => ({
+        role: m.role === "user" ? "user" : "model",
+        parts: [{ text: m.content }],
+      })),
+      config: {
+        systemInstruction: SYSTEM_PROMPT,
+        responseMimeType: "application/json",
+        responseSchema: {
+          type: Type.OBJECT,
+          properties: {
+            reply: { type: Type.STRING },
+            unanswered: { type: Type.BOOLEAN },
+            question: { type: Type.STRING },
+            ask_email: { type: Type.BOOLEAN },
+          },
+          required: ["reply", "unanswered", "question", "ask_email"],
+        },
+      },
     });
-
-    const text = response.text;
-    return text && text.trim().length > 0 ? text : null;
+    return response.text ? parseBotReply(response.text) : null;
   } catch (err) {
     console.error("Gemini chat error (falling back to OpenRouter):", err);
     return null;
   }
 }
 
-async function tryOpenRouter(messages: { role: string; content: string }[]): Promise<string | null> {
+async function tryOpenRouter(messages: ChatMessage[]): Promise<BotReply | null> {
   if (!process.env.OPENROUTER_API_KEY) return null;
   try {
     const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
-        "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free", // free tier -- fallback only, kept last so Gemini (better quality) is tried first
-        messages: [
-          { role: "system", content: SYSTEM_PROMPT },
-          ...messages.map((m) => ({ role: m.role === 'user' ? 'user' : 'assistant', content: m.content })),
-        ],
+        model: OPENROUTER_MODEL,
+        messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
       }),
     });
-
     if (!res.ok) {
-      console.error("OpenRouter fallback error:", res.status, await res.text().catch(() => ''));
+      console.error("OpenRouter fallback error:", res.status, await res.text().catch(() => ""));
       return null;
     }
-
     const data = await res.json();
-    const text = data?.choices?.[0]?.message?.content;
-    return text && text.trim().length > 0 ? text : null;
+    const text: string | undefined = data?.choices?.[0]?.message?.content;
+    if (!text || !text.trim()) return null;
+    // Free model may ignore the JSON instruction: still show its text, just without flags.
+    return parseBotReply(text) ?? { reply: text.trim(), unanswered: false, question: "", askEmail: false };
   } catch (err) {
     console.error("OpenRouter fallback threw:", err);
     return null;
   }
 }
 
+// Returns a valid session id: reuses the visitor's existing one, else creates a new row.
+async function resolveSession(
+  req: NextRequest,
+  body: { sessionId?: unknown; visitorId?: unknown; page?: unknown; referrer?: unknown; persona?: unknown }
+): Promise<{ id: string; userMessages: number } | null> {
+  try {
+    if (typeof body.sessionId === "string" && UUID_RE.test(body.sessionId)) {
+      const { data } = await supabaseAdmin
+        .from("chat_sessions")
+        .select("id, message_count")
+        .eq("id", body.sessionId)
+        .maybeSingle();
+      if (data) return { id: data.id, userMessages: data.message_count ?? 0 };
+    }
+    const str = (v: unknown, max: number) => (typeof v === "string" && v ? v.slice(0, max) : null);
+    const { data, error } = await supabaseAdmin
+      .from("chat_sessions")
+      .insert({
+        visitor_id: str(body.visitorId, 80),
+        persona: str(body.persona, 40),
+        first_page: str(body.page, 300),
+        referrer: str(body.referrer, 500),
+        country: req.headers.get("cf-ipcountry"),
+        user_agent: str(req.headers.get("user-agent"), 400),
+      })
+      .select("id")
+      .single();
+    if (error || !data) {
+      console.error("chat session insert failed:", error);
+      return null;
+    }
+    return { id: data.id, userMessages: 0 };
+  } catch (err) {
+    console.error("chat session error:", err);
+    return null;
+  }
+}
+
+async function logExchange(
+  sessionId: string,
+  userMessages: number,
+  userText: string,
+  bot: BotReply,
+  model: string
+) {
+  try {
+    await supabaseAdmin.from("chat_messages").insert([
+      { session_id: sessionId, role: "user", content: userText },
+      { session_id: sessionId, role: "assistant", content: bot.reply.slice(0, 4000), model },
+    ]);
+    await supabaseAdmin
+      .from("chat_sessions")
+      .update({ message_count: userMessages + 1, last_message_at: new Date().toISOString() })
+      .eq("id", sessionId);
+    if (bot.unanswered && bot.question) {
+      await supabaseAdmin.from("chat_leads").insert({
+        session_id: sessionId,
+        kind: "unanswered",
+        question: bot.question.slice(0, 2000),
+      });
+    }
+  } catch (err) {
+    console.error("chat logging failed:", err); // logging must never break the reply
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
-    const { messages } = await req.json();
-    if (!Array.isArray(messages) || messages.length === 0) {
+    const body = await req.json();
+    const raw = body?.messages;
+    if (!Array.isArray(raw) || raw.length === 0) {
       return NextResponse.json({ text: "What can I help you with?" });
     }
 
-    // Gemini first (better quality, paid), OpenRouter free tier as automatic
-    // fallback if Gemini errors, has no key configured, or hits quota.
-    const text = (await tryGemini(messages)) ?? (await tryOpenRouter(messages));
+    const messages: ChatMessage[] = raw
+      .filter((m: any) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string" && m.content.trim())
+      .slice(-MAX_HISTORY)
+      .map((m: any) => ({ role: m.role, content: String(m.content).slice(0, MAX_MESSAGE_CHARS) }));
 
-    if (!text) {
+    const last = messages[messages.length - 1];
+    if (!last || last.role !== "user") {
+      return NextResponse.json({ text: "What can I help you with?" });
+    }
+    // Gemini requires the history to start with a user turn.
+    while (messages.length && messages[0].role !== "user") messages.shift();
+
+    const session = await resolveSession(req, body);
+
+    if (session && session.userMessages >= MAX_USER_MESSAGES_PER_SESSION) {
       return NextResponse.json({
-        text: "I'm having trouble connecting right now. You're welcome to start a free trial directly, or try me again in a moment.",
+        text: "We've covered a lot here. For anything further, email support@knoxified.org and the team will reply.",
+        sessionId: session.id,
+        askEmail: true,
       });
     }
 
-    return NextResponse.json({ text });
+    let model = GEMINI_MODEL;
+    let bot = await tryGemini(messages);
+    if (!bot) {
+      model = OPENROUTER_MODEL;
+      bot = await tryOpenRouter(messages);
+    }
+    if (!bot) {
+      return NextResponse.json({ text: FALLBACK_TEXT, sessionId: session?.id, askEmail: true });
+    }
+
+    if (session) await logExchange(session.id, session.userMessages, last.content, bot, model);
+
+    return NextResponse.json({ text: bot.reply, sessionId: session?.id, askEmail: bot.askEmail || bot.unanswered });
   } catch (error) {
     console.error("Chat route error:", error);
-    return NextResponse.json(
-      { text: "Something went wrong on my end. Please try again." },
-      { status: 500 }
-    );
+    return NextResponse.json({ text: "Something went wrong on my end. Please try again." }, { status: 500 });
   }
 }
