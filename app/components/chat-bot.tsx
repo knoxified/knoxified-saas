@@ -1,5 +1,6 @@
 'use client';
 
+import { track } from '@/lib/track';
 import { useEffect, useRef, useState } from 'react';
 import { X, Send } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -97,7 +98,7 @@ export function ChatBot() {
       if (messages.length === 0) {
         setMessages([{
           role: 'assistant',
-          content: `Hi, I'm ${persona.name}. Ask me anything about Knoxified, or how it'd work for your business.`,
+          content: `Hi, I'm ${persona.name}, how can I help you today?`,
         }]);
       }
     }, 1500);
@@ -169,6 +170,7 @@ export function ChatBot() {
         return;
       }
       setLeadStatus('done');
+      track('chat_lead');
       setMessages(prev => [...prev, {
         role: 'assistant',
         content: `Thanks. The team will reply to ${email}.`,
@@ -187,7 +189,7 @@ export function ChatBot() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            onClick={() => setIsOpen(true)}
+            onClick={() => { track('chat_open'); setIsOpen(true); }}
             aria-label="Open chat"
             className="fixed bottom-[20px] right-[20px] w-[64px] h-[64px] rounded-full border border-cyan-500/20 bg-slate-800 shadow-[0_0_30px_rgba(6,182,212,0.3)] cursor-pointer z-[9999] flex items-center justify-center p-0 transition-transform hover:scale-105"
           >

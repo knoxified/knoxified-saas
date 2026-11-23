@@ -1,7 +1,7 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/src/lib/supabase-admin";
-import { SYSTEM_PROMPT } from "@/lib/chat/knowledge";
+import { buildSystemPrompt, PERSONAS } from "@/lib/chat/knowledge";
 
 const GEMINI_MODEL = process.env.GEMINI_CHAT_MODEL || "gemini-2.5-flash-lite"; // cheapest capable tier: high-volume widget, not a reasoning task
 const OPENROUTER_MODEL = "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free"; // free fallback only
@@ -12,10 +12,17 @@ const MAX_USER_MESSAGES_PER_SESSION = 40; // hard cap per conversation (cost pro
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
 type ChatMessage = { role: "user" | "assistant"; content: string };
-type BotReply = { reply: string; unanswered: boolean; question: string; askEmail: boolean };
+type BotReply = { reply: string; unanswered: boolean; question: string; askEmail: boolean; visitorName: string };
 
 const FALLBACK_TEXT =
   "I'm having trouble connecting right now. You can start a free trial directly, or email support@knoxified.org and the team will reply.";
+
+// Accept only something that plausibly is a first name.
+function cleanName(v: unknown): string {
+  if (typeof v !== "string") return "";
+  const n = v.trim().replace(/\s+/g, " ");
+  return /^[\p{L}][\p{L}'\- ]{0,39}$/u.test(n) ? n : "";
+}
 
 // Models sometimes wrap JSON in fences or add text around it. Be defensive.
 function parseBotReply(raw: string): BotReply | null {
@@ -31,13 +38,14 @@ function parseBotReply(raw: string): BotReply | null {
       unanswered: obj.unanswered === true,
       question: typeof obj.question === "string" ? obj.question.trim().slice(0, 500) : "",
       askEmail: obj.ask_email === true,
+      visitorName: cleanName(obj.visitor_name),
     };
   } catch {
     return null;
   }
 }
 
-async function tryGemini(messages: ChatMessage[]): Promise<BotReply | null> {
+async function tryGemini(messages: ChatMessage[], systemPrompt: string): Promise<BotReply | null> {
   if (!process.env.GEMINI_API_KEY) return null;
   try {
     const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
@@ -48,7 +56,7 @@ async function tryGemini(messages: ChatMessage[]): Promise<BotReply | null> {
         parts: [{ text: m.content }],
       })),
       config: {
-        systemInstruction: SYSTEM_PROMPT,
+        systemInstruction: systemPrompt,
         responseMimeType: "application/json",
         responseSchema: {
           type: Type.OBJECT,
@@ -57,8 +65,9 @@ async function tryGemini(messages: ChatMessage[]): Promise<BotReply | null> {
             unanswered: { type: Type.BOOLEAN },
             question: { type: Type.STRING },
             ask_email: { type: Type.BOOLEAN },
+            visitor_name: { type: Type.STRING },
           },
-          required: ["reply", "unanswered", "question", "ask_email"],
+          required: ["reply", "unanswered", "question", "ask_email", "visitor_name"],
         },
       },
     });
@@ -69,7 +78,7 @@ async function tryGemini(messages: ChatMessage[]): Promise<BotReply | null> {
   }
 }
 
-async function tryOpenRouter(messages: ChatMessage[]): Promise<BotReply | null> {
+async function tryOpenRouter(messages: ChatMessage[], systemPrompt: string): Promise<BotReply | null> {
   if (!process.env.OPENROUTER_API_KEY) return null;
   try {
     const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
@@ -80,7 +89,7 @@ async function tryOpenRouter(messages: ChatMessage[]): Promise<BotReply | null> 
       },
       body: JSON.stringify({
         model: OPENROUTER_MODEL,
-        messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
+        messages: [{ role: "system", content: systemPrompt }, ...messages],
       }),
     });
     if (!res.ok) {
@@ -91,7 +100,7 @@ async function tryOpenRouter(messages: ChatMessage[]): Promise<BotReply | null> 
     const text: string | undefined = data?.choices?.[0]?.message?.content;
     if (!text || !text.trim()) return null;
     // Free model may ignore the JSON instruction: still show its text, just without flags.
-    return parseBotReply(text) ?? { reply: text.trim(), unanswered: false, question: "", askEmail: false };
+    return parseBotReply(text) ?? { reply: text.trim(), unanswered: false, question: "", askEmail: false, visitorName: "" };
   } catch (err) {
     console.error("OpenRouter fallback threw:", err);
     return null;
@@ -152,6 +161,11 @@ async function logExchange(
       .from("chat_sessions")
       .update({ message_count: userMessages + 1, last_message_at: new Date().toISOString() })
       .eq("id", sessionId);
+    if (bot.visitorName) {
+      // Separate call: fails harmlessly if the visitor_name column does not exist yet.
+      const { error } = await supabaseAdmin.from("chat_sessions").update({ visitor_name: bot.visitorName }).eq("id", sessionId);
+      if (error) console.error("visitor_name save skipped:", error.message);
+    }
     if (bot.unanswered && bot.question) {
       await supabaseAdmin.from("chat_leads").insert({
         session_id: sessionId,
@@ -194,11 +208,14 @@ export async function POST(req: NextRequest) {
       });
     }
 
+    const personaKey = typeof body?.persona === "string" && body.persona in PERSONAS ? body.persona : "calista";
+    const systemPrompt = buildSystemPrompt(personaKey);
+
     let model = GEMINI_MODEL;
-    let bot = await tryGemini(messages);
+    let bot = await tryGemini(messages, systemPrompt);
     if (!bot) {
       model = OPENROUTER_MODEL;
-      bot = await tryOpenRouter(messages);
+      bot = await tryOpenRouter(messages, systemPrompt);
     }
     if (!bot) {
       return NextResponse.json({ text: FALLBACK_TEXT, sessionId: session?.id, askEmail: true });
