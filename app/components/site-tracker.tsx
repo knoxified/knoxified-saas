@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { track } from '@/lib/track';
+import { DESK_PATH } from '@/lib/desk-auth-path';
 
 // Links worth recording as call-to-action clicks.
 const CTA_RE = /^(\/get-started|\/create-account|\/pricing|\/contact)(\/|$|\?)|dashboard\.knoxified\.org/;
@@ -11,6 +12,7 @@ export function SiteTracker() {
   const pathname = usePathname();
 
   useEffect(() => {
+    if (pathname.startsWith(DESK_PATH)) return;
     track('page_view');
   }, [pathname]);
 

@@ -1,6 +1,8 @@
 'use client';
 
 import { track } from '@/lib/track';
+import { usePathname } from 'next/navigation';
+import { DESK_PATH } from '@/lib/desk-auth-path';
 import { useEffect, useRef, useState } from 'react';
 import { X, Send } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -62,6 +64,7 @@ function getVisitorId(): string | null {
 }
 
 export function ChatBot() {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [booting, setBooting] = useState(true);
   const [showPersona, setShowPersona] = useState(false);
@@ -180,6 +183,8 @@ export function ChatBot() {
       setLeadStatus('idle');
     }
   };
+
+  if (pathname.startsWith(DESK_PATH)) return null; // no widget on the private desk
 
   return (
     <>
