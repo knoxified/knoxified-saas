@@ -25,6 +25,9 @@ const ALLOWED_EVENTS = new Set([
   "onboarding_no_session",
   "chat_open",
   "chat_lead",
+  "scroll_depth",
+  "section_view",
+  "page_leave",
   "onboarding_dashboard_click",
 ]);
 const BOT_RE = /bot|crawl|spider|slurp|headless|lighthouse|pagespeed|python|curl|wget|httpclient|monitor|preview|facebookexternalhit|axios|node-fetch|go-http/i;

@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 type Json = Record<string, any>;
-type Tab = 'funnel' | 'chats' | 'leads' | 'cleanup';
+type Tab = 'funnel' | 'pages' | 'chats' | 'leads' | 'cleanup';
 
 async function api(op: string, extra: Json = {}): Promise<{ status: number; data: Json }> {
   const res = await fetch('/api/desk', {
@@ -33,7 +33,7 @@ export default function DeskPage() {
   if (authed === null) return <main className="min-h-screen bg-slate-950" />;
   if (!authed) return <Login onDone={() => setAuthed(true)} />;
 
-  const tabs: [Tab, string][] = [['funnel', 'Funnel'], ['chats', 'Chats'], ['leads', 'Leads'], ['cleanup', 'Cleanup']];
+  const tabs: [Tab, string][] = [['funnel', 'Funnel'], ['pages', 'Pages'], ['chats', 'Chats'], ['leads', 'Leads'], ['cleanup', 'Cleanup']];
   return (
     <main className="min-h-screen bg-slate-950 text-slate-200">
       <div className="mx-auto max-w-4xl px-4 py-6">
@@ -47,6 +47,7 @@ export default function DeskPage() {
           <button className={btnGhost} onClick={async () => { await api('logout'); setAuthed(false); }}>Log out</button>
         </div>
         {tab === 'funnel' && <Funnel />}
+        {tab === 'pages' && <Pages />}
         {tab === 'chats' && <Chats />}
         {tab === 'leads' && <Leads />}
         {tab === 'cleanup' && <Cleanup />}
@@ -165,6 +166,96 @@ function Funnel() {
   );
 }
 
+function Range({ days, setDays }: { days: number; setDays: (n: number) => void }) {
+  return (
+    <div className="flex items-center gap-2">
+      {[1, 7, 30].map((n) => (
+        <button key={n} onClick={() => setDays(n)} className={`${btn} ${days === n ? 'bg-slate-800 text-white' : 'text-slate-400 hover:text-slate-200'}`}>
+          {n === 1 ? '24 hours' : `${n} days`}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+const fmtSecs = (s: number) => (s >= 60 ? `${Math.floor(s / 60)}m ${s % 60}s` : `${s}s`);
+
+function Pages() {
+  const [days, setDays] = useState(7);
+  const [d, setD] = useState<Json | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [sel, setSel] = useState<string | null>(null);
+  const [detail, setDetail] = useState<Json | null>(null);
+
+  useEffect(() => {
+    setLoading(true);
+    api('pages', { days }).then((r) => { setD(r.data.ok ? r.data : null); setLoading(false); });
+  }, [days]);
+
+  useEffect(() => {
+    if (!sel) { setDetail(null); return; }
+    setDetail(null);
+    api('page_detail', { days, path: sel }).then((r) => setDetail(r.data.ok ? r.data : { viewers: 0, depths: [], sections: [] }));
+  }, [sel, days]);
+
+  if (sel) {
+    return (
+      <div className="space-y-4">
+        <button className={btnGhost} onClick={() => setSel(null)}>Back to pages</button>
+        <div className="text-lg font-medium text-white">{sel}</div>
+        {!detail && <div className="text-sm text-slate-500">Loading</div>}
+        {detail && (
+          <>
+            <div className="text-sm text-slate-400">{detail.viewers} visitor(s) viewed this page in the selected period. Percentages are of those visitors.</div>
+            <div className={card}>
+              <div className="mb-2 font-medium text-white">How far down they scrolled</div>
+              <Bars rows={detail.depths.map((x: Json) => ({ label: `${x.label} (${x.pct}%)`, count: x.count }))} total={detail.viewers || undefined} />
+            </div>
+            <div className={card}>
+              <div className="mb-2 font-medium text-white">Sections reached, top to bottom</div>
+              {detail.sections.length === 0
+                ? <div className="text-sm text-slate-500">No headings tracked on this page yet.</div>
+                : <Bars rows={detail.sections.map((x: Json) => ({ label: `${x.label} (${x.pct}%)`, count: x.count }))} total={detail.viewers || undefined} />}
+              <div className="mt-2 text-xs text-slate-500">A section counts as reached when its heading scrolls into view. The biggest fall between two neighbors is where people give up.</div>
+            </div>
+          </>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-4">
+      <Range days={days} setDays={setDays} />
+      {loading && <div className="text-sm text-slate-500">Loading</div>}
+      {!loading && !d && <div className="text-sm text-red-400">Could not load.</div>}
+      {d && (
+        <>
+          <div className={card}>
+            <div className="text-sm text-slate-400">Visits (sessions)</div>
+            <div className="text-3xl font-semibold text-white">{d.sessions}</div>
+            <div className="mt-1 text-sm text-slate-400">{d.bounceRate}% looked at one page and left</div>
+            {d.capped && <div className="mt-1 text-xs text-amber-400">Very high volume: only the first 30,000 events were counted.</div>}
+          </div>
+          <div className="space-y-2">
+            {d.pages.length === 0 && <div className="text-sm text-slate-500">No page views yet.</div>}
+            {d.pages.map((p: Json) => (
+              <button key={p.path} onClick={() => setSel(p.path)} className={`${card} block w-full text-left hover:border-slate-500`}>
+                <div className="truncate text-sm font-medium text-white">{p.path}</div>
+                <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
+                  <span>{p.views} views</span><span>{p.visitors} visitors</span>
+                  <span>{p.medianSeconds ? `${fmtSecs(p.medianSeconds)} typical time` : 'time n/a'}</span>
+                  <span>{p.entries} landed here</span><span>{p.exitRate}% left from here</span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 function Chats() {
   const [list, setList] = useState<Json[] | null>(null);
   const [open, setOpen] = useState<Json | null>(null);
@@ -263,22 +354,41 @@ function Leads() {
 
 function Cleanup() {
   const [days, setDays] = useState(90);
+  const [evDays, setEvDays] = useState(30);
   const [msg, setMsg] = useState('');
+  const [evMsg, setEvMsg] = useState('');
   return (
-    <div className={`${card} space-y-3`}>
-      <div className="font-medium text-white">Delete old chat conversations</div>
-      <p className="text-sm text-slate-400">Removes conversations with no activity for this many days, along with their messages. Emails and unanswered questions in Leads are kept.</p>
-      <div className="flex items-center gap-2">
-        <input type="number" min={1} value={days} onChange={(e) => setDays(Number(e.target.value))}
-          className="w-24 rounded-lg border border-slate-700 bg-slate-950 px-3 py-1.5 text-sm" />
-        <span className="text-sm text-slate-400">days</span>
-        <button className={btnDanger} onClick={async () => {
-          if (!confirm(`Delete all conversations older than ${days} days?`)) return;
-          const r = await api('purge', { days });
-          setMsg(r.data.ok ? `Deleted ${r.data.deleted} conversation(s).` : 'Could not delete.');
-        }}>Delete</button>
+    <div className="space-y-4">
+      <div className={`${card} space-y-3`}>
+        <div className="font-medium text-white">Delete old tracking data</div>
+        <p className="text-sm text-slate-400">Removes funnel, page, scroll and section events older than this many days. This also runs automatically once the nightly job is set up.</p>
+        <div className="flex items-center gap-2">
+          <input type="number" min={1} value={evDays} onChange={(e) => setEvDays(Number(e.target.value))}
+            className="w-24 rounded-lg border border-slate-700 bg-slate-950 px-3 py-1.5 text-sm" />
+          <span className="text-sm text-slate-400">days</span>
+          <button className={btnDanger} onClick={async () => {
+            if (!confirm(`Delete all tracking data older than ${evDays} days?`)) return;
+            const r = await api('purge_events', { days: evDays });
+            setEvMsg(r.data.ok ? `Deleted ${r.data.deleted} event(s).` : 'Could not delete.');
+          }}>Delete</button>
+        </div>
+        {evMsg && <div className="text-sm text-cyan-400">{evMsg}</div>}
       </div>
-      {msg && <div className="text-sm text-cyan-400">{msg}</div>}
+      <div className={`${card} space-y-3`}>
+        <div className="font-medium text-white">Delete old chat conversations</div>
+        <p className="text-sm text-slate-400">Removes conversations with no activity for this many days, along with their messages. Emails and unanswered questions in Leads are kept.</p>
+        <div className="flex items-center gap-2">
+          <input type="number" min={1} value={days} onChange={(e) => setDays(Number(e.target.value))}
+            className="w-24 rounded-lg border border-slate-700 bg-slate-950 px-3 py-1.5 text-sm" />
+          <span className="text-sm text-slate-400">days</span>
+          <button className={btnDanger} onClick={async () => {
+            if (!confirm(`Delete all conversations older than ${days} days?`)) return;
+            const r = await api('purge', { days });
+            setMsg(r.data.ok ? `Deleted ${r.data.deleted} conversation(s).` : 'Could not delete.');
+          }}>Delete</button>
+        </div>
+        {msg && <div className="text-sm text-cyan-400">{msg}</div>}
+      </div>
     </div>
   );
 }
