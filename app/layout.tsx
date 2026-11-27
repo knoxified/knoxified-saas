@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import { ChatBot } from './components/chat-bot';
+import { SiteHeader } from './components/site-header';
 import { SiteTracker } from './components/site-tracker';
 import { ReferralTracker } from './components/referral-tracker';
 import './globals.css';
@@ -88,38 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGJ3T3BR" height="0" width="0" style="display:none;visibility:hidden"></iframe>`,
           }}
         />
-        <header className="sticky top-0 z-50 w-full bg-slate-900/80 backdrop-blur-md border-b border-slate-700/50">
-          <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-            <Link href="/" className="flex items-center space-x-3 group">
-              <img 
-                src="/logo.png" 
-                alt="Knoxified Logo"
-                className="w-8 h-8 object-contain opacity-90 group-hover:opacity-100 transition-opacity drop-shadow-[0_0_10px_rgba(6,182,212,0.5)]" 
-              />
-              <span className="text-xl font-bold tracking-tight text-slate-50">Knoxified</span>
-            </Link>
-            <nav className="hidden lg:flex items-center space-x-8 text-sm font-medium text-slate-300">
-              <Link href="/systems" className="hover:text-cyan-400 transition-colors">Systems</Link>
-              <Link href="/automations" className="hover:text-cyan-400 transition-colors">Automations</Link>
-              <Link href="/pricing" className="hover:text-cyan-400 transition-colors">Pricing</Link>
-              <Link href="/blog" className="hover:text-cyan-400 transition-colors">Blog</Link>
-              <Link href="/about" className="hover:text-cyan-400 transition-colors">About</Link>
-              <Link href="/contact" className="hover:text-cyan-400 transition-colors">Contact</Link>
-            </nav>
-            <div className="flex items-center space-x-4">
-              <a href="https://dashboard.knoxified.org" target="_blank" rel="noopener noreferrer" className="px-5 py-2 text-sm font-medium bg-gradient-to-br from-cyan-500/20 to-blue-500/10 hover:from-cyan-500/30 hover:to-blue-500/20 text-cyan-300 hover:text-cyan-200 border border-cyan-500/30 hover:border-cyan-500/60 rounded-xl backdrop-blur-xl shadow-[0_8px_32px_0_rgba(6,182,212,0.1)] hover:shadow-[0_8px_32px_0_rgba(6,182,212,0.2)] transition-all duration-300 relative group overflow-hidden">
-                <span className="absolute inset-0 bg-gradient-to-r from-cyan-400/0 via-cyan-400/10 to-blue-400/0 group-hover:via-cyan-400/20 transition-all duration-300"></span>
-                <span className="relative flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 group-hover:bg-cyan-300 transition-colors"></span>
-                  Dashboard
-                </span>
-              </a>
-              <Link href="/get-started" className="px-5 py-2 text-sm font-medium bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white rounded-md transition-all shadow-[0_0_15px_rgba(6,182,212,0.3)] hover:shadow-[0_0_25px_rgba(6,182,212,0.5)]">
-                Get Started
-              </Link>
-            </div>
-          </div>
-        </header>
+        <SiteHeader />
 
         <main className="flex-1 flex flex-col relative z-0">
           <div className="absolute top-0 left-0 right-0 h-[800px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-900/30 via-slate-900/10 to-transparent -z-10 pointer-events-none"></div>
